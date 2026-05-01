@@ -1,5 +1,19 @@
 """
-MobileVenus 轻量化模型主体
+[DEPRECATED] MobileVenus 轻量化模型主体 — 旧架构，已废弃
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+此文件属于早期方案 (5参数 + 1B模型 + TinyLLaMA)，
+已被当前 3 阶段 6 参数蒸馏架构替代。
+
+当前架构请参考:
+  - Stage A/B: training/semantic_distill/model.py
+  - Stage C:   training/text_condition/model.py
+  - Refine:    models/refinement_net_v4.py
+
+保留此文件仅作为历史参考，不参与当前训练管线。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+原始设计:
 基于 Venus 的知识蒸馏版本，优化用于移动端部署
 
 增强特性:

@@ -1,6 +1,17 @@
 """
-TinyLLaMA 轻量语言模型
-用于生成美学建议文本
+[DEPRECATED] TinyLLaMA 轻量语言模型 — 旧架构，已废弃
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+此文件属于早期方案 (1B模型 + TinyLLaMA 建议生成)，
+已被当前 LightTextEncoder (字符级 Transformer) 替代。
+
+当前文本编码请参考:
+  - training/text_condition/model.py::LightTextEncoder
+
+保留此文件仅作为历史参考，不参与当前训练管线。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+原始设计: TinyLLaMA 轻量语言模型，用于生成美学建议文本
 """
 
 import torch

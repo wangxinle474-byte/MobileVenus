@@ -1,6 +1,20 @@
 """
-文本编码器: 将 Venus 的自然语言分析编码为语义 embedding
+[DEPRECATED] 文本编码器 — 旧架构，已废弃
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+此文件属于早期方案 (sentence-transformers 外部编码器)，
+已被当前两阶段方案替代:
+  - Stage A: MiniLM-L6-v2 预计算 → TextProjector 投影
+  - Stage C: LightTextEncoder 字符级自主编码
+
+当前文本编码请参考:
+  - training/semantic_distill/embed_texts.py (MiniLM 预计算)
+  - training/text_condition/model.py::LightTextEncoder
+
+保留此文件仅作为历史参考，不参与当前训练管线。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+原始设计: 将 Venus 的自然语言分析编码为语义 embedding
 支持两种模式:
   1. sentence-transformers (推荐, 轻量级)
   2. 预计算模式 (离线编码, 训练时直接加载)
