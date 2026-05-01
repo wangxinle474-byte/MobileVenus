@@ -1,0 +1,63 @@
+# 模型权重（体积大，用 Git LFS 或单独分享）
+checkpoints/
+
+# 数据集（本地路径，不上传）
+data/*.npz
+
+# 打包文件
+*.zip
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# 推理生成的对比图（体积大）
+images/inference/
+
+# 训练输出
+outputs/
+
+# Django 媒体文件（推理图片存 DB，media/ 仅本地）
+APP/backend/media/
+
+# Django 数据库
+APP/backend/db.sqlite3
+*.sqlite3
+
+# 前端构建产物与依赖
+APP/frontend/dist/
+APP/frontend/node_modules/
+node_modules/
+
+# IDE / 系统文件
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 虚拟环境
+venv/
+env/
+.env/
+
+# 环境变量文件
+.env
+
+# 字体文件（体积大）
+*.ttf
+*.otf
+
+# 日志
+*.log
+logs/
+
+# 训练曲线图（本地生成）
+images/training_curves/

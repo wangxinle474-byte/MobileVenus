@@ -1,0 +1,97 @@
+# MobileVenus 训练配置文件
+
+distillation:
+  # 教师模型配置
+  teacher:
+    model_path: "../../Venus_CVPR2026-main/pretrained_weights/Venus-Q-Stage2"
+    freeze: true
+    
+  # 学生模型配置
+  student:
+    architecture: "MobileVenus"
+    vision_encoder: "MobileViT-Small"
+    language_model: "TinyLLaMA-1B"
+    image_size: 224
+    dropout: 0.1
+    scorer_hidden_dim: 256
+    
+  # 蒸馏参数
+  temperature: 4.0
+  alpha_score: 0.5      # 评分损失权重
+  alpha_feature: 0.3    # 特征损失权重
+  alpha_response: 0.2   # 响应损失权重
+  
+  # 训练参数
+  training:
+    num_epochs: 10
+    batch_size: 32
+    learning_rate: 1.0e-4
+    warmup_steps: 1000
+    gradient_accumulation_steps: 4
+    max_grad_norm: 1.0
+    
+    # 优化器
+    optimizer: "AdamW"
+    weight_decay: 0.01
+    adam_beta1: 0.9
+    adam_beta2: 0.999
+    adam_epsilon: 1.0e-8
+    
+    # 学习率调度
+    lr_scheduler: "linear_warmup"
+    
+    # 硬件
+    device: "cuda"
+    mixed_precision: true  # FP16
+    num_workers: 8
+    pin_memory: true
+    
+    # 保存和日志
+    save_steps: 1000
+    save_total_limit: 5
+    logging_steps: 100
+    eval_steps: 500
+    
+  # 数据配置
+  data:
+    train_data: "../../Venus_CVPR2026-main/data/Stage1"
+    val_data: "../../Venus_CVPR2026-main/data/Benchmark_AesGuide"
+    image_size: 224
+    
+    # 数据增强
+    augmentation:
+      enabled: true
+      random_crop: true
+      random_flip: true
+      color_jitter:
+        brightness: 0.2
+        contrast: 0.2
+        saturation: 0.2
+        hue: 0.1
+      random_rotation: 15
+      normalize:
+        mean: [0.485, 0.456, 0.406]
+        std: [0.229, 0.224, 0.225]
+
+# 量化配置
+quantization:
+  enabled: false
+  method: "qat"  # Quantization-Aware Training
+  bits: 8
+  
+# 实验跟踪
+experiment:
+  name: "mobile_venus_distillation"
+  project: "MobileVenus"
+  tags: ["distillation", "mobile", "aesthetic"]
+  notes: "Knowledge distillation from Venus to MobileVenus"
+  
+  # Weights & Biases
+  wandb:
+    enabled: false
+    entity: "your-wandb-entity"
+    
+  # TensorBoard
+  tensorboard:
+    enabled: true
+    log_dir: "./runs"

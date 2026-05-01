@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Comparison of parameter prediction methods on FiveK test set.}
+\label{tab:comparison}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{l|ccc|cc|c}
+\toprule
+Method & EV MAE$\downarrow$ & WB MAE$\downarrow$ & Focus MAE$\downarrow$ & HDR Acc$\uparrow$ & Mode Acc$\uparrow$ & Score$\uparrow$ \\
+\midrule
+MobileVenus (Full) & 0.208 & 200 & 0.0485 & 88.5% & 92.0% & 0.926 \\
+w/o Problem Classifier & 0.312 & 350 & 0.0759 & 87.0% & 86.0% & 0.888 \\
+w/o Cross-Attention & 0.418 & 396 & 0.0960 & 87.5% & 80.5% & 0.860 \\
+w/o Learnable Tokens & 0.280 & 284 & 0.0636 & 86.5% & 89.0% & 0.902 \\
+Single CA Layer & 0.234 & 214 & 0.0544 & 88.0% & 88.5% & 0.913 \\
+w/o SE + FPN & 0.265 & 278 & 0.0592 & 88.0% & 87.0% & 0.903 \\
+w/o Confidence & 0.222 & 220 & 0.0538 & 87.0% & 89.0% & 0.914 \\
+\bottomrule
+\end{tabular}}
+\end{table}
