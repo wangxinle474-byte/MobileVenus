@@ -1,7 +1,59 @@
 # MobileVenus 资产清单
 
 > 更新时间: 2026-05-01  
-> 三端: 本地 Windows + AutoDL GPU 服务器 + GitHub
+> 三端: 本地 Windows (全量代码) + AutoDL GPU (仅训练代码) + GitHub (全量备份)
+
+---
+
+## 〇、目录分工
+
+### 本地 (全量，完整项目)
+```
+E:\智能相机\Venus_CVPR2026-main\IntelligenceCamera\
+├── models/           ← 模型定义
+├── training/         ← 训练框架
+├── scripts/          ← 训练脚本 + 同步脚本
+├── tools/            ← 全部工具 (data/eval/train/demo/plot)
+├── APP/              ← Django+Vue3 演示应用 (仅本地)
+├── docs/             ← 文档+架构图 (仅本地)
+├── images/           ← 论文图片 (仅本地)
+├── examples/         ← 示例代码 (仅本地)
+├── inference/        ← 推理接口 (仅本地)
+├── evaluate/         ← 评估框架 (仅本地)
+├── data/             ← 数据配置模板 (仅本地)
+├── train_v12_refine_hd.py
+└── train_v6_stage_a.py
+```
+
+### AutoDL (仅训练相关)
+```
+/root/autodl-tmp/IntelligenceCamera/
+├── models/           ← 6 个核心模型文件 (排除 DEPRECATED)
+├── training/         ← 完整训练框架
+├── scripts/          ← 训练脚本
+├── tools/eval/       ← 评估工具
+├── tools/data/       ← 数据处理工具
+├── tools/train/      ← 训练辅助工具
+├── train_v12_refine_hd.py
+├── train_v6_stage_a.py
+└── requirements.txt
+
+/root/autodl-tmp/
+├── checkpoints/      ← 训练产出 (1.4G)
+├── data/             ← 标注+embedding (129M)
+├── fivek_jpeg/       ← 原图 5121张 (227M)
+├── fivek_expert_c/   ← Expert C GT (289M)
+└── PPR10K/           ← PPR10K 数据集 (111G)
+```
+
+### 同步方式
+```bash
+# Linux/Mac:
+bash scripts/sync_to_autodl.sh <autodl_ssh_host> <port>
+
+# Windows PowerShell:
+.\scripts\sync_to_autodl.ps1 -Host "root@connect.xxx.seetacloud.com" -Port 12345
+```
 
 ---
 
