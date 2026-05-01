@@ -290,6 +290,12 @@ class RefinementNetV4(nn.Module):
         output = (global_out + local_residual).clamp(0.0, 1.0)
         return output
 
+    def count_params(self):
+        """返回 (总参数量, 可训练参数量)。"""
+        total = sum(p.numel() for p in self.parameters())
+        trainable = sum(p.numel() for p in self.parameters() if p.requires_grad)
+        return total, trainable
+
 
 if __name__ == '__main__':
     model = RefinementNetV4(base_ch=64)

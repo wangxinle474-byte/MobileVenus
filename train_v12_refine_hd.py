@@ -402,7 +402,7 @@ def main():
             # 冻结管线: param(224) → diff_isp(512)
             with torch.no_grad():
                 out = param_model(img_224)
-                pred_phys = denorm(out['params_norm'], device)
+                pred_phys = denorm(out['norm_params'], device)
                 rendered = apply_diff_isp(raw_512.float(), pred_phys).clamp(0, 1)
                 rendered = torch.nan_to_num(rendered, nan=0.5)
 
@@ -480,7 +480,7 @@ def main():
                 expert_512 = batch['expert_512'].to(device)
 
                 out = param_model(img_224)
-                pred_phys = denorm(out['params_norm'], device)
+                pred_phys = denorm(out['norm_params'], device)
                 rendered = apply_diff_isp(raw_512.float(), pred_phys).clamp(0, 1)
                 rendered = torch.nan_to_num(rendered, nan=0.5)
 

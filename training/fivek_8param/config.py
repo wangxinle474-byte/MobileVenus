@@ -41,3 +41,15 @@ TRAIN_CONFIG = {
 # 专家标注
 EXPERTS = ['expert_a', 'expert_b', 'expert_c', 'expert_d', 'expert_e']
 DEFAULT_EXPERT = 'expert_c'
+
+
+def normalize_param(name, value):
+    """将物理参数归一化到 [-1, 1]。"""
+    lo, hi = PARAM_RANGES[name]
+    return 2.0 * (value - lo) / (hi - lo) - 1.0
+
+
+def denormalize_param(name, norm_value):
+    """将归一化参数 [-1, 1] 还原到物理范围。"""
+    lo, hi = PARAM_RANGES[name]
+    return (norm_value + 1.0) / 2.0 * (hi - lo) + lo

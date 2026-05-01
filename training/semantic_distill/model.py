@@ -92,7 +92,7 @@ class DistillParamModel(nn.Module):
     """
 
     def __init__(self, stage_a_model=None, image_size=224, visual_dim=384,
-                 semantic_dim=256):
+                 semantic_dim=256, decoder_hidden=256):
         super().__init__()
 
         if stage_a_model is not None:
@@ -110,6 +110,7 @@ class DistillParamModel(nn.Module):
 
         self.decoder = LightroomDecoder(
             semantic_dim=semantic_dim,
+            hidden_dim=decoder_hidden,
         )
 
     def forward(self, images, return_embedding=False):
@@ -156,6 +157,8 @@ class DistillParamModel(nn.Module):
     @classmethod
     def from_stage_a(cls, checkpoint_path, device='cpu', **kwargs):
         """从 Stage A checkpoint 构建 Stage B 模型。"""
+        # 分离 Stage A 和 Stage B 专属参数
+        decoder_hidden = kwargs.pop('decoder_hidden', 256)
         stage_a = SemanticDistillModel(**kwargs)
         state = torch.load(checkpoint_path, map_location=device)
         if 'model_state_dict' in state:
@@ -163,7 +166,7 @@ class DistillParamModel(nn.Module):
         else:
             stage_a.load_state_dict(state)
 
-        model = cls(stage_a_model=stage_a, **kwargs)
+        model = cls(stage_a_model=stage_a, decoder_hidden=decoder_hidden, **kwargs)
         model.freeze_backbone()
         return model
 

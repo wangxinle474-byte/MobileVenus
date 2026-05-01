@@ -24,6 +24,9 @@ class DistillConfig:
     stage_b_freeze_epochs = 17  # 前 N epochs 冻结 backbone
     stage_b_backbone_lr_scale = 0.1  # 解冻后 backbone 学习率倍率
 
+    # Decoder
+    decoder_hidden = 256  # LightroomDecoder 隐藏层维度
+
     # 共通
     weight_decay = 1e-4
     grad_clip = 1.0
