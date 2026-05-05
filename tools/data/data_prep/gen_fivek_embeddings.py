@@ -5,7 +5,7 @@
 输出: data/fivek_text_embeddings.npz
 
 用法:
-  python tools/data/gen_fivek_embeddings.py
+  python tools/data/data_prep/gen_fivek_embeddings.py
 """
 import json, argparse
 import numpy as np

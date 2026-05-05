@@ -506,7 +506,7 @@ python training/legacy/train_v13_multiscale.py --param_version v14
 ```
 
 ### 关键代码
-- `tools/data/rescore_with_aesexpert.py`: AesExpert 全量重打分 (checkpoint/resume)
+- `tools/data/scoring/rescore_with_aesexpert.py`: AesExpert 全量重打分 (checkpoint/resume)
 - `tools/data/merge_aesexpert_aadb.py`: 合并 + 双门槛过滤
 - `tools/train/train_v14_aesexpert_param.py`: V14 训练脚本 (DistillParamModel)
 - 输出: `checkpoints/distill_v14/stage_b/best.pt` (V13 兼容)

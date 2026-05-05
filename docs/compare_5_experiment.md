@@ -110,7 +110,7 @@ outputs/compare_5/
 
 ### 1. LongCat sceneA (长款场景描述)
 ```powershell
-python tools/data/local_run_longcat_turbo.py `
+python tools/data/editor_models/local_run_longcat_turbo.py `
   --captions data/compare_5_captions.json `
   --out_dir outputs/compare_5/longcat_sceneA `
   --skip_download --use_4bit --steps 4 --offload sequential
@@ -118,7 +118,7 @@ python tools/data/local_run_longcat_turbo.py `
 
 ### 2. LongCat editB (编辑指令)
 ```powershell
-python tools/data/local_run_longcat_turbo.py `
+python tools/data/editor_models/local_run_longcat_turbo.py `
   --captions data/compare_5_captions_edit.json `
   --out_dir outputs/compare_5/longcat_editB `
   --skip_download --use_4bit --steps 4 --offload sequential
@@ -126,7 +126,7 @@ python tools/data/local_run_longcat_turbo.py `
 
 ### 3. FireRed editB (rewrite off)
 ```powershell
-python tools/data/run_firered_online.py `
+python tools/data/editor_models/run_firered_online.py `
   --captions data/compare_5_captions_edit.json `
   --input_dir outputs/compare_5/originals `
   --out_dir outputs/compare_5/firered_editB `
@@ -135,7 +135,7 @@ python tools/data/run_firered_online.py `
 
 ### 4. FireRed editB (rewrite on)
 ```powershell
-python tools/data/run_firered_online.py `
+python tools/data/editor_models/run_firered_online.py `
   --captions data/compare_5_captions_edit.json `
   --input_dir outputs/compare_5/originals `
   --out_dir outputs/compare_5/firered_editB_rewrite `
@@ -158,7 +158,7 @@ scp autodl:.../data/compare_5_captions_edit_rewritten.json data/
 
 ```powershell
 # 本地用重写 caption 跑 LongCat
-python tools/data/local_run_longcat_turbo.py `
+python tools/data/editor_models/local_run_longcat_turbo.py `
   --captions data/compare_5_captions_edit_rewritten.json `
   --out_dir outputs/compare_5/longcat_editB_rewritten `
   --skip_download --use_4bit --steps 4

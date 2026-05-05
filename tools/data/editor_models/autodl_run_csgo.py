@@ -9,7 +9,7 @@
 
 \u8fd0\u884c (AutoDL):
   cd /root/autodl-tmp/IntelligenceCamera
-  python tools/data/autodl_run_csgo.py
+  python tools/data/editor_models/autodl_run_csgo.py
 """
 import os
 import sys

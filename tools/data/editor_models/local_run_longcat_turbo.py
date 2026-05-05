@@ -9,7 +9,7 @@ Pipeline (diffusers 0.37.1 \u5df2\u81ea\u5e26):
   LongCatImageEditPipeline - 6B DiT + Qwen2.5-VL text encoder
 
 \u8fd0\u884c:
-  python tools/data/local_run_longcat_turbo.py
+  python tools/data/editor_models/local_run_longcat_turbo.py
 """
 import os
 import sys

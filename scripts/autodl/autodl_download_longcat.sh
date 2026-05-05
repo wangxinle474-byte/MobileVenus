@@ -4,7 +4,7 @@
 set -e
 cd /root/autodl-tmp/IntelligenceCamera
 mkdir -p logs
-nohup /root/miniconda3/bin/python tools/data/autodl_download_longcat.py \
+nohup /root/miniconda3/bin/python tools/data/model_io/autodl_download_longcat.py \
     > logs/longcat_download.log 2>&1 &
 echo "PID=$!"
 sleep 2

@@ -12,7 +12,7 @@
   \u63a8\u7406\u7ea6 60-90s/\u5f20
 
 \u8fd0\u884c:
-  python tools/data/local_run_csgo.py
+  python tools/data/editor_models/local_run_csgo.py
 """
 import os
 import sys

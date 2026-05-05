@@ -3,7 +3,7 @@
 API: https://fireredteam-firered-image-edit-1-1.ms.show  (gradio 6.2.0)
 
 \u7528\u6cd5:
-  python tools/data/run_firered_online.py \\
+  python tools/data/editor_models/run_firered_online.py \\
     --captions data/compare_5_captions_edit.json \\
     --input_dir data/compare_5_images \\
     --out_dir outputs/firered_compare_editB \\

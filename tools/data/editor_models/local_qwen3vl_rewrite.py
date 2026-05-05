@@ -8,7 +8,7 @@
   RTX 4060 Laptop 8 GB: \u7528 device_map='auto' + bf16 \u8fd8\u662f\u4f1a\u6ea2\u51fa\uff0c
   \u6539\u6210 load_in_4bit \u6216 sequential_cpu_offload
 \u8fd0\u884c:
-  python tools/data/local_qwen3vl_rewrite.py
+  python tools/data/editor_models/local_qwen3vl_rewrite.py
 """
 import os
 import sys

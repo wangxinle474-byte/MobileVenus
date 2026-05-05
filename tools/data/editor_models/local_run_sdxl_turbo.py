@@ -5,7 +5,7 @@
 \u8bbe\u8ba1: \u6bcf\u5f20\u8dd1 3 \u4e2a strength (0.3/0.5/0.7) \u770b\u54ea\u4e2a\u4fdd\u7559/\u7f16\u8f91\u5e73\u8861\u6700\u597d
 
 \u8fd0\u884c:
-  python tools/data/local_run_sdxl_turbo.py
+  python tools/data/editor_models/local_run_sdxl_turbo.py
 """
 import os
 import sys

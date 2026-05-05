@@ -1,9 +1,9 @@
 """\u5b9e\u65f6\u76d1\u63a7 HF \u6a21\u578b\u4e0b\u8f7d\u8fdb\u5ea6 (LongCat-Turbo + Qwen3-VL-4B)\u3002
 
 \u7528\u6cd5:
-  python tools/data/watch_downloads.py                 # \u5237\u65b0 5 \u79d2
-  python tools/data/watch_downloads.py --interval 2    # 2 \u79d2\u4e00\u5237
-  python tools/data/watch_downloads.py --once          # \u53ea\u6253\u5370\u4e00\u6b21
+  python tools/data/model_io/watch_downloads.py                 # \u5237\u65b0 5 \u79d2
+  python tools/data/model_io/watch_downloads.py --interval 2    # 2 \u79d2\u4e00\u5237
+  python tools/data/model_io/watch_downloads.py --once          # \u53ea\u6253\u5370\u4e00\u6b21
 
 Ctrl+C \u9000\u51fa\u3002
 """

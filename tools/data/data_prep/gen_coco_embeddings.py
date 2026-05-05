@@ -3,7 +3,7 @@
 输出: data/coco5k_text_embeddings.npz
 
 用法:
-  python tools/data/gen_coco_embeddings.py
+  python tools/data/data_prep/gen_coco_embeddings.py
 """
 import json, argparse
 import numpy as np

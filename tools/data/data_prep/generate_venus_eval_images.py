@@ -11,8 +11,8 @@
     distill_v5/    ← Distill v5 增强
 
 用法:
-  python tools/data/generate_venus_eval_images.py --num_images 50
-  python tools/data/generate_venus_eval_images.py --models baseline distill_v5 --num_images 50
+  python tools/data/data_prep/generate_venus_eval_images.py --num_images 50
+  python tools/data/data_prep/generate_venus_eval_images.py --models baseline distill_v5 --num_images 50
 """
 import sys, json, argparse
 from pathlib import Path

@@ -11,7 +11,7 @@ COMMON_ARGS="--skip_download --offload none --steps 4"
 echo "============================================="
 echo "[A] 场景描述风格 → outputs/longcat_compare_sceneA/"
 echo "============================================="
-/root/miniconda3/bin/python -u tools/data/local_run_longcat_turbo.py \
+/root/miniconda3/bin/python -u tools/data/editor_models/local_run_longcat_turbo.py \
     --captions data/compare_5_captions.json \
     --out_dir outputs/longcat_compare_sceneA \
     $COMMON_ARGS 2>&1 | tee logs/longcat_sceneA.log
@@ -20,7 +20,7 @@ echo ""
 echo "============================================="
 echo "[B] 编辑指令风格 → outputs/longcat_compare_editB/"
 echo "============================================="
-/root/miniconda3/bin/python -u tools/data/local_run_longcat_turbo.py \
+/root/miniconda3/bin/python -u tools/data/editor_models/local_run_longcat_turbo.py \
     --captions data/compare_5_captions_edit.json \
     --out_dir outputs/longcat_compare_editB \
     $COMMON_ARGS 2>&1 | tee logs/longcat_editB.log

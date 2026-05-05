@@ -5,9 +5,9 @@
 输出: outputs/data/fivek_aesexpert_scores.json
 
 Usage:
-  python tools/data/score_fivek_aesexpert.py
-  python tools/data/score_fivek_aesexpert.py --jpeg_dir E:/Data/dataset/fivek_jpeg --max_images 100
-  python tools/data/score_fivek_aesexpert.py --resume  # 从上次中断处继续
+  python tools/data/scoring/score_fivek_aesexpert.py
+  python tools/data/scoring/score_fivek_aesexpert.py --jpeg_dir E:/Data/dataset/fivek_jpeg --max_images 100
+  python tools/data/scoring/score_fivek_aesexpert.py --resume  # 从上次中断处继续
 """
 import os
 import sys

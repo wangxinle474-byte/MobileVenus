@@ -48,9 +48,9 @@ IntelligenceCamera/
 - `tools/eval/score_longcat_edits.py` — Qwen3-VL 多维度打分 (1-10)
 
 ### 编辑模型对比 (本次工作核心)
-- `tools/data/local_run_longcat_turbo.py` — LongCat-Turbo 本地推理
-- `tools/data/run_firered_online.py` — FireRed-Lightning 在线推理 (ModelScope Studio)
-- `tools/data/autodl_rewrite_edit_to_scene.py` — Qwen3-VL 把"指令"重写成"场景描述"
+- `tools/data/editor_models/local_run_longcat_turbo.py` — LongCat-Turbo 本地推理
+- `tools/data/editor_models/run_firered_online.py` — FireRed-Lightning 在线推理 (ModelScope Studio)
+- `tools/data/editor_models/autodl_rewrite_edit_to_scene.py` — Qwen3-VL 把"指令"重写成"场景描述"
 
 ## 2. data/ 数据布局
 
@@ -69,14 +69,21 @@ data/
 
 ```
 tools/
-├── data/                      ← 数据处理 (~60 脚本)
-│   ├── local_run_longcat_turbo.py        ← LongCat 本地推理
-│   ├── run_firered_online.py             ← FireRed Studio 在线推理
-│   ├── autodl_rewrite_edit_to_scene.py   ← Qwen3-VL 重写器
-│   ├── autodl_score_*.py                 ← 各种 AutoDL 评分
-│   ├── analyze_*.py / inspect_*.py       ← 分析/检查工具
-│   ├── compare_*.py                      ← 对比工具
-│   └── ... (其他数据生成/转换)
+├── data/                      ← 数据相关 65 个脚本 (按功能 6 子目录, 见 tools/data/README.md)
+│   ├── README.md                            ← 索引表
+│   ├── editor_models/ (9)                   ← 编辑模型推理 (LongCat/FireRed/CSGO/SDXL/Qwen-CN) + 写 caption
+│   │   ├── local_run_longcat_turbo.py / run_firered_online.py / ...
+│   │   └── autodl_rewrite_edit_to_scene.py  ← Qwen3-VL 重写 prompt
+│   ├── scoring/ (11)                        ← 美学/质量评分 (FiveK/IP2P/AesExpert/Venus/MUSIQ)
+│   │   ├── score_fivek_aesexpert.py / rescore_with_*.py / venus_aesthetic_eval.py
+│   │   └── monitor_rescore.py + run_*.sh
+│   ├── data_prep/ (24)                      ← 数据准备/转换/嵌入/伪标签/反推参数
+│   │   ├── build_*.py / extract_*.py / convert_*.py / gen_*.py
+│   │   ├── inverse_fit.py + autodl_vlm_inverse_params.py
+│   │   └── diagnose_param_conflicts.py + check_data_quality.py
+│   ├── analysis/ (8)                        ← 分析/对比 (analyze_*.py + compare_*.py)
+│   ├── viz/ (7)                             ← 可视化/网格图 (make_*_grid + show_top5)
+│   └── model_io/ (6)                        ← 权重下载/续传/监控
 │
 └── eval/                      ← 评估脚本
     ├── score_longcat_edits.py            ← 主评分脚本 (Qwen3-VL 1-10 多维度)
@@ -190,9 +197,9 @@ docs/
 
 | 步骤 | 命令 | 产物 |
 |------|------|------|
-| 1. LongCat 推理 (sceneA) | `python tools/data/local_run_longcat_turbo.py --captions data/compare_5_captions.json --out_dir outputs/compare_5/longcat_sceneA --skip_download --use_4bit --steps 4` | `compare_5/longcat_sceneA/<idx>.png` |
+| 1. LongCat 推理 (sceneA) | `python tools/data/editor_models/local_run_longcat_turbo.py --captions data/compare_5_captions.json --out_dir outputs/compare_5/longcat_sceneA --skip_download --use_4bit --steps 4` | `compare_5/longcat_sceneA/<idx>.png` |
 | 2. LongCat 推理 (editB) | 同上, `--captions data/compare_5_captions_edit.json --out_dir outputs/compare_5/longcat_editB` | `compare_5/longcat_editB/<idx>.png` |
-| 3. FireRed 推理 (editB) | `python tools/data/run_firered_online.py --captions data/compare_5_captions_edit.json --input_dir outputs/compare_5/originals --out_dir outputs/compare_5/firered_editB --lora Lightning` | `compare_5/firered_editB/<idx>.png` |
+| 3. FireRed 推理 (editB) | `python tools/data/editor_models/run_firered_online.py --captions data/compare_5_captions_edit.json --input_dir outputs/compare_5/originals --out_dir outputs/compare_5/firered_editB --lora Lightning` | `compare_5/firered_editB/<idx>.png` |
 | 4. FireRed (editB rewrite) | 同上 + `--rewrite_prompt --out_dir outputs/compare_5/firered_editB_rewrite` | `compare_5/firered_editB_rewrite/<idx>.png` |
 | 5. AutoDL 评分 (4 组) | `bash scripts/autodl/autodl_rescore_all_10pt.sh` | `compare_5/scores/<group>_10pt.json` |
 | 6. Qwen3-VL 重写 + 5 组完整对比 | `bash scripts/autodl/autodl_phase1_rewrite_and_rescore.sh` 然后本地用重写 prompt 跑 LongCat 上传, 再 `bash scripts/autodl/autodl_phase2_score_longcat_rewritten.sh` | `scores/longcat_editB_rewritten_10pt.json` |

@@ -6,7 +6,7 @@
 1-10 美学评分及描述.
 
 Usage:
-  python tools/data/rescore_with_aesexpert.py \
+  python tools/data/scoring/rescore_with_aesexpert.py \
     --input outputs/data/aug_high_score.json \
     --top_n 20 --sort_by aug_musiq \
     --score_orig --filter_min 7.0 \

@@ -11,7 +11,7 @@ requests 走代理 (127.0.0.1:7897) 调 huggingface.co API + LFS CDN.
 - 多次启动幂等
 
 Usage:
-    python tools/data/local_resume_aesexpert_v2.py
+    python tools/data/model_io/local_resume_aesexpert_v2.py
 """
 from __future__ import annotations
 

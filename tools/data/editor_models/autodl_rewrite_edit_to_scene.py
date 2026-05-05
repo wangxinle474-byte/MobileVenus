@@ -8,7 +8,7 @@
 \u7ed3\u5408\u539f\u573a\u666f + \u6307\u4ee4\u8981\u6c42, \u6253\u5305\u4e3a "scene-style prompt" \u9001\u7ed9 LongCat\u3002
 
 \u8fd0\u884c (AutoDL):
-  python tools/data/autodl_rewrite_edit_to_scene.py \\
+  python tools/data/editor_models/autodl_rewrite_edit_to_scene.py \\
     --captions_in data/compare_5_captions_edit.json \\
     --out data/compare_5_captions_edit_rewritten.json
 """

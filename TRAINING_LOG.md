@@ -76,7 +76,7 @@
 - **修复**:
   - 在 AutoDL 上直接修改 `$LF_ROOT/data/dataset_info.json` 的 `file_name` 改为绝对路径 `/root/autodl-tmp/datasets/ArtEdit-Bench/sharegpt/*.json`
   - 同步修复本地 `data/pseudo_labels/sharegpt/dataset_info_snippet.json` 用绝对路径
-  - 修复本地 `tools/data/build_sharegpt_from_labels.py` 加 `--lf_data_root` 参数，默认输出绝对路径
+  - 修复本地 `tools/data/data_prep/build_sharegpt_from_labels.py` 加 `--lf_data_root` 参数，默认输出绝对路径
 
 #### 12:34 — 第三次训练尝试（失败：snippet 没重传）❌
 - 仍然报 `data/data/...not found` —— 因为 AutoDL 上的 `dataset_info_snippet.json` 还是旧的有 `data/` 前缀的版本

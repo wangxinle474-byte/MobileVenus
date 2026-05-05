@@ -1,6 +1,6 @@
 #!/bin/bash
 # 在 AutoDL 上下载 AesExpert (qyuan/AesMMIT_LLaVA_v1.5_7b_240325)
-# 用于 tools/data/autodl_score_fivek.py 的美学打分.
+# 用于 tools/data/scoring/autodl_score_fivek.py 的美学打分.
 # 国内机房 hf-mirror 直连快, 一般 5-10 分钟完事.
 set -e
 export PATH=/root/miniconda3/bin:$PATH
@@ -30,6 +30,6 @@ ls -lh "$TARGET_DIR" | head -20
 
 echo ""
 echo "=== Quick run example ==="
-echo "  python tools/data/autodl_score_fivek.py \\"
+echo "  python tools/data/scoring/autodl_score_fivek.py \\"
 echo "      --jpeg_dir /root/autodl-tmp/fivek_jpeg \\"
 echo "      --output /root/autodl-tmp/outputs/fivek_aesexpert_scores.json"

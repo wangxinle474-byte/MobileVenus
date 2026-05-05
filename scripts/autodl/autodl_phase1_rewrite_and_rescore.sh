@@ -19,7 +19,7 @@ echo ""
 echo "============================================="
 echo "[Phase 1.1] Qwen3-VL rewrite editB \u2192 scene prompt"
 echo "============================================="
-$PY -u tools/data/autodl_rewrite_edit_to_scene.py \
+$PY -u tools/data/editor_models/autodl_rewrite_edit_to_scene.py \
     --captions_in data/compare_5_captions_edit.json \
     --out data/compare_5_captions_edit_rewritten.json \
     --originals_dir outputs/compare_5/originals \
@@ -40,7 +40,7 @@ echo "============================================="
 echo ""
 echo "[NEXT] \u5728\u672c\u5730\u8dd1:"
 echo "  scp -P <port> root@<host>:/root/autodl-tmp/IntelligenceCamera/data/compare_5_captions_edit_rewritten.json data/"
-echo "  python tools/data/local_run_longcat_turbo.py \\"
+echo "  python tools/data/editor_models/local_run_longcat_turbo.py \\"
 echo "    --captions data/compare_5_captions_edit_rewritten.json \\"
 echo "    --out_dir outputs/compare_5/longcat_editB_rewritten \\"
 echo "    --skip_download --use_4bit --steps 4 --offload sequential"

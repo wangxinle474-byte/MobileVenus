@@ -6,8 +6,8 @@ Venus 输出 6 维分数 (composition / lighting / color / clarity / subject / o
 每维 1-10, 比 MUSIQ-AVA 和 LAION-Aes 更接近"专业摄影评审"风格.
 
 Usage:
-  python tools/data/rescore_with_venus.py --input outputs/data/aug_high_score.json --max_samples 50
-  python tools/data/rescore_with_venus.py --input outputs/data/aug_high_score.json --top_n 50 --sort_by aug_musiq
+  python tools/data/scoring/rescore_with_venus.py --input outputs/data/aug_high_score.json --max_samples 50
+  python tools/data/scoring/rescore_with_venus.py --input outputs/data/aug_high_score.json --top_n 50 --sort_by aug_musiq
 """
 import os
 import re

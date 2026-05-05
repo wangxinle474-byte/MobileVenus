@@ -2,9 +2,9 @@
 实时监控 AesExpert 重打分进度。
 
 用法:
-    python tools/data/monitor_rescore.py            # 实时刷新, Ctrl+C 退出
-    python tools/data/monitor_rescore.py --once     # 只打印当前快照
-    python tools/data/monitor_rescore.py --interval 5  # 每 5 秒刷新一次
+    python tools/data/scoring/monitor_rescore.py            # 实时刷新, Ctrl+C 退出
+    python tools/data/scoring/monitor_rescore.py --once     # 只打印当前快照
+    python tools/data/scoring/monitor_rescore.py --interval 5  # 每 5 秒刷新一次
 """
 import argparse
 import os

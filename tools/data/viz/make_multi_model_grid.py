@@ -11,7 +11,7 @@
 \u4e2d\u95f4\u52a8\u6001\u8df3\u8fc7\u4e0d\u5b58\u5728\u7684\u5217 (\u5982 LongCat \u672a\u4e0b\u5b8c)\u3002
 
 \u8fd0\u884c:
-  python tools/data/make_multi_model_grid.py
+  python tools/data/viz/make_multi_model_grid.py
 """
 import os
 os.environ.setdefault('KMP_DUPLICATE_LIB_OK', 'TRUE')

@@ -40,8 +40,8 @@ ssh -p $Port $RemoteHost $mkdirCmd
 Write-Host "`n[3/4] Upload files..." -ForegroundColor Yellow
 
 $Files = @(
-    "tools/data/autodl_run_csgo.py",
-    "tools/data/autodl_run_qwen_cn.py",
+    "tools/data/editor_models/autodl_run_csgo.py",
+    "tools/data/editor_models/autodl_run_qwen_cn.py",
     "data/compare_5_captions.json",
     "outputs/ip2p_pilot_100/0071_orig.png",
     "outputs/ip2p_pilot_100/0110_orig.png",
@@ -81,10 +81,10 @@ Write-Host "# Install deps (if not already):"
 Write-Host "pip install -U diffusers transformers accelerate safetensors huggingface_hub einops"
 Write-Host ""
 Write-Host "# 1. CSGO inference (~14GB VRAM, ~10 min for 5 images):"
-Write-Host "python tools/data/autodl_run_csgo.py 2>&1 | tee /root/autodl-tmp/logs/csgo_run.log"
+Write-Host "python tools/data/editor_models/autodl_run_csgo.py 2>&1 | tee /root/autodl-tmp/logs/csgo_run.log"
 Write-Host ""
 Write-Host "# 2. Qwen-Image-CN-Inpainting (~40GB model, offload mode, ~30 min):"
-Write-Host "python tools/data/autodl_run_qwen_cn.py --mode offload 2>&1 | tee /root/autodl-tmp/logs/qwen_run.log"
+Write-Host "python tools/data/editor_models/autodl_run_qwen_cn.py --mode offload 2>&1 | tee /root/autodl-tmp/logs/qwen_run.log"
 Write-Host ""
 Write-Host "# 3. Check results:"
 Write-Host "ls -lh outputs/csgo_compare/ outputs/qwen_cn_compare/"

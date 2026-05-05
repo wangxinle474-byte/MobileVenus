@@ -20,12 +20,12 @@
 | 文件 | 大小 | 生成脚本 | 说明 |
 |------|------|---------|------|
 | `venus_text_embeddings.npz` | ~20MB | `training/semantic_distill/embed_texts.py` | Venus 美学文本的 MiniLM-L6-v2 编码 |
-| `fivek_text_embeddings.npz` | ~20MB | `tools/data/gen_fivek_embeddings.py` | FiveK 图片的 Venus 文本描述编码 |
-| `coco5k_text_embeddings.npz` | ~7MB | `tools/data/gen_coco_embeddings.py` | COCO 图片的 Venus 文本描述编码 |
+| `fivek_text_embeddings.npz` | ~20MB | `tools/data/data_prep/gen_fivek_embeddings.py` | FiveK 图片的 Venus 文本描述编码 |
+| `coco5k_text_embeddings.npz` | ~7MB | `tools/data/data_prep/gen_coco_embeddings.py` | COCO 图片的 Venus 文本描述编码 |
 | `fivek_expert_params.json` | ~14MB | 外部提取 | FiveK 5位专家的 Lightroom 参数标注 |
-| `fivek_expert_consensus.json` | ~2MB | `tools/data/compute_expert_consensus.py` | 5 专家共识权重 |
-| `fivek_aesthetic_scores.json` | ~1MB | `tools/data/score_fivek_aesthetic.py` | FiveK 图片美学评分 |
-| `venus_pseudo_labels.json` | ~3MB | `tools/data/extract_pseudo_labels.py` | Venus 伪标签 (美学分析结构化输出) |
+| `fivek_expert_consensus.json` | ~2MB | `tools/data/data_prep/compute_expert_consensus.py` | 5 专家共识权重 |
+| `fivek_aesthetic_scores.json` | ~1MB | `tools/data/scoring/score_fivek_aesthetic.py` | FiveK 图片美学评分 |
+| `venus_pseudo_labels.json` | ~3MB | `tools/data/data_prep/extract_pseudo_labels.py` | Venus 伪标签 (美学分析结构化输出) |
 
 ---
 
@@ -48,10 +48,10 @@
 python training/semantic_distill/embed_texts.py
 
 # FiveK 文本 embedding
-python tools/data/gen_fivek_embeddings.py
+python tools/data/data_prep/gen_fivek_embeddings.py
 
 # COCO 文本 embedding
-python tools/data/gen_coco_embeddings.py
+python tools/data/data_prep/gen_coco_embeddings.py
 ```
 
 ---

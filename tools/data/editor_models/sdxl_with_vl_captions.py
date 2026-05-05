@@ -11,7 +11,7 @@
   \u6700\u540e\u62fc grid \u80fd\u770b\u51fa "\u624b\u5199 vs VL \u751f\u6210" \u5728 SDXL-Turbo \u4e0a\u8c01\u8d62
 
 \u8fd0\u884c:
-  python tools/data/sdxl_with_vl_captions.py
+  python tools/data/editor_models/sdxl_with_vl_captions.py
 """
 import os
 import sys

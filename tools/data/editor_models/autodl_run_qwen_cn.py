@@ -13,7 +13,7 @@
 
 \u8fd0\u884c (AutoDL):
   cd /root/autodl-tmp/IntelligenceCamera
-  python tools/data/autodl_run_qwen_cn.py
+  python tools/data/editor_models/autodl_run_qwen_cn.py
 """
 import os
 import sys
