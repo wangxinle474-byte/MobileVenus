@@ -1,0 +1,461 @@
+{
+  "meta": {
+    "pipeline": "Venus-suggestion -> IP2P -> AesExpert-filter -> pixel-params",
+    "source": "Benchmark_AesGuide",
+    "editor": "timbrooks/instruct-pix2pix",
+    "editor_config": {
+      "steps": 20,
+      "guidance_scale": 7.5,
+      "image_guidance_scale": 1.5
+    },
+    "scorer": "qyuan/AesMMIT_LLaVA_v1.5_7b_240325",
+    "score_parser": "numeric + qualitative mapping",
+    "params_source": "pixel-level derivation (orig vs edit RGB stats)",
+    "num_samples": 21,
+    "threshold_delta": 0.5,
+    "created_at": "2026-05-01T18:37:15.681735"
+  },
+  "samples": [
+    {
+      "idx": 78,
+      "source_image": "5813.png",
+      "orig_path": "outputs/ip2p_pilot_100/0078_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0078_edit.png",
+      "venus_description": "The juxtaposition of the tree silhouettes set against the light purple sky in the image evokes a serene and peaceful ambiance. It is noted that the overall luminosity of the image may benefit from a subtle enhancement to accentuate the details outside the window, thereby potentially enriching the visual presentation.",
+      "venus_suggestion": "It is noted that the overall luminosity of the image may benefit from a subtle enhancement to accentuate the details outside the window, thereby potentially enriching the visual presentation.",
+      "ip2p_prompt": "the luminosity of the image benefit from a subtle enhancement to accentuate the details outside the window, thereby potentially enriching the visual presentation.",
+      "score_orig": 1.0,
+      "score_edit": 6.5,
+      "score_delta": 5.5,
+      "params": {
+        "ev_compensation": 2.962,
+        "white_balance": 5099.0,
+        "contrast": 100.0,
+        "shadows": 84.1,
+        "highlights": 0.0,
+        "saturation": -62.0
+      },
+      "aesexpert_desc_edit": "The clarity of this image is very poor, and the entire image is very blurry. The color combination is also very monotonous. The lighting is also very dim. The composition is also very poor, with the image being tilted and the subject not standing out. Therefore, this image is very ugly."
+    },
+    {
+      "idx": 71,
+      "source_image": "5806.png",
+      "orig_path": "outputs/ip2p_pilot_100/0071_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0071_edit.png",
+      "venus_description": "The composition depicting the celebration scene through the mobile phone screen effectively employs a double framing technique, adding depth to the image. However, the background featuring buildings appears visually cluttered and lacks cohesion, potentially diminishing the focal point's prominence. Simplifying or applying a selective blur to the background could enhance the image's overall aesthetic appeal by emphasizing the main subject more effectively.",
+      "venus_suggestion": "However, the background featuring buildings appears visually cluttered and lacks cohesion, potentially diminishing the focal point's prominence. Simplifying or applying a selective blur to the background could enhance the image's overall aesthetic appeal by emphasizing the main subject more effectively.",
+      "ip2p_prompt": "However, the background featuring buildings appears visually cluttered and lacks cohesion, potentially diminishing the focal point's prominence",
+      "score_orig": 5.0,
+      "score_edit": 9.0,
+      "score_delta": 4.0,
+      "params": {
+        "ev_compensation": -0.034,
+        "white_balance": 6341.0,
+        "contrast": -2.5,
+        "shadows": 1.5,
+        "highlights": -7.9,
+        "saturation": 1.5
+      },
+      "aesexpert_desc_edit": "This image looks very clear. The colors in this image are rich and vibrant, with a good color combination, making the picture appear more vivid and bright. The lighting in this image is strong, with a strong contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 90,
+      "source_image": "5825.png",
+      "orig_path": "outputs/ip2p_pilot_100/0090_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0090_edit.png",
+      "venus_description": "The juxtaposition of the lush bamboo forest against the ancient red gate in the image creates a captivating visual contrast, imbuing the scene with vibrancy and energy. While the composition exhibits a dynamic interplay of elements, introducing whitespace could enhance its overall visual balance and afford the image more room to breathe.",
+      "venus_suggestion": "could enhance its overall visual balance and afford the image more room to breathe.",
+      "ip2p_prompt": "could enhance its visual balance and afford the image more room to breathe.",
+      "score_orig": 5.0,
+      "score_edit": 8.0,
+      "score_delta": 3.0,
+      "params": {
+        "ev_compensation": -0.107,
+        "white_balance": 10000.0,
+        "contrast": -38.2,
+        "shadows": 58.4,
+        "highlights": -100.0,
+        "saturation": 6.9
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are rich, with low saturation and a unified tone. The color combination is harmonious. The lighting in this image is dim, with not a strong contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 68,
+      "source_image": "5803.png",
+      "orig_path": "outputs/ip2p_pilot_100/0068_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0068_edit.png",
+      "venus_description": "In the golden hue of dusk, two individuals are depicted seated on a truck, emanating vitality amidst a palette of warm tones. Critically, the arrangement of goods on the right-hand side of the composition appears disorderly. A subtle refinement through simplification or cropping within this area could enhance the visual impact, allowing the central characters to command greater prominence within the narrative context of the image.",
+      "venus_suggestion": "could enhance the visual impact, allowing the central characters to command greater prominence within the narrative context of the image.",
+      "ip2p_prompt": "could enhance the, allowing the central characters to command greater prominence within the narrative context of the image.",
+      "score_orig": 5.0,
+      "score_edit": 7.0,
+      "score_delta": 2.0,
+      "params": {
+        "ev_compensation": -0.058,
+        "white_balance": 5397.0,
+        "contrast": 1.1,
+        "shadows": -3.8,
+        "highlights": 0.0,
+        "saturation": -3.9
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are rich, with a strong contrast between warm and cool tones. The color combination is harmonious. The lighting in this image is strong, creating a warm and soft atmosphere. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 84,
+      "source_image": "5819.png",
+      "orig_path": "outputs/ip2p_pilot_100/0084_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0084_edit.png",
+      "venus_description": "The juxtaposition of the vibrant green plants against the weathered walls within the confined alley enhances the visual impact of the image and infuses it with a dynamic ambiance. However, there is a perceived flatness in the central composition, suggesting potential for increased depth and visual intrigue by the exploration of alternative shooting angles.",
+      "venus_suggestion": "However, there is a perceived flatness in the central composition, suggesting potential for increased depth and visual intrigue by the exploration of alternative shooting angles.",
+      "ip2p_prompt": "However, there is a perceived flatness in the central composition, suggesting potential for increased depth and visual intrigue by the exploration of alternative shooting angles.",
+      "score_orig": 5.0,
+      "score_edit": 7.0,
+      "score_delta": 2.0,
+      "params": {
+        "ev_compensation": 0.015,
+        "white_balance": 6787.0,
+        "contrast": -0.5,
+        "shadows": 8.3,
+        "highlights": -32.0,
+        "saturation": -36.3
+      },
+      "aesexpert_desc_edit": "The clarity of this image is average. The color scheme is mainly black and white, with a relatively monotonous and dull combination. The lighting is also quite dim. The composition is average, and the overall image appears somewhat chaotic."
+    },
+    {
+      "idx": 89,
+      "source_image": "5824.png",
+      "orig_path": "outputs/ip2p_pilot_100/0089_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0089_edit.png",
+      "venus_description": "The composition of the image featuring family members walking on sandy ground is dynamically enhanced by the presence of a stroller and small shoes in the foreground. While the inclusion of these elements adds vitality to the scene, a discerning observation reveals a slight sense of disorder in the arrangement. The positioning of the stroller appears somewhat abrupt and disrupts the overall harmony of the composition. Consideration should be given to reorganizing the placement of the objects to achieve a more aesthetically balanced and unified visual narrative.",
+      "venus_suggestion": "enhanced by the presence of a stroller and small shoes in the foreground. While the inclusion of these elements adds vitality to the scene, a discerning observation reveals a slight sense of disorder in the arrangement. The positioning of the stroller appears somewhat abrupt and disrupts the overall harmony of the composition. Consideration should be given to reorganizing the placement of the objects to achieve a more aesthetically balanced and unified visual narrative.",
+      "ip2p_prompt": "enhanced by the presence of a stroller and small shoes in the foreground. While the inclusion of these elements adds vitality to the scene",
+      "score_orig": 5.0,
+      "score_edit": 7.0,
+      "score_delta": 2.0,
+      "params": {
+        "ev_compensation": 0.05,
+        "white_balance": 6894.0,
+        "contrast": 14.2,
+        "shadows": 27.4,
+        "highlights": 0.2,
+        "saturation": 34.4
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are rich and vibrant, with a good color combination that makes the picture look more vivid and bright. The lighting in this image is soft, with a moderate contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 7,
+      "source_image": "5742.png",
+      "orig_path": "outputs/ip2p_pilot_100/0007_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0007_edit.png",
+      "venus_description": "The sculpture is effectively highlighted by the focused illumination, creating a striking visual impact. The interplay between light and shadow accentuates the sculptural form's depth and tactile quality. It is suggested that refining the lighting arrangement could refine the composition, leading to a more cohesive visual presentation with a clearer focal point.",
+      "venus_suggestion": "It is suggested that refining the lighting arrangement could refine the composition, leading to a more cohesive visual presentation with a clearer focal point.",
+      "ip2p_prompt": "refine the lighting arrangement could refine the composition, leading to a more cohesive visual presentation with a clearer focal point.",
+      "score_orig": 5.0,
+      "score_edit": 6.5,
+      "score_delta": 1.5,
+      "params": {
+        "ev_compensation": 2.376,
+        "white_balance": 7356.0,
+        "contrast": 91.3,
+        "shadows": 100.0,
+        "highlights": -3.9,
+        "saturation": 13.0
+      },
+      "aesexpert_desc_edit": "This image is very blurry, and the lighting is too bright, resulting in overexposure. The composition is also poor, with no prominent subject. Therefore, this image is not aesthetically pleasing."
+    },
+    {
+      "idx": 17,
+      "source_image": "5752.png",
+      "orig_path": "outputs/ip2p_pilot_100/0017_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0017_edit.png",
+      "venus_description": "The image effectively captures the intricate details of the lemon, showcasing its texture and form with clarity. The composition benefits from a harmonious interplay of complementary colors, as the vibrant green tones of the background create a compelling contrast that enhances the visual impact of the main subject. However, the bright light emanating from the upper left corner introduces a slightly harsh element that disrupts the overall aesthetic balance. Adjusting the intensity or positioning of this light source could potentially refine the image, offering a more subdued and cohesive visual experience.",
+      "venus_suggestion": "However, the bright light emanating from the upper left corner introduces a slightly harsh element that disrupts the overall aesthetic balance. Adjusting the intensity or positioning of this light source could potentially refine the image, offering a more subdued and cohesive visual experience.",
+      "ip2p_prompt": "However, the bright light emanating from the upper left corner introduces a harsh element that disrupts the aesthetic balance",
+      "score_orig": 5.0,
+      "score_edit": 6.5,
+      "score_delta": 1.5,
+      "params": {
+        "ev_compensation": 0.046,
+        "white_balance": 7690.0,
+        "contrast": 5.5,
+        "shadows": 20.9,
+        "highlights": -15.1,
+        "saturation": -24.9
+      },
+      "aesexpert_desc_edit": "The image has a high level of clarity, with a predominantly blue color tone. The lighting is bright, and the composition is centered, highlighting the main subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 43,
+      "source_image": "5778.png",
+      "orig_path": "outputs/ip2p_pilot_100/0043_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0043_edit.png",
+      "venus_description": "The rooftop sculpture featured in the image exudes a captivating essence of traditional architecture, showcasing a distinctive allure. The strategic angle chosen for the composition effectively accentuates the intricate details and textures inherent in the building's structure. A suggestion to enhance the visual appeal would be a more natural depiction of the sky color, thereby evading overly uniform tonality.",
+      "venus_suggestion": "A suggestion to enhance the visual appeal would be a more natural depiction of the sky color, thereby evading overly uniform tonality.",
+      "ip2p_prompt": "A suggestion to enhance the visual appeal would be a more natural depiction of the sky color, thereby evading overly uniform tonality.",
+      "score_orig": 5.0,
+      "score_edit": 6.5,
+      "score_delta": 1.5,
+      "params": {
+        "ev_compensation": 0.696,
+        "white_balance": 10000.0,
+        "contrast": -73.4,
+        "shadows": 100.0,
+        "highlights": -76.4,
+        "saturation": 41.4
+      },
+      "aesexpert_desc_edit": "The clarity of this image is not high, and the color matching is relatively monotonous. The lighting is also relatively dim. The composition is not good, and the picture appears very empty. Therefore, this image is not very pleasing to the eye."
+    },
+    {
+      "idx": 50,
+      "source_image": "5785.png",
+      "orig_path": "outputs/ip2p_pilot_100/0050_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0050_edit.png",
+      "venus_description": "The composition of the image showcases a harmonious interplay of sky layers, where the clouds create a stark contrast against the earthy elements. The structural isolation of the building stands out prominently within the visual narrative. It is noteworthy that refining the clarity of the details in the building on the right could potentially intensify the overall dramatic impact of the scene.",
+      "venus_suggestion": "It is noteworthy that refining the clarity of the details in the building on the right could potentially intensify the overall dramatic impact of the scene.",
+      "ip2p_prompt": "It is noteworthy that refine the clarity of the details in the building on the right intensify the dramatic impact of the scene.",
+      "score_orig": 7.5,
+      "score_edit": 9.0,
+      "score_delta": 1.5,
+      "params": {
+        "ev_compensation": -0.612,
+        "white_balance": 7646.0,
+        "contrast": -34.6,
+        "shadows": 15.1,
+        "highlights": -88.5,
+        "saturation": -38.9
+      },
+      "aesexpert_desc_edit": "The clarity of this image is not high, and the lighting is also dim. The composition of the image adopts the central composition method, with the main subject located in the middle of the image, highlighting the main subject. The colors in the image are mainly black, white, and gray, with a relatively monochromatic use of color. The color contrast in the image is not high, and the color saturation is also low. The overall tone of the image is rather dim, creating a somewhat gloomy and melancholic atmosphere."
+    },
+    {
+      "idx": 79,
+      "source_image": "5814.png",
+      "orig_path": "outputs/ip2p_pilot_100/0079_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0079_edit.png",
+      "venus_description": "The juxtaposition between the towering urban structures within the cityscape and the distant, snow-capped mountain range presents a striking visual contrast. The warm, golden-hour light bathes the buildings in a radiant hue, effectively enhancing the sense of depth and creating captivating layers within the composition. While the overall aesthetic appeal is notable, the sky's composition could potentially benefit from additional detailing to further enrich the overall visual experience.",
+      "venus_suggestion": "While the overall aesthetic appeal is notable, the sky's composition could potentially benefit from additional detailing to further enrich the overall visual experience.",
+      "ip2p_prompt": "While is notable, the sky's composition benefit from additional detailing to further enrich the visual experience.",
+      "score_orig": 7.5,
+      "score_edit": 9.0,
+      "score_delta": 1.5,
+      "params": {
+        "ev_compensation": 0.464,
+        "white_balance": 10000.0,
+        "contrast": -41.8,
+        "shadows": 100.0,
+        "highlights": -100.0,
+        "saturation": 100.0
+      },
+      "aesexpert_desc_edit": "The clarity of this image is average. The color scheme is mainly blue, with a relatively light and elegant combination. The lighting is bright and soft. The composition is average, and the image appears slightly tilted. Therefore, this image is relatively ordinary."
+    },
+    {
+      "idx": 99,
+      "source_image": "5834.png",
+      "orig_path": "outputs/ip2p_pilot_100/0099_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0099_edit.png",
+      "venus_description": "The integration of green plants within the interplay of light and shadows against the wall in the image evokes a serene and organic ambiance. The juxtaposition of the left wall color appears slightly abrupt and disruptive within the composition, suggesting the potential for tonal adjustments to enhance visual cohesion and symmetry.",
+      "venus_suggestion": "The juxtaposition of the left wall color appears slightly abrupt and disruptive within the composition, suggesting the potential for tonal adjustments to enhance visual cohesion and symmetry.",
+      "ip2p_prompt": "The juxtaposition of the left wall color appears abrupt and disruptive, suggesting the potential for tonal adjustments to enhance visual cohesion and symmetry.",
+      "score_orig": 5.0,
+      "score_edit": 6.5,
+      "score_delta": 1.5,
+      "params": {
+        "ev_compensation": -0.275,
+        "white_balance": 3961.0,
+        "contrast": -73.0,
+        "shadows": 35.0,
+        "highlights": -100.0,
+        "saturation": 10.6
+      },
+      "aesexpert_desc_edit": "The clarity of this image is very poor, and the color combination is also very poor. The lighting is also very dim. The composition is also very poor, with no prominent subject. Therefore, this image is very ugly."
+    },
+    {
+      "idx": 23,
+      "source_image": "5758.png",
+      "orig_path": "outputs/ip2p_pilot_100/0023_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0023_edit.png",
+      "venus_description": "The image displays a captivating interaction between fireworks and crowds at the beach, complemented by the serene blue sky and reflective water that imbue the scene with a dreamlike quality. A nuanced observation is that the pedestrian on the left, engrossed in their phone, may introduce an element of discord. Perhaps a subtle adjustment in timing or positioning during the shot could elevate the overall aesthetic harmony of the composition.",
+      "venus_suggestion": "Perhaps a subtle adjustment in timing or positioning during the shot could elevate the overall aesthetic harmony of the composition.",
+      "ip2p_prompt": "a subtle adjustment in timing or positioning during the shot could elevate the aesthetic harmony of the composition.",
+      "score_orig": 7.0,
+      "score_edit": 8.0,
+      "score_delta": 1.0,
+      "params": {
+        "ev_compensation": -0.007,
+        "white_balance": 10000.0,
+        "contrast": 32.7,
+        "shadows": -20.2,
+        "highlights": -59.4,
+        "saturation": 24.0
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are relatively simple, mainly black, white, and gray, with a unified tone and harmonious color combination. The lighting in this image is strong, creating a strong contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 29,
+      "source_image": "5764.png",
+      "orig_path": "outputs/ip2p_pilot_100/0029_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0029_edit.png",
+      "venus_description": "The image demonstrates a compelling use of the silhouette effect, resulting in a visually impactful composition. The interplay between the figure's movement and the surrounding lines creates a harmonious geometric beauty that captivates viewers. However, the presence of power lines in the sky introduces a visual element that may be perceived as disruptively cluttered. Consider minimizing or eliminating these elements to enhance the overall clarity and sharpness of the image.",
+      "venus_suggestion": "However, the presence of power lines in the sky introduces a visual element that may be perceived as disruptively cluttered. Consider minimizing or eliminating these elements to enhance the overall clarity and sharpness of the image.",
+      "ip2p_prompt": "However, the presence of power lines in the sky introduces a visual element that be perceived as disruptively cluttered",
+      "score_orig": 8.0,
+      "score_edit": 9.0,
+      "score_delta": 1.0,
+      "params": {
+        "ev_compensation": 0.101,
+        "white_balance": 8268.0,
+        "contrast": -31.3,
+        "shadows": 100.0,
+        "highlights": -40.4,
+        "saturation": 100.0
+      },
+      "aesexpert_desc_edit": "The clarity of this image is very high, and the details of the power lines are clearly visible. The color tone is mainly black and white, which is relatively monotonous. The lighting is also dim, and the overall image is somewhat dark. The composition is average, and the subject is not prominent. Therefore, this image looks average."
+    },
+    {
+      "idx": 41,
+      "source_image": "5776.png",
+      "orig_path": "outputs/ip2p_pilot_100/0041_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0041_edit.png",
+      "venus_description": "The nuanced interplay of light and shadows cast upon the wetland in this image, harmonized with the cool blue tonalities, evoke a striking juxtaposition between cold and warmth, imbuing the scene with a palpable sense of atmosphere. A discerning observation notes that the fence positioned on the right-hand side of the composition may lend a somewhat monotonous presence. Adjusting the composition to diminish its dominance could enhance the overall visual equilibrium within the frame.",
+      "venus_suggestion": "could enhance the overall visual equilibrium within the frame.",
+      "ip2p_prompt": "could enhance the visual equilibrium.",
+      "score_orig": 7.0,
+      "score_edit": 8.0,
+      "score_delta": 1.0,
+      "params": {
+        "ev_compensation": 0.038,
+        "white_balance": 9973.0,
+        "contrast": 1.6,
+        "shadows": 25.3,
+        "highlights": -64.4,
+        "saturation": -29.9
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are relatively simple, mainly black, white, and gray, with a unified tone and harmonious color combination. The lighting in this image is strong, creating a strong contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 45,
+      "source_image": "5780.png",
+      "orig_path": "outputs/ip2p_pilot_100/0045_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0045_edit.png",
+      "venus_description": "The composition of the photograph exudes a sense of vivacity, with the elderly person's expression harmoniously blending with the surrounding ambiance. The juxtaposition of the brick wall and vines contributes to the visual texture of the image. However, the presence of cluttered background elements detracts from the focal point. Streamlining the background to accentuate the main subject would enhance the overall aesthetic appeal and visual impact of the photo.",
+      "venus_suggestion": "However, the presence of cluttered background elements detracts from the focal point. Streamlining the background to accentuate the main subject would enhance the overall aesthetic appeal and visual impact of the photo.",
+      "ip2p_prompt": "However, the presence of cluttered background elements detracts from the focal point. Streamlining the background to accentuate the main subject would enhance and of the photo.",
+      "score_orig": 7.0,
+      "score_edit": 8.0,
+      "score_delta": 1.0,
+      "params": {
+        "ev_compensation": -0.033,
+        "white_balance": 6725.0,
+        "contrast": 8.9,
+        "shadows": -5.2,
+        "highlights": -90.9,
+        "saturation": 32.0
+      },
+      "aesexpert_desc_edit": "This image looks very clear. The colors in this image are rich and vibrant, with a good color combination, making the picture appear more vivid and bright. The lighting in this image is soft, with a moderate contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks quite beautiful."
+    },
+    {
+      "idx": 47,
+      "source_image": "5782.png",
+      "orig_path": "outputs/ip2p_pilot_100/0047_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0047_edit.png",
+      "venus_description": "The incorporation of tree roots into the wall design generates a distinctive visual texture, augmented by the presence of individuals that infuse a human element into the composition. Critically, the sudden contrast in the color scheme of the people's attire disrupts the overall harmony of the image. Adjustments in color selection or post-processing techniques could enhance the coherence and visual appeal of the scene.",
+      "venus_suggestion": "could enhance the coherence and visual appeal of the scene.",
+      "ip2p_prompt": "could enhance the coherence and visual appeal of the scene.",
+      "score_orig": 7.0,
+      "score_edit": 8.0,
+      "score_delta": 1.0,
+      "params": {
+        "ev_compensation": -0.14,
+        "white_balance": 6483.0,
+        "contrast": 6.8,
+        "shadows": 7.2,
+        "highlights": -35.9,
+        "saturation": 95.0
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are rich, with low saturation, giving a dull visual experience. The color combination is average. The lighting in this image is dim, with not strong contrast between light and dark. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 20,
+      "source_image": "5755.png",
+      "orig_path": "outputs/ip2p_pilot_100/0020_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0020_edit.png",
+      "venus_description": "In this striking image, the interplay of the sunset's golden hues reflecting on the water's surface, coupled with the poignant silhouette of the individual, imbues the scene with a narrative quality that evokes a serene and captivating ambiance. However, one notable observation is that the vegetation situated in the lower right quadrant appears somewhat disorderly, detracting from the overall elegance of the composition. A potential refinement could involve cropping this area to heighten the picture's visual purity and impact.",
+      "venus_suggestion": "However, one notable observation is that the vegetation situated in the lower right quadrant appears somewhat disorderly, detracting from the overall elegance of the composition. A potential refinement could involve cropping this area to heighten the picture's visual purity and impact.",
+      "ip2p_prompt": "However, one notable observation is that the vegetation situated in the lower right quadrant appears disorderly, detracting from the elegance of the composition",
+      "score_orig": 7.5,
+      "score_edit": 8.0,
+      "score_delta": 0.5,
+      "params": {
+        "ev_compensation": 0.064,
+        "white_balance": 4031.0,
+        "contrast": -30.1,
+        "shadows": 100.0,
+        "highlights": -95.0,
+        "saturation": 4.3
+      },
+      "aesexpert_desc_edit": "The image has a high level of clarity, with a predominant green color tone. The lighting is bright, and the composition is well-balanced. Therefore, this image looks quite beautiful."
+    },
+    {
+      "idx": 22,
+      "source_image": "5757.png",
+      "orig_path": "outputs/ip2p_pilot_100/0022_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0022_edit.png",
+      "venus_description": "The composition of the image exemplifies a natural and endearing moment between the depicted children, exuding warmth and authenticity. The background elements within an airport setting contribute significantly to the narrative context of the scene. A potential enhancement to the visual impact of the image could be achieved through moderating the brightness of the background to reduce potential distraction. By adjusting the background's luminosity or refining the contrast of the foreground subjects, the image may attain a heightened level of visual appeal.",
+      "venus_suggestion": "By adjusting the background's luminosity or refining the contrast of the foreground subjects, the image may attain a heightened level of visual appeal.",
+      "ip2p_prompt": "By adjust the background's luminosity or refine the contrast of the foreground subjects, the image attain a heightened level of visual appeal.",
+      "score_orig": 7.5,
+      "score_edit": 8.0,
+      "score_delta": 0.5,
+      "params": {
+        "ev_compensation": 0.054,
+        "white_balance": 6849.0,
+        "contrast": 40.2,
+        "shadows": -27.7,
+        "highlights": -28.1,
+        "saturation": 35.3
+      },
+      "aesexpert_desc_edit": "This image appears to be relatively clear. The colors in this image are rich, with low color saturation and a unified tone. The color combination is harmonious. The lighting in this image is weak, and the contrast between light and dark is not strong. The composition of this image is centered, highlighting the subject. Therefore, this image looks average."
+    },
+    {
+      "idx": 49,
+      "source_image": "5784.png",
+      "orig_path": "outputs/ip2p_pilot_100/0049_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0049_edit.png",
+      "venus_description": "The composition of the image is characterized by the juxtaposition of vibrant red flowers in the foreground against the verdant green foliage and buildings in the background, resulting in a harmonious color scheme that exudes freshness and brightness. One observed aspect is the slight blurring of the distance between the foreground elements and the background, potentially affecting visual clarity and focal point definition.",
+      "venus_suggestion": "One observed aspect is the slight blurring of the distance between the foreground elements and the background, potentially affecting visual clarity and focal point definition.",
+      "ip2p_prompt": "One observed aspect is the slight blurring of the distance between the foreground elements and the background, potentially affecting visual clarity and focal point definition.",
+      "score_orig": 7.5,
+      "score_edit": 8.0,
+      "score_delta": 0.5,
+      "params": {
+        "ev_compensation": -0.297,
+        "white_balance": 5473.0,
+        "contrast": -9.4,
+        "shadows": -23.5,
+        "highlights": -65.6,
+        "saturation": 100.0
+      },
+      "aesexpert_desc_edit": "The clarity of this image is average. The color combination is relatively soft and elegant. The lighting is bright and natural. The composition is good, with a harmonious combination of foreground and background, and the subject stands out. Therefore, this image is quite beautiful."
+    },
+    {
+      "idx": 64,
+      "source_image": "5799.png",
+      "orig_path": "outputs/ip2p_pilot_100/0064_orig.png",
+      "edit_path": "outputs/ip2p_pilot_100/0064_edit.png",
+      "venus_description": "The composition of the image effectively conveys a well-balanced hierarchy between the green belt and the background buildings, successfully emphasizing the seamless integration of urban and natural elements. However, a slight critique pertains to the overall color tone, which is deemed somewhat lackluster. Enhancing contrast and color saturation could potentially enliven the image, thus enriching its visual impact.",
+      "venus_suggestion": "However, a slight critique pertains to the overall color tone, which is deemed somewhat lackluster. Enhancing contrast and color saturation could potentially enliven the image, thus enriching its visual impact.",
+      "ip2p_prompt": "However, a slight critique pertains to the color tone, which is deemed lackluster. Enhancing contrast and color saturation enliven the image, thus enriching its.",
+      "score_orig": 7.0,
+      "score_edit": 7.5,
+      "score_delta": 0.5,
+      "params": {
+        "ev_compensation": -0.229,
+        "white_balance": 3113.0,
+        "contrast": -32.3,
+        "shadows": 7.6,
+        "highlights": -100.0,
+        "saturation": 100.0
+      },
+      "aesexpert_desc_edit": "This image looks very clear. The colors in this image are rich and vibrant, with a good color combination, making the picture appear more vivid and bright. The lighting in this image is soft, with a moderate contrast between light and dark. The composition of this image is a low horizon composition, highlighting the texture in the upper half of the picture. Therefore, this image looks quite beautiful."
+    }
+  ]
+}

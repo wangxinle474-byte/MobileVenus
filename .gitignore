@@ -3,6 +3,20 @@ checkpoints/
 
 # 数据集（本地路径，不上传）
 data/*.npz
+# 训练用大 JSON（>1MB，单独管理）
+data/instruction_data.json
+data/aug_final.json
+data/aug_ip2p_full.json
+data/aug_fivek_params.json
+data/aug_fivek_params_filtered.json
+data/ppr10k_params.json
+data/fivek_expert_params.json
+data/fivek_expert_consensus.json
+data/fivek_aesthetic_scores.json
+data/fivek_venus_labels.json
+data/venus_pseudo_labels.json
+data/venus_edit_prompts.json
+data/pseudo_labels/
 
 # 打包文件
 *.zip

@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "purpose": "CSGO vs Qwen-Image-CN-Inpainting comparison input",
+    "n_samples": 5,
+    "selection": "previously identified top 5 best IP2P-edited images",
+    "caption_style": "a photo of [scene], [aesthetic_qualifier]"
+  },
+  "samples": [
+    {
+      "rank": 1,
+      "idx": 71,
+      "source_image": "5806.png",
+      "orig_path": "outputs/ip2p_pilot_100/0071_orig.png",
+      "scene_summary": "celebration scene viewed through phone screen with cluttered building background",
+      "old_ip2p_prompt": "However, the background featuring buildings appears visually cluttered and lacks cohesion, potentially diminishing the focal point's prominence",
+      "old_ip2p_edit_score": 9.0,
+      "new_caption": "a photo of hands holding a smartphone displaying a vibrant celebration scene, with a soft bokeh urban background, sharp focus on the phone screen, professional photography, balanced composition",
+      "aesthetic_target": "blur background, emphasize phone screen subject"
+    },
+    {
+      "rank": 2,
+      "idx": 448,
+      "source_image": "6185.png",
+      "orig_path": "outputs/ip2p_pilot_100/0448_orig.png",
+      "scene_summary": "green mountains with distant flags against vast sky",
+      "old_ip2p_prompt": "the vast expanse of the sky be perceived as less visually engaging. A potential adjustment to decrease the prominence of the sky could substantially enhance",
+      "old_ip2p_edit_score": 9.0,
+      "new_caption": "a photo of lush green mountains with colorful prayer flags and distant peaks, captured during golden hour with warm soft lighting, balanced sky-to-mountain composition, vivid colors, professional landscape photography",
+      "aesthetic_target": "warm golden hour lighting, balanced composition"
+    },
+    {
+      "rank": 3,
+      "idx": 808,
+      "source_image": "6547.png",
+      "orig_path": "outputs/ip2p_pilot_100/0808_orig.png",
+      "scene_summary": "bare tree branches silhouetted against blue sky",
+      "old_ip2p_prompt": "While the simplicity and clarity of the image are commendable, there exists a subtle monotony that could be addressed by either introduce additional elements or exploring alternative angles",
+      "old_ip2p_edit_score": 9.0,
+      "new_caption": "a photo of bare tree branches silhouetted against a deep blue sky, with warm golden afternoon light highlighting the branches, dramatic contrast, fine art photography, vivid natural colors",
+      "aesthetic_target": "warm light, contrast enhancement, keep color (avoid B&W conversion)"
+    },
+    {
+      "rank": 4,
+      "idx": 110,
+      "source_image": "5845.png",
+      "orig_path": "outputs/ip2p_pilot_100/0110_orig.png",
+      "scene_summary": "monochromatic boats on water surface with sky",
+      "old_ip2p_prompt": "benefit from a reevaluation to mitigate potential monotony; potential adjustments could involve revising the sky-to-water ratio or implementing heightened contrast",
+      "old_ip2p_edit_score": 9.0,
+      "new_caption": "a black and white photo of boats on calm water with intricate ripple patterns, dramatic high contrast, deep blacks and bright highlights, fine art monochrome photography, balanced sky-to-water composition",
+      "aesthetic_target": "increase contrast, balance composition, preserve B&W aesthetic"
+    },
+    {
+      "rank": 5,
+      "idx": 194,
+      "source_image": "5929.png",
+      "orig_path": "outputs/ip2p_pilot_100/0194_orig.png",
+      "scene_summary": "silhouette figure with stroller on minimalist stairs (B&W)",
+      "old_ip2p_prompt": "A suggestion for further enhancement could involve selectively incorporate details within the vacant space on the right side to augment the visual depth and complexity",
+      "old_ip2p_edit_score": 9.0,
+      "new_caption": "a black and white photo of a person silhouetted pushing a stroller on minimalist stairs, dramatic side lighting with strong shadows, deep contrast, fine art photography, balanced composition with subtle background texture",
+      "aesthetic_target": "dramatic lighting, depth, fill empty space subtly"
+    }
+  ],
+  "csgo_inference_config": {
+    "model_id": "InstantX/CSGO",
+    "base_model": "stabilityai/stable-diffusion-xl-base-1.0",
+    "controlnet_path": "TTPLanet/TTPLanet_SDXL_Controlnet_Tile_Realistic",
+    "image_encoder": "h94/IP-Adapter (sdxl_models/image_encoder)",
+    "num_content_tokens": 4,
+    "num_style_tokens": 32,
+    "content_scale": 1.0,
+    "style_scale": 1.0,
+    "controlnet_conditioning_scale": 0.4,
+    "guidance_scale": 7.5,
+    "num_inference_steps": 30,
+    "seed": 42,
+    "use_self_as_style": true,
+    "negative_prompt": "text, watermark, lowres, low quality, worst quality, deformed, glitch, noisy, blurry"
+  },
+  "qwen_image_cn_inpaint_config": {
+    "model_id": "InstantX/Qwen-Image-ControlNet-Inpainting",
+    "base_model": "Qwen/Qwen-Image",
+    "controlnet_conditioning_scale": 1.0,
+    "guidance_scale": 1.0,
+    "true_cfg_scale": 4.0,
+    "num_inference_steps": 50,
+    "seed": 42,
+    "mask_strategy": "full",
+    "negative_prompt": " ",
+    "_notes": {
+      "controlnet_conditioning_scale": "InstantX 官方推荐 [0.8, 1.0], 用 1.0 保 inpainting 结构",
+      "guidance_scale": "Qwen-Image 蒸馏引导, 默认 1.0 (不是经典 CFG)",
+      "true_cfg_scale": "真正的 CFG, 官方推荐 4.0",
+      "num_inference_steps": "Qwen-Image 官方推荐 50",
+      "mask_strategy": "full = 白色 mask 让模型重绘全图, 靠 ControlNet 锚定结构"
+    }
+  }
+}

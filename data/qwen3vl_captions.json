@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "n_samples": 5,
+    "system_prompt": "You are a professional photography art director. Given an image, output ONE detailed caption for AI image editing in this exact format:\n\n\"a photo of [main subject and setting details], [2-3 aesthetic qualifiers]\"\n\nRules:\n- 15-30 words total\n- MUST start with \"a photo of\" (or \"a black and white photo of\" if the image is B&W)\n- Describe the concrete subject and setting faithfully (preserve existing content)\n- Add 2-3 qualifiers from: warm/cool/golden-hour/dramatic lighting, vivid/saturated/muted colors, high contrast, sharp focus, professional photography, cinematic mood\n- NO abstract words (no \"aesthetic\", \"harmonious\", \"elegant\")\n- NO editing verbs (no \"adjust\", \"enhance\", \"brighten\")\n- NO \"However\", no \"could\", no \"suggests\"\n- Output ONLY the caption line, no explanation, no quotes."
+  },
+  "records": [
+    {
+      "idx": 71,
+      "source_image": "5806.png",
+      "orig_path": "outputs/ip2p_pilot_100/0071_orig.png",
+      "hand_caption": "a photo of hands holding a smartphone displaying a vibrant celebration scene, with a soft bokeh urban background, sharp focus on the phone screen, professional photography, balanced composition",
+      "qwen3vl_caption": "a photo of a hand holding a phone capturing a street festival with masked participants, vivid colors, dramatic lighting, cinematic mood",
+      "aesthetic_target": "blur background, emphasize phone screen subject",
+      "gen_time_s": 21.6
+    },
+    {
+      "idx": 448,
+      "source_image": "6185.png",
+      "orig_path": "outputs/ip2p_pilot_100/0448_orig.png",
+      "hand_caption": "a photo of lush green mountains with colorful prayer flags and distant peaks, captured during golden hour with warm soft lighting, balanced sky-to-mountain composition, vivid colors, professional landscape photography",
+      "qwen3vl_caption": "a photo of hikers on a rocky peak with a red flag, distant mountains under soft sky, vivid colors, cinematic mood",
+      "aesthetic_target": "warm golden hour lighting, balanced composition",
+      "gen_time_s": 18.1
+    },
+    {
+      "idx": 808,
+      "source_image": "6547.png",
+      "orig_path": "outputs/ip2p_pilot_100/0808_orig.png",
+      "hand_caption": "a photo of bare tree branches silhouetted against a deep blue sky, with warm golden afternoon light highlighting the branches, dramatic contrast, fine art photography, vivid natural colors",
+      "qwen3vl_caption": "a photo of bare, twisted tree branches against a vivid blue sky, sharp focus, high contrast, cinematic mood",
+      "aesthetic_target": "warm light, contrast enhancement, keep color (avoid B&W conversion)",
+      "gen_time_s": 13.9
+    },
+    {
+      "idx": 110,
+      "source_image": "5845.png",
+      "orig_path": "outputs/ip2p_pilot_100/0110_orig.png",
+      "hand_caption": "a black and white photo of boats on calm water with intricate ripple patterns, dramatic high contrast, deep blacks and bright highlights, fine art monochrome photography, balanced sky-to-water composition",
+      "qwen3vl_caption": "a black and white photo of a lone figure on a flatboat navigating shallow waters, cinematic mood, muted tones, high contrast",
+      "aesthetic_target": "increase contrast, balance composition, preserve B&W aesthetic",
+      "gen_time_s": 15.7
+    },
+    {
+      "idx": 194,
+      "source_image": "5929.png",
+      "orig_path": "outputs/ip2p_pilot_100/0194_orig.png",
+      "hand_caption": "a black and white photo of a person silhouetted pushing a stroller on minimalist stairs, dramatic side lighting with strong shadows, deep contrast, fine art photography, balanced composition with subtle background texture",
+      "qwen3vl_caption": "a black and white photo of a woman pushing a stroller near a curved staircase, high contrast, cinematic mood, sharp focus",
+      "aesthetic_target": "dramatic lighting, depth, fill empty space subtly",
+      "gen_time_s": 15.9
+    }
+  ]
+}

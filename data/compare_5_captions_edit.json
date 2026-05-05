@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "purpose": "Group B: edit-instruction style prompts for LongCat comparison",
+    "n_samples": 5,
+    "caption_style": "imperative edit instruction (LongCat native format)",
+    "notes": "Group A (compare_5_captions.json) uses scene+aesthetic description. Group B (this file) uses direct edit instructions. Compare output differences on same 5 source images."
+  },
+  "samples": [
+    {
+      "rank": 1,
+      "idx": 71,
+      "source_image": "5806.png",
+      "orig_path": "outputs/ip2p_pilot_100/0071_orig.png",
+      "new_caption": "Blur the cluttered building background into soft bokeh to emphasize the smartphone screen.",
+      "aesthetic_target": "blur background, emphasize phone screen subject"
+    },
+    {
+      "rank": 2,
+      "idx": 448,
+      "source_image": "6185.png",
+      "orig_path": "outputs/ip2p_pilot_100/0448_orig.png",
+      "new_caption": "Apply warm golden-hour lighting across the mountains and sky, keep the prayer flags vivid.",
+      "aesthetic_target": "warm golden hour lighting, balanced composition"
+    },
+    {
+      "rank": 3,
+      "idx": 808,
+      "source_image": "6547.png",
+      "orig_path": "outputs/ip2p_pilot_100/0808_orig.png",
+      "new_caption": "Add warm afternoon sunlight highlighting the branches, increase contrast, keep vivid natural colors (do not convert to black-and-white).",
+      "aesthetic_target": "warm light, contrast enhancement, keep color"
+    },
+    {
+      "rank": 4,
+      "idx": 110,
+      "source_image": "5845.png",
+      "orig_path": "outputs/ip2p_pilot_100/0110_orig.png",
+      "new_caption": "Increase contrast between sky and water, deepen blacks and brighten highlights, keep the black-and-white look.",
+      "aesthetic_target": "increase contrast, balance composition, preserve B&W"
+    },
+    {
+      "rank": 5,
+      "idx": 194,
+      "source_image": "5929.png",
+      "orig_path": "outputs/ip2p_pilot_100/0194_orig.png",
+      "new_caption": "Add dramatic side-lighting with strong shadows, fill the empty right side with subtle texture, keep the black-and-white style.",
+      "aesthetic_target": "dramatic lighting, depth, fill empty space subtly"
+    }
+  ]
+}

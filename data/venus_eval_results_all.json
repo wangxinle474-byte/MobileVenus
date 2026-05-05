@@ -1,0 +1,2452 @@
+{
+  "summary": {
+    "original_avg": {
+      "composition": 5.28,
+      "lighting": 5.22,
+      "color": 5.22,
+      "clarity": 5.22,
+      "subject": 5.26,
+      "overall": 5.22
+    },
+    "original_n": 50,
+    "baseline_avg": {
+      "composition": 5.21,
+      "lighting": 5.34,
+      "color": 5.16,
+      "clarity": 5.16,
+      "subject": 5.26,
+      "overall": 5.2
+    },
+    "baseline_n": 50,
+    "distill_v2_avg": {
+      "composition": 5.32,
+      "lighting": 5.24,
+      "color": 5.26,
+      "clarity": 5.24,
+      "subject": 5.28,
+      "overall": 5.26
+    },
+    "distill_v2_n": 50,
+    "distill_v4_avg": {
+      "composition": 5.51,
+      "lighting": 5.36,
+      "color": 5.4,
+      "clarity": 5.39,
+      "subject": 5.4,
+      "overall": 5.22
+    },
+    "distill_v4_n": 50,
+    "distill_v5_avg": {
+      "composition": 5.06,
+      "lighting": 5.24,
+      "color": 5.06,
+      "clarity": 5.02,
+      "subject": 5.06,
+      "overall": 5.0
+    },
+    "distill_v5_n": 50
+  },
+  "results": [
+    {
+      "image": "a0041-IMG_4972",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the pink rose exhibits a commendable score of composition, with a well-defined subject that draws the viewer's attention. The lighting, while slightly dark, adds depth to the image. The color is vibrant and appealing, though the clarity could be improved to enhance the overall aesthetic. The depth of field is effectively utilized, creating a visually engaging scene.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the pink rose captures a moment of natural beauty with a focus on the intricate details of the flower. The composition, while lacking a clear focal point, could benefit from a more defined arrangement to enhance visual impact. The lighting, while soft, could be improved to highlight the rose's texture and bring out its color nuances. The color palette, while appealing, could benefit from a more vibrant contrast to create a more dynamic visual experience. The clarity of the image is satisfactory, but a closer focus could further enhance the overall aesthetic appeal. The depth of field is well-handled, although a shallower depth could have added more visual interest. The sharpness of the image is acceptable, but a higher resolution could have resulted in a more detailed and impactful portrayal of the rose.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the pink rose captures a stunning display of color and texture, with a well-defined composition that draws the viewer in. The lighting is skillfully managed, creating a soft and inviting atmosphere. The clarity of the image is exceptional, showcasing intricate details and a balanced depth of field. The subject is beautifully framed, with a pleasing arrangement that enhances the overall aesthetic appeal. The sharp focus and well-managed exposure contribute to a visually pleasing and technically proficient photograph.",
+      "distill_v4_scores": {
+        "composition": 7.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the pink rose exhibits a commendable score of composition, with a balanced arrangement of elements. The lighting, while slightly dark, could benefit from a brighter exposure to enhance the clarity of the subject. The color palette is well-executed, though a slight adjustment in saturation could further elevate the visual impact. The depth of field is effectively utilized, contributing to a sharp focus on the rose. The overall score of the image is a solid 7, suggesting room for improvement in the areas of lighting and color saturation to elevate its aesthetic appeal.",
+      "distill_v5_scores": {
+        "composition": 7.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the pink rose exhibits a commendable score of composition, with a well-defined subject and skillful use of lighting. The color and clarity are commendable, though there is room for improvement in the depth of field. The overall score of the image is 7.5."
+    },
+    {
+      "image": "a0091-jmac_MG_4959",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the beach scene captures a serene moment with a mix of dark and light elements. The composition is slightly lacking, with a flat horizon and a lack of visual interest. The lighting is well-balanced, with a hint of overexposure on the right side. The color palette is muted, lacking vibrancy, and the clarity is average. The focus is sharp, but the depth of field could be improved to enhance the overall visual impact.",
+      "baseline_scores": {
+        "composition": 3.0,
+        "lighting": 10.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a serene coastal scene with a dark sky, a small group of people, and a rocky shoreline. The composition is noted for its flatness, with a lack of visual interest. The lighting is dark, resulting in a lack of detail and a washed-out appearance. The color is described as flat, lacking vibrancy and depth. The clarity is noted for its softness, and the focus is deemed acceptable. The overall score is 3 out of 10, indicating a need for improvement in composition, lighting, color, clarity, and focus to enhance the visual impact of the image.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the beach scene captures a serene moment with a compelling composition. The composition is well-balanced, with the rocks and buildings creating a visually engaging frame. The lighting, while slightly overexposed, adds a dynamic quality to the scene. The color palette is pleasing, with a natural and balanced tone. The clarity of the image is commendable, showcasing sharp focus and detail. The depth of field is effectively utilized, enhancing the overall aesthetic appeal. The sharpness of the image is commendable, with a well-defined focus that adds to the visual impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the beach scene with storm clouds is visually captivating, showcasing a dynamic interplay of elements. The composition skillfully captures the dynamic movement of the waves and the city skyline in the background, creating a sense of depth and movement. The use of lighting effectively highlights the contrast between the storm clouds and the beach, adding a dramatic and immersive quality to the scene. The color palette is well-balanced, with a natural and authentic representation of the beach environment. The clarity of the image is commendable, with a sharp focus on the main subject and a pleasing depth of field. Overall, the image exudes a sense of energy and tension, making it a visually striking and engaging piece of art.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the beach scene with the stormy sky and ocean waves exudes a captivating ambiance. The composition skillfully guides the viewer's gaze towards the distant buildings, creating a sense of depth and intrigue. The lighting, while dark, effectively conveys the mood of the scene, though a slight increase in brightness could enhance the overall visual impact. The color palette is well-balanced, with the dark clouds and stormy sky adding a dramatic touch. The clarity of the image is commendable, with sharp focus on the main subject. The depth of field is skillfully utilized, creating a sense of depth and separation between the foreground and background elements."
+    },
+    {
+      "image": "a0099-kme_264",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the park scene featuring a group of people engaged in various activities such as reading and socializing is well-composed, with a balanced distribution of elements. The lighting, while somewhat overexposed, contributes to a natural and vibrant atmosphere. The color palette is pleasing, with a hint of warmth that enhances the overall aesthetic. The clarity of the image is commendable, with sharp focus on the main subjects. The depth of field is effectively utilized, creating a sense of depth and dimension within the frame. The composition is skillfully executed, with a good sense of balance and visual interest.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a bustling urban park scene with a fountain at its center. The composition is well-balanced, with the fountain serving as a focal point. The lighting, while slightly overexposed, adds a warm ambiance to the scene. The color palette is vibrant, with the red umbrellas adding a pop of color. The clarity of the image is commendable, with sharp focus on the main subjects. The depth of field is well-handled, ensuring all elements are in focus. The overall image is visually appealing, with a good sense of depth and a pleasing color palette.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image captures a serene moment in a park setting, with a focal point of a black statue amidst a bustling crowd. The composition, while slightly cluttered, could benefit from a more defined focal point to enhance visual impact. The lighting, while natural, could be improved to enhance the overall appeal of the photograph. The color palette is somewhat muted, suggesting a need for increased vibrancy to elevate the visual appeal. The clarity of the image is satisfactory, but further optimization could be achieved through adjustments in focus and depth of field. The subject, while engaging, could benefit from a more defined and compelling presence to elevate the overall aesthetic impact of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image has a score of 5 in composition, 5 in lighting, 5 in color, 5 in clarity, 5 in subject, and 5 in overall.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a serene moment in a park, with a fountain as the central focal point. The composition is well-balanced, with the fountain serving as a natural frame for the scene. The lighting is skillfully managed, creating a soft and inviting atmosphere. The color palette is vibrant and harmonious, enhancing the overall aesthetic appeal. The clarity of the image is excellent, showcasing intricate details and a pleasing depth of field. The subject is engaging, drawing the viewer's attention effectively. The depth of field is well-handled, ensuring a sharp focus throughout the frame. Overall, the image is a visually captivating portrayal of a tranquil park setting."
+    },
+    {
+      "image": "a0162-WP_CRW_0271",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image effectively captures a candid moment with a young boy leaning against a wall, showcasing a sense of curiosity and playfulness. The composition, while somewhat lacking in depth, is well-balanced and highlights the child's interaction with the environment. The color palette is natural and the lighting effectively highlights the subject, though there is room for improvement in the shadowed areas. The clarity of the image is satisfactory, but the depth of field could be enhanced to further emphasize the subject. Overall, the image successfully conveys a sense of the child's curiosity and interaction with the environment, though there is room for improvement in technical aspects to enhance the visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a candid moment of children exploring a stone wall, showcasing a sense of curiosity and playfulness. The composition, while slightly cluttered, could benefit from a more defined focus on the central subject. The lighting, while natural, could be improved to enhance the subject's presence. The color and clarity are satisfactory, but the depth of field is lacking, affecting the overall sharpness of the image. The depth of field could be improved to create a more visually engaging composition.",
+      "distill_v2_scores": {
+        "composition": 6.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image captures a candid moment of children leaning against a wall, with a clear composition and well-balanced lighting. The color palette is natural, though the clarity could be improved for a more refined visual impact. The subject is engaging, but the depth of field could be enhanced to further emphasize the children's presence. The overall score of 6 suggests room for improvement in technical execution to elevate the aesthetic appeal of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image effectively captures a moment of children leaning against a wall, showcasing a sense of curiosity and playfulness. The composition, while well-balanced, could benefit from a more dynamic approach to enhance visual interest. The lighting, while natural, could be refined to achieve a more visually appealing result. The color palette is pleasing, though a slight adjustment in saturation could elevate the overall aesthetic appeal. The clarity of the image is satisfactory, but a slight improvement in focus could further enhance the overall quality. The depth of field is effectively utilized, contributing to the image's overall clarity.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a group of children leaning against a wall, showcasing a sense of curiosity and playfulness. The composition, while well-balanced, could benefit from a more dynamic angle to enhance visual interest. The lighting, while evenly distributed, lacks depth and could be improved by utilizing fill flash to create a more engaging atmosphere. The color palette is vibrant, though a slight adjustment in saturation could enhance the overall aesthetic appeal. The clarity of the image is satisfactory, with a focus on the children, but a sharper focus on the wall could elevate the visual impact."
+    },
+    {
+      "image": "a0253-kme_194",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the woman with a ponytail and pink shirt is well-composed, showcasing a clear focus on her back. The color palette is vibrant, with a pleasing balance of warm and cool tones. The lighting is well-handled, creating a soft and natural look. The depth of field is effectively utilized, enhancing the overall visual impact. The sharpness and clarity of the image are commendable, contributing to a visually pleasing aesthetic.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the woman's back with a pink shirt featuring the word \"Hollister\" demonstrates a strong composition, with a well-defined subject and background. The color palette is well-balanced, although the lighting could benefit from a slight adjustment to enhance the overall visual appeal. The clarity of the image is satisfactory, but a slight increase in sharpness could further elevate the aesthetic quality. The depth of field is effectively utilized, contributing to the overall visual impact.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the woman's back with a pink shirt featuring the word \"Hollister\" showcases a well-composed shot with a balanced color palette. The lighting, while somewhat flat, could benefit from a more dynamic approach to enhance the subject's presence. The clarity of the image is commendable, although a slight improvement in focus could further elevate its visual impact. The composition, while not overly creative, effectively conveys the subject's attire and surroundings. Overall, the image presents a solid foundation for further refinement in composition and lighting to elevate its aesthetic appeal.",
+      "distill_v4_scores": {
+        "composition": 7.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image effectively captures the back of a person's head with a pink shirt, showcasing a well-composed subject. The color and lighting are well-balanced, although the background could benefit from additional elements to enhance visual interest. The clarity of the image is satisfactory, but the depth of field could be improved to enhance focus on the subject. The overall score of 7.5 demonstrates a good score across all dimensions, suggesting a well-executed composition and technical execution.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a person from the back with a ponytail, showcasing a casual and relaxed pose. The composition, while slightly off-center, is noted for its naturalness. The lighting, while soft, could benefit from a slight increase to enhance the subject's features. The color palette is noted for its natural tones, though a slight adjustment in saturation could further elevate the visual impact. The clarity of the image is satisfactory, with a focus on the subject's hair and the surrounding environment. The depth of field is noted for its softness, potentially affecting the overall sharpness of the image."
+    },
+    {
+      "image": "a0318-IMG_4318",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Composed of a food truck parked on a street corner, the image captures a moment of everyday life with a sense of tranquility. The composition, while not overly dynamic, presents a well-balanced arrangement of elements. The color palette, while slightly subdued, conveys a realistic portrayal of the scene. The clarity of the image, while adequate, could benefit from a sharper focus to enhance visual impact. The depth of field effectively separates the foreground and background, contributing to the overall aesthetic appeal.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "Composed of a white ice cream truck parked on a street corner, the image presents a straightforward portrayal of a typical food truck scene. While the composition effectively conveys the subject matter, there is room for improvement in capturing the essence of the truck. The lighting, while adequate, could benefit from adjustments to enhance the truck's details and textures. The color and clarity of the image are generally satisfactory, though a more focused approach could elevate the overall aesthetic appeal. The subject is well-defined, though the background blur detracts from the intended visual impact. The depth of field is commendable, contributing to the image's clarity and sharpness.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "Complementary colors.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "Complementary colors.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "Composed of a food truck parked on the side of the road, the image captures a moment of leisure amidst the urban landscape. The composition, while somewhat lacking in depth, presents a straightforward portrayal of the subject. The color palette, though somewhat muted, conveys a sense of realism. The clarity of the image, though somewhat lacking in sharpness, effectively conveys the subject matter. The lighting, while somewhat flat, effectively highlights the details of the truck. The depth of field, while somewhat limited, effectively separates the subject from the background. The focus, while somewhat soft, effectively captures the subject. Overall, the image presents a straightforward portrayal of the subject, albeit lacking in complexity and visual interest."
+    },
+    {
+      "image": "a0353-dvf_049",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a moment in an airport with a focus on the front desk and the surrounding environment. The composition is slightly off-center, lacking a clear focal point. The lighting is somewhat flat, lacking contrast, and the color balance is unbalanced. The clarity of the image is fair, but the depth of field is lacking, resulting in a slightly blurred background. The subject is adequately captured, but the overall image quality is deemed average.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image effectively captures a busy airport scene with a clear focus on the receptionist, showcasing a well-balanced composition. The lighting, while slightly overexposed, adds a dynamic quality to the image. The color and clarity are well-executed, enhancing the overall visual appeal. The subject's expression conveys a sense of purpose, contributing to the narrative of the scene. The depth of field effectively isolates the subject, creating a visually engaging composition.",
+      "distill_v2_scores": {
+        "composition": 4.0,
+        "lighting": 4.0,
+        "color": 4.0,
+        "clarity": 4.0,
+        "subject": 3.0,
+        "overall": 4.0
+      },
+      "distill_v2_raw_score": "The image has a score of 4 in composition, 4 in lighting, 4 in color, 4 in clarity, 3 in subject, and 4 in overall.",
+      "distill_v4_scores": {
+        "composition": 7.5,
+        "lighting": 8.0,
+        "color": 9.0,
+        "clarity": 8.5,
+        "subject": 8.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image captures a lively airport scene with a well-defined composition, a score of 7.5. The color and lighting are pleasing, with a score of 8. The clarity is excellent, with a score of 9. The subject is engaging, with a score of 8.5. The overall score is a commendable 8.",
+      "distill_v5_scores": {
+        "composition": 3.0,
+        "lighting": 4.0,
+        "color": 4.0,
+        "clarity": 3.0,
+        "subject": 3.0,
+        "overall": 4.0
+      },
+      "distill_v5_raw_score": "The image has a score of 3 in composition, 4 in lighting, 4 in color, 3 in clarity, 3 in subject, and 4 in overall."
+    },
+    {
+      "image": "a0519-LS_060724_8766",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the sheep with the tag in its ear captures a close-up view that showcases its distinct features. The composition, while somewhat centered, could benefit from a more dynamic approach to enhance visual interest. The lighting, while natural, could be improved by adjusting the angle to create a more engaging effect. The color palette is well-balanced, but the clarity of the image could be enhanced through post-processing techniques. The subject, while well-defined, lacks a clear focal point, and the overall image quality is satisfactory.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the sheep with its head tilted towards the camera captures a close-up view that emphasizes its unique features. The composition is well-balanced, with the sheep's head filling the frame. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall visual appeal. The color and clarity are satisfactory, but the subject's eye appears slightly out of focus. The depth of field is well-handled, ensuring sharpness throughout the image.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the sheep's head showcases a well-composed close-up shot with a focus on the subject's eyes. The composition is strong, with the subject positioned effectively in the frame. The lighting, while soft, could benefit from a slight increase to enhance the overall visual impact. The color and clarity are satisfactory, though a slight adjustment in saturation could elevate the image further. The depth of field is well-handled, with the subject in focus and the background softly blurred. The sharpness of the image is commendable, with the focus on the eyes being particularly effective.",
+      "distill_v4_scores": {
+        "composition": 1.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "Image 1:",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the sheep with its head tilted towards the camera captures a unique perspective, showcasing the animal's distinct features. The composition, while intriguing, could benefit from a more balanced approach to ensure a more visually engaging result. The lighting, while well-executed, could be refined to enhance the overall aesthetic appeal. The color palette is noted for its natural tones, though a slight adjustment in saturation could further elevate the visual impact. The clarity of the image is commendable, though a slight increase in sharpness could further enhance the overall quality. The focus on the sheep's eyes is well-executed, contributing to the overall aesthetic appeal."
+    },
+    {
+      "image": "a0553-_MG_2093",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Composed of a small bird perched on grass, the image showcases a vibrant color palette with a slight softness in focus. The composition, while lacking a clear focal point, is well-balanced. The lighting, while slightly overexposed, could benefit from a softer approach to enhance the bird's presence. The depth of field is adequate, but a shallower setting could have further emphasized the bird's features. The sharpness, while acceptable, could be improved with a more precise focus. Overall, the image presents a pleasant aesthetic, but a more focused approach could elevate its visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "Composed of a striking bird perched on grass, the image skillfully captures the essence of nature with precision. The vibrant colors and sharp focus draw the viewer in, while the well-balanced composition enhances the overall aesthetic appeal. The depth of field adds a sense of dimension, creating a visually engaging and immersive experience.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the bird in the grass showcases a well-composed subject with a pleasing color palette. The lighting, while somewhat harsh, could benefit from a softer approach to enhance the bird's presence. The clarity of the image is commendable, although a closer focus could further elevate the overall aesthetic appeal. The depth of field is effectively utilized, contributing to the sharpness of the subject.",
+      "distill_v4_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 8.0,
+        "clarity": 8.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "distill_v4_raw_score": "Image composition score: 7\nImage lighting score: 7\nImage color score: 8\nImage clarity score: 8\nImage subject score: 7\nImage overall score: 7",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the bird in the grass captures a striking contrast between the vibrant orange breast and the cool blue tones of the surrounding environment. The composition skillfully places the bird as the focal point, drawing the viewer's attention to its striking features. The color palette is expertly balanced, with the bird's orange breast standing out against the lush green grass and blurred twigs in the background. The lighting, while somewhat flat, adds depth to the image, enhancing the overall visual impact. The clarity of the image is commendable, with a well-defined focus on the bird's features. The depth of field effectively isolates the bird from the background, creating a visually engaging composition that highlights the bird's presence and beauty."
+    },
+    {
+      "image": "a0556-07-08-10-at-19h09m19s-N0000107",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the aircraft carrier exhibits a commendable score of composition, with a well-defined subject positioned against a city skyline backdrop. The lighting, while adequate, could benefit from a slight adjustment to enhance the overall visual appeal. The color palette is pleasing, though a slight increase in saturation could further elevate the image's aesthetic quality. The clarity of the photograph is satisfactory, with a focus on sharpness that could be further refined to ensure optimal visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the aircraft carrier exhibits a commendable score of composition, with a balanced arrangement of elements. The lighting, while slightly overexposed, contributes to a dynamic atmosphere. The color palette is well-balanced, although a slight increase in saturation could enhance the visual impact. The clarity of the image is satisfactory, but a slight improvement in sharpness could elevate the overall quality. The subject, while intriguing, could benefit from a more defined focus to draw the viewer's attention more effectively.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the aircraft carrier exhibits a commendable score of composition, with a balanced arrangement of elements. The lighting, while commendable, could benefit from a slight adjustment to enhance the contrast and depth of the scene. The color palette is pleasing, although a slight increase in saturation could further elevate the visual impact. The clarity of the image is satisfactory, with a noticeable depth of field that adds depth and dimension to the overall composition. The subject, while well-defined, could benefit from a more dynamic pose to enhance its visual appeal. Overall, the image demonstrates a proficient execution of photography techniques, with room for further refinement to elevate its aesthetic impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the aircraft carrier in the port exudes a sense of grandeur and historical significance. The composition skillfully balances the ship's imposing presence against the urban backdrop, creating a visually compelling contrast. The lighting, while lacking in depth, effectively highlights the ship's intricate details. The color palette, while somewhat monotonous, adds a touch of realism to the scene. The clarity of the image is commendable, showcasing the ship's structure with precision. The depth of field effectively isolates the ship from the background, enhancing the overall visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the aircraft carrier docked in the harbor captures a striking contrast between the ship's imposing presence and the city skyline in the background. The composition effectively utilizes the rule of thirds, with the ship occupying a significant portion of the frame. The lighting, while slightly overexposed, effectively highlights the ship's silhouette against the urban backdrop. The color and clarity are well-balanced, enhancing the overall visual impact. The depth of field effectively separates the ship from the background, creating a sense of depth and dimension. The sharp focus on the ship's details is commendable, contributing to the image's overall clarity and sharpness."
+    },
+    {
+      "image": "a0564-kme_176",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image effectively captures the serene ambiance of the fashion store, showcasing a well-organized arrangement of mannequins. The composition is well-balanced, with the mannequins positioned symmetrically, creating a visually pleasing aesthetic. The lighting is skillfully executed, enhancing the overall appeal of the scene. The color palette is harmonious, contributing to the tranquil atmosphere. The clarity of the image is commendable, with a sharp focus on the mannequins and a pleasing depth of field. The depth of field is effectively utilized, adding depth and dimension to the photograph.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the mannequins showcases a well-composed arrangement with a balanced use of lighting, resulting in a visually appealing display. The color palette is harmonious, enhancing the overall aesthetic appeal. The clarity of the image is commendable, though a slight adjustment in exposure could further elevate the visual impact. The subject is effectively captured, with a slight softness in focus that could be addressed to enhance the overall sharpness of the photograph.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image showcases a well-composed arrangement of mannequins in a dimly lit setting, with a focus on the subject. The lighting is skillfully executed, creating a visually appealing atmosphere. The color palette is pleasing, although a slight adjustment in saturation could enhance the overall impact. The clarity of the image is commendable, although a slight improvement in focus could further elevate the aesthetic appeal. The depth of field is effectively utilized, contributing to the image's sharpness.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image showcases a well-composed arrangement of mannequins, with a strong sense of depth and perspective. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall visual impact. The color palette is generally pleasing, though a slight increase in saturation could elevate the image further. The clarity of the subject is satisfactory, but a slight adjustment in focus could further refine the image. The depth of field is well-handled, contributing to the overall sharpness of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the mannequins in the dark room captures a visually intriguing composition with a strong sense of depth. The lighting, while well-executed, could benefit from a slight adjustment to enhance the overall visual impact. The color palette is well-balanced, although a slight increase in saturation could further elevate the aesthetic appeal. The clarity of the image is commendable, and the focus is sharp, resulting in a well-composed photograph."
+    },
+    {
+      "image": "a0650-dgw_060",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the city building with a black iron fence in the foreground captures a serene urban setting during the golden hour. The composition is visually appealing, with the iron fence adding a dynamic element to the scene. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall aesthetic appeal. The color palette is pleasing, but there is room for improvement in the clarity of the image. The depth of field is effectively utilized, but a slight adjustment could further enhance the overall quality of the photograph.",
+      "baseline_scores": {
+        "composition": 8.0,
+        "lighting": 10.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the city building with its iron fence in the foreground and the silhouetted trees in the background showcases a well-composed scene. The warm lighting adds a captivating ambiance to the scene, enhancing its overall appeal. The color palette is rich and vibrant, drawing the viewer's eye to the intricate details of the building and the intricate iron fence. The clarity of the image is commendable, with a sharp focus on the subject and a pleasing depth of field. The composition skillfully guides the viewer's gaze from the foreground to the background, creating a sense of depth and visual interest. The overall score of 8/10 reflects the high quality of the image, with room for further refinement in capturing the intricate details of the building's architecture.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the cityscape featuring the prominent building with a circular dome and columns exudes a captivating aesthetic appeal. The composition, while skillfully executed, could benefit from a more pronounced focus on the central subject to enhance visual impact. The lighting, while well-handled, could be further refined to accentuate the intricate details of the building. The color palette, while rich, could benefit from a more nuanced approach to highlight the architectural elements and create a more cohesive visual narrative. The clarity of the image is commendable, with a well-executed depth of field that effectively draws the viewer's eye to the main subject. Overall, the image demonstrates a strong foundation in photography, with room for further refinement to elevate its visual impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image captures a city street scene during sunset, showcasing a prominent building with a circular dome and columns. The composition is noted for its slightly off-center placement, which may be perceived as unconventional. The lighting, while slightly overexposed, still effectively highlights the building's architectural details. The color palette is noted for its warm tones, enhancing the overall aesthetic appeal. The clarity of the image is generally satisfactory, with a slight softness in the foreground. The depth of field is noted for its lack of sharpness, particularly affecting the foreground elements.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the city building with its iron fence and curved sidewalk exudes a captivating ambiance. The composition, while commendable, could benefit from a more dynamic arrangement to enhance visual interest. The lighting, while well-executed, could be further refined to bring out the intricate details of the building. The color palette, while pleasant, could benefit from a more vibrant contrast to elevate the overall aesthetic appeal. The clarity of the image is commendable, but a slight improvement in focus could further enhance the visual impact. The subject, while intriguing, could benefit from a more dynamic approach to engage viewers more effectively. Overall, the image successfully captures the essence of the urban setting, but room for improvement in composition, lighting, and focus is noted."
+    },
+    {
+      "image": "a0724-IMG_4637",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Complementary colors and a natural pose contribute to the image's aesthetic appeal. The composition could benefit from a more dynamic angle to enhance visual interest.",
+      "baseline_scores": {
+        "composition": 6.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "baseline_raw_score": "The image has a score of 6 in composition, 7 in lighting, 7 in color, 7 in clarity, and 7 in subject. The overall score is 7.",
+      "distill_v2_scores": {
+        "composition": 7.0,
+        "lighting": 5.0,
+        "color": 6.0,
+        "clarity": 5.0,
+        "subject": 6.0,
+        "overall": 6.0
+      },
+      "distill_v2_raw_score": "Composed with a score of 7, the image showcases a person standing in front of a body of water, with the sea and sky serving as a backdrop. The composition is noted for its balanced layout, though the subject's positioning could be refined to enhance visual impact. The lighting is evaluated as lacking depth, with a score of 5, while the color is found to be slightly overexposed, resulting in a score of 6. The clarity of the image is rated as average, with a score of 5, and the focus is deemed acceptable, with a score of 6. The overall score of the image is 6, indicating a moderate score across all dimensions.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image features a man standing in front of a grassy area with a body of water in the background. The composition is noted for its simplicity, with the subject positioned off-center and the grassy area providing a natural frame. The lighting is praised for its even distribution, though some suggest a slight overexposure in the sky. The color is noted for its natural tones, with a suggestion for a slight increase in saturation to enhance the overall vibrancy. The clarity is praised for its sharpness, though some suggest a slight overexposure in the sky. The focus is noted for its sharpness, with a suggestion for a slight increase in depth of field to enhance the overall visual impact.",
+      "distill_v5_scores": {
+        "composition": 6.0,
+        "lighting": 10.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "Composed with a 6/10 score, the image captures a man in a striped shirt standing by the sea. The composition is noted for its slightly off-center placement, which could benefit from a more centered approach to enhance visual impact. The lighting is evaluated as lacking depth, resulting in a flat and uninteresting presentation. The color and clarity are deemed acceptable, though there is room for improvement in capturing more vivid and dynamic hues. The focus on the subject is deemed satisfactory, but the background is noted for its lack of interest. Overall, the image is deemed satisfactory, with room for improvement in composition, lighting, and focus to elevate its visual appeal."
+    },
+    {
+      "image": "a0733-WP_CRW_0495",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image effectively captures the vibrant red walls and columns of the ancient building, drawing the viewer's attention to the intricate details. The composition, while strong, could benefit from a more dynamic approach to enhance visual interest. The lighting, while skillfully managed, could be further refined to elevate the overall aesthetic appeal. The color palette is well-balanced, though a slight adjustment in saturation could potentially elevate the image's vibrancy. The clarity of the image is commendable, with a slight improvement in focus noted. The depth of field is skillfully utilized, contributing to the image's overall quality.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a bustling hallway with a diverse group of tourists, creating a lively atmosphere. The composition is somewhat lacking, with a somewhat narrow perspective that could benefit from a wider angle to enhance the visual impact. The lighting, while well-balanced, could benefit from a slight adjustment to brighten the shadows and elevate the overall brightness. The color is generally pleasing, with a natural and balanced palette. The clarity of the image is satisfactory, but could benefit from a slight increase in sharpness to enhance the overall visual impact. The depth of field is well-handled, effectively separating the background from the foreground. The focus is sharp and well-executed, contributing to the overall quality of the photograph.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the corridor with red walls and pillars is visually striking, showcasing a well-composed scene with a diverse group of tourists. The composition is commendable, with a balanced arrangement of the pillars and the red walls creating a visually engaging backdrop. The lighting, while slightly overexposed, adds a dynamic quality to the image. The color palette is pleasing, with the red walls and pillars complementing the overall aesthetic. The clarity of the image is satisfactory, although a slight improvement in focus could enhance the overall sharpness. The depth of field is effectively utilized, creating a sense of depth within the frame. The focus on the subject is precise, contributing to the overall quality of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image effectively captures the essence of a bustling hallway, showcasing a vibrant red wall adorned with intricate designs. The composition, while well-structured, could benefit from a more dynamic approach to enhance visual interest. The lighting, while well-executed, could be refined to further emphasize the intricate details of the wall. The color palette is pleasing, though a slight adjustment in saturation could elevate the overall aesthetic appeal. The clarity of the image is commendable, with a slight improvement in focus noted. The depth of field is skillfully managed, contributing to the overall sharpness of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image effectively captures the grandeur of the ancient building, showcasing a diverse crowd of tourists engaged in sightseeing. The composition, while commendable, could benefit from a more focused approach to enhance visual impact. The lighting, while satisfactory, could be refined to highlight the intricate details of the architecture. The color palette is commendable, with a notable emphasis on red, although a slight adjustment in saturation could further elevate the visual appeal. The clarity of the image is commendable, with a well-executed depth of field that effectively draws the viewer's eye. The depth of field is skillfully managed, enhancing the overall aesthetic quality of the photograph."
+    },
+    {
+      "image": "a0752-20061213_134314__MG_3708",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a coastal scene with a rocky outcropping and a dense forest in the background. The composition is visually appealing, with a balanced arrangement of elements. The lighting is well-handled, enhancing the natural colors and textures of the scene. The clarity of the image is excellent, showcasing intricate details and a pleasing depth of field. The subject is effectively portrayed, drawing the viewer's eye to the dynamic movement of the waves and the rugged beauty of the rocks. Overall, the image is a masterful portrayal of a coastal landscape, showcasing a keen eye for aesthetics and technical proficiency in photography.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a coastal scene with a rocky outcropping in the foreground and a dense forest in the background. The composition is well-balanced, with the trees and rocks creating a visually engaging contrast. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall atmosphere. The color palette is natural and harmonious, though a slight increase in saturation could elevate the visual impact. The clarity of the image is satisfactory, with a focus on sharpness that could be further refined for improved detail. The depth of field is well-handled, contributing to a sense of depth and dimension within the scene.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the rocky shoreline with trees and waves in the Pacific Ocean exudes a serene and natural beauty. The composition skillfully captures the rugged terrain and the dynamic movement of the waves, creating a visually engaging scene. The color palette is well-balanced, with the lush greenery of the trees contrasting beautifully with the earthy tones of the rocks. The clarity of the image is commendable, with sharp focus on the main subject and a pleasing depth of field. The lighting, while slightly overexposed, adds a touch of drama to the overall aesthetic. The depth of field is well-handled, enhancing the sense of depth and perspective within the frame.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image captures a serene coastal scene with a rocky outcropping and lush trees. The composition, while well-balanced, could benefit from a more dynamic angle to enhance visual interest. The lighting, while even, lacks depth and could be improved with a shallower depth of field to create a more engaging visual experience. The color palette is natural and harmonious, though a warmer tone could enhance the overall mood. The clarity is satisfactory, but a slight increase in sharpness could further elevate the image quality. The subject is well-defined, though a closer crop could enhance focus and draw the viewer's eye more effectively. Overall, the image presents a serene coastal landscape with room for improvement in composition and lighting to elevate its visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a serene coastal scene with a rocky outcropping and trees in the background. The composition is noted for its lack of depth, with the foreground rocks appearing somewhat flat. The lighting is well-handled, with a balanced exposure that highlights the details of the rocks and trees. The color palette is natural, though there is a slight lack of contrast that could enhance the visual impact. The clarity of the image is satisfactory, with a good score of sharpness. The depth of field is noted for its shallowness, which could be improved to enhance the overall visual appeal."
+    },
+    {
+      "image": "a0788-IMG_4030",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the birdhouse perched on a pole against a clear blue sky presents a simple yet visually appealing composition. The subject is well-defined and the color palette is pleasing, though there is room for improvement in the lighting. The clarity of the image is satisfactory, but a slight adjustment in exposure could enhance the overall visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the birdhouse presents a well-composed and visually appealing scene. The color palette is vibrant, enhancing the overall aesthetic appeal. The lighting is skillfully executed, creating a pleasing atmosphere. The clarity of the subject is commendable, and the depth of field is effectively utilized. The composition is thoughtfully arranged, with a balanced distribution of elements. The sharp focus and precise exposure contribute to the overall quality of the photograph.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the birdhouse against the clear blue sky showcases a well-composed and visually appealing scene. The composition is commendable, with the birdhouse positioned effectively to draw the viewer's attention. The color palette is pleasing, with the blue sky providing a clean backdrop that enhances the birdhouse's presence. The clarity of the image is commendable, with sharp focus on the birdhouse and a pleasing depth of field. The lighting is well-handled, creating a natural and balanced effect. The subject is well-centered, adding to the overall aesthetic appeal of the photograph. Overall, the image successfully captures the beauty of the birdhouse against the backdrop of the sky, resulting in a visually pleasing composition.",
+      "distill_v4_scores": {
+        "composition": 8.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the birdhouse against the clear blue sky showcases a well-composed and visually appealing scene. The color palette is pleasing, with the blue sky adding a sense of tranquility to the composition. The clarity of the image is commendable, with the birdhouse standing out as the focal point. The lighting is skillfully executed, creating a balanced and natural look. The depth of field is well-handled, ensuring that all elements are in focus. The overall score of 8.5 demonstrates a high level of technical proficiency in capturing the essence of the scene.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the birdhouse against the clear blue sky showcases a well-composed scene with a balanced distribution of elements. The subject is prominently featured, drawing the viewer's attention. The color palette is pleasing, though the lighting could benefit from a slight adjustment to enhance the overall visual impact. The clarity of the image is commendable, contributing to its overall aesthetic appeal."
+    },
+    {
+      "image": "a1057-5044AlexanderWed07",
+      "original_scores": {
+        "composition": 7.0,
+        "lighting": 8.0,
+        "color": 8.0,
+        "clarity": 8.0,
+        "subject": 7.0,
+        "overall": 8.0
+      },
+      "original_raw_score": "Image composition score: 7\nImage lighting score: 8\nImage color score: 8\nImage clarity score: 8\nImage subject score: 7\nImage overall score: 8",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image features a close-up of two individuals, possibly a mother and daughter, with the younger girl positioned prominently in the frame. The composition is somewhat lacking, with the subjects' positioning and the overall arrangement of elements not effectively conveying a clear narrative. The lighting, while somewhat harsh, could be improved to enhance the subjects' facial features and expressions. The color palette is relatively flat, lacking vibrancy and depth, and the clarity of the image is subpar, with a noticeable softness in the subjects' skin tones. The depth of field is somewhat distracting, affecting the overall focus on the subjects.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image captures a heartwarming moment between a young girl and an adult, showcasing a close bond. The composition, while slightly off-center, could benefit from a more dynamic framing to enhance visual engagement. The lighting, while even, lacks depth and could benefit from additional fill light to create a more visually compelling scene. The color, while pleasing, lacks vibrancy and could benefit from adjustments to enhance the overall aesthetic appeal. The clarity, while acceptable, could benefit from sharpening to bring out finer details and improve overall sharpness. The subject, while well-focused, lacks a clear visual narrative and could benefit from a more dynamic pose to enhance visual interest. The depth of field, while adequate, could benefit from a shallower depth to create a more impactful visual impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image features a young girl and a woman with blonde hair, both adorned in white and green attire. The composition is noted for its simplicity, with the subjects positioned off-center to create a balanced visual impact. The lighting, while natural, could benefit from a slight adjustment to enhance the subjects' skin tones. The color palette is noted for its lack of vibrancy, suggesting a need for post-processing adjustments to bring out the subjects' features more effectively. The clarity of the image is satisfactory, with a slight softness in focus. The depth of field is noted for its overall quality, contributing to the overall aesthetic appeal of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the young girl and the woman smiling together captures a moment of happiness and connection. The composition is well-balanced, with the subjects positioned effectively in the frame. The lighting is skillfully managed, creating a soft and flattering effect on both subjects. The color is pleasing, with a natural and balanced palette. The clarity of the image is excellent, showcasing fine details and sharp focus. The depth of field is well-handled, maintaining sharpness throughout the frame. The overall quality of the image is commendable, with a focus on capturing a genuine and touching moment between the two subjects."
+    },
+    {
+      "image": "a1083-jmac_DSC0770",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the plants in front of the yellow wall showcases a well-composed scene with a pleasing color palette. The composition is noted for its balanced arrangement, though there is room for improvement in the clarity of the subject. The lighting is commendable, though a slight adjustment in exposure could enhance the overall aesthetic appeal. The depth of field is effectively utilized, contributing to the overall quality of the photograph.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image showcases a vibrant garden scene with a well-defined composition and a balanced color palette. The lighting, while slightly overexposed, adds a dynamic quality to the scene. The clarity of the subject is commendable, and the overall image quality is satisfactory.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the plant in front of the yellow wall showcases a well-composed scene with a pleasing color palette. The lighting is skillfully executed, enhancing the overall aesthetic appeal. The clarity of the subject is commendable, and the depth of field is effectively utilized to create a visually engaging composition. The sharp focus and sharpness of the image contribute to its overall quality, making it a visually pleasing piece.",
+      "distill_v4_scores": {
+        "composition": 6.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the plants in front of the yellow wall demonstrates a commendable score of composition with a well-defined focus on the plants. The lighting, while good, could benefit from a slight adjustment to enhance the overall visual appeal. The color of the plants is well captured, although a slight increase in saturation could further elevate the vibrancy. The clarity of the image is satisfactory, but a slight increase in sharpness could further enhance the overall aesthetic quality. The subject, while well-defined, could benefit from a more dynamic approach to draw the viewer's attention. The image's overall score of 6.5 demonstrates a strong foundation, with room for improvement in specific areas to elevate its visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image showcases a vibrant display of flowers in front of a yellow wall, with a notable emphasis on the purple flowers. The composition, while somewhat cluttered, could benefit from a more refined approach to highlight the flowers. The lighting, while well-executed, could be improved by introducing more shadow and contrast to enhance the depth and texture of the scene. The color palette is vibrant, though the greenery could benefit from a more balanced approach to achieve a more harmonious visual balance. The clarity of the image is satisfactory, with a noticeable focus on the flowers. The depth of field is effectively utilized, contributing to the overall sharpness of the photograph."
+    },
+    {
+      "image": "a1247-DSC_0272",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the city skyline at night captures a striking contrast between the towering skyscrapers and the illuminated \"New Yorker\" sign. The composition skillfully utilizes the verticality of the buildings to create a sense of depth, while the color palette and lighting choices enhance the overall aesthetic appeal. The clarity of the image is commendable, with a well-defined focus on the subject. The depth of field is effectively utilized, contributing to the sharpness and visual impact of the photograph.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the city skyline at night captures a striking contrast between the illuminated skyscrapers and the darkened sky. The composition, while technically sound, lacks a clear focal point, resulting in a somewhat cluttered visual impact. The color palette is well-balanced, though the lighting could benefit from a slight adjustment to enhance the overall depth and dimensionality of the scene. The clarity of the image is satisfactory, but a slight improvement in focus could further elevate its aesthetic appeal.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the city skyline at night captures a striking contrast between the illuminated skyscrapers and the darkened sky. The composition, while technically sound, lacks a clear focal point, resulting in a somewhat flat visual impact. The color palette is well-balanced, though the lighting could benefit from a more nuanced approach to enhance the overall aesthetic appeal. The clarity of the image is satisfactory, but the depth of field could be improved to create a more engaging visual experience.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the city skyline at night captures a striking visual composition with the prominent presence of the Empire State Building. The color palette is well-balanced, though the clarity of the details could be improved. The lighting, while well-executed, could benefit from a more even distribution to enhance the overall aesthetic appeal. The depth of field is effectively utilized, but a slight adjustment in focus could further elevate the image quality.",
+      "distill_v5_scores": {
+        "composition": 1.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the city skyline at night showcases a well-composed scene with a clear focal point. The lighting, while slightly overexposed, adds a dynamic quality to the image. The color palette is pleasing, with a natural tone. The clarity of the image is commendable, with sharp focus on the main subject. The depth of field is effectively utilized, enhancing the overall visual impact. The exposure time of 1/30th of a second effectively captures the motion of the city lights, creating a dynamic effect. The use of a 105mm lens at f/11 results in a well-balanced composition, showcasing the city's architectural beauty."
+    },
+    {
+      "image": "a1319-IMG_2601",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image showcases a grand indoor space with a soaring ceiling and a central staircase. The composition is well-balanced, with the staircase serving as a central focal point. The lighting is skillfully executed, creating a warm and inviting ambiance. The color palette is pleasing, with a harmonious blend of tones. The clarity of the image is commendable, with sharp focus on the staircase and surrounding details. The depth of field is effectively utilized, enhancing the overall visual impact. The image successfully captures the grandeur and elegance of the architectural space, making it a visually captivating piece.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image showcases a well-composed indoor space with a distinct architectural design. The lighting, while slightly dim, could benefit from a brighter setting to enhance the overall visual appeal. The color palette is pleasing, though a slight adjustment in saturation could further elevate the image. The clarity of the photograph is commendable, with a sharp focus on the subject. The depth of field is skillfully executed, creating a visually engaging composition.",
+      "distill_v2_scores": {
+        "composition": 7.0,
+        "lighting": 8.0,
+        "color": 8.0,
+        "clarity": 8.0,
+        "subject": 7.0,
+        "overall": 8.0
+      },
+      "distill_v2_raw_score": "Image composition score: 7\nImage lighting score: 8\nImage color score: 8\nImage clarity score: 8\nImage subject score: 7\nImage overall score: 8",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the indoor space features a well-composed structure with a balanced layout, showcasing a variety of architectural elements. The lighting, while slightly overexposed, enhances the overall ambiance. The color palette is well-executed, though a slight adjustment in saturation could further elevate the visual impact. The clarity of the image is commendable, with a sharp focus on the subject. The depth of field is effectively utilized, contributing to the overall aesthetic appeal.",
+      "distill_v5_scores": {
+        "composition": 7.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image showcases a well-composed indoor space with a clear view of the grand staircase and skylight. The lighting is well executed, creating a warm and inviting ambiance. The color palette is pleasing, though there is room for improvement in the clarity of the image. The subject is well-defined, but there is potential for further enhancement in the composition. The overall score of 7 suggests a strong foundation for further refinement and exploration of the photographer's artistic vision."
+    },
+    {
+      "image": "a1442-CRW_0004",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Composed of a family of four in a serene beach setting, the image exudes a warm and inviting ambiance. The composition, while well-balanced, could benefit from a more dynamic angle to enhance visual interest. The lighting, while natural, could be refined to bring out more detail in the subjects' faces. The color palette, though pleasing, could benefit from a slight adjustment to introduce more depth and visual intrigue. The clarity of the image is commendable, with a well-executed focus that effectively highlights the subjects. The depth of field is skillfully managed, creating a sense of depth and separation between the subjects and the background. Overall, the image successfully captures a moment of familial bonding in a picturesque setting, with room for improvement in composition and lighting to elevate its visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a family of four in a serene beach setting, exuding a sense of warmth and connection. The composition is well-balanced, with the subjects positioned off-center to create visual interest. The lighting, while soft, could benefit from a slight increase to enhance the overall aesthetic appeal. The color palette is pleasing, with a natural and harmonious tone. The clarity of the image is commendable, showcasing a well-executed depth of field that accentuates the subjects. The depth of field is effectively utilized, contributing to the overall visual impact. The focus is sharp and well-executed, enhancing the overall quality of the photograph.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the family on the beach captures a serene moment with a well-composed layout. The warm lighting enhances the natural setting, while the soft focus adds a dreamy quality to the scene. The color palette is pleasing, though the shadows could benefit from a touch more detail. The depth of field is skillfully managed, ensuring all subjects are sharp and well-defined. The sharp focus and overall clarity contribute to the overall aesthetic appeal of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the family at the beach showcases a well-composed and visually appealing composition. The soft lighting enhances the natural beauty of the scene, while the color palette is pleasing to the eye. The clarity of the subjects is commendable, and the overall aesthetic quality is commendable. However, there is room for improvement in the depth of field, which could enhance the overall visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image showcases a family of four posing for a portrait on a sandy beach. The composition is well-balanced, with the subjects positioned in a visually pleasing manner. The lighting, while soft, could benefit from a slight increase to enhance the overall brightness and detail. The color palette is pleasing, though a slight adjustment in saturation could further elevate the visual impact. The clarity of the image is satisfactory, with a slight softness noted in the subjects' faces. The depth of field is effectively utilized, contributing to a sharp focus on the subjects."
+    },
+    {
+      "image": "a1570-IMG_0850",
+      "original_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "original_raw_score": "Image composition: 7\nImage lighting: 7\nImage color: 7\nImage clarity: 7\nImage subject: 8\nImage overall: 7",
+      "baseline_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "baseline_raw_score": "Image composition: 7\nImage lighting: 7\nImage color: 7\nImage clarity: 7\nImage subject: 8\nImage overall: 7",
+      "distill_v2_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "distill_v2_raw_score": "Image composition: 7\nImage lighting: 7\nImage color: 7\nImage clarity: 7\nImage subject: 8\nImage overall: 7",
+      "distill_v4_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "distill_v4_raw_score": "Image composition: 7\nImage lighting: 7\nImage color: 7\nImage clarity: 7\nImage subject: 8\nImage overall: 7",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the dog's backside captures a unique perspective, showcasing the intricate texture of the fur. The composition, while creative, could benefit from a more balanced approach to enhance visual appeal. The lighting, while soft, could be refined to accentuate the dog's features and create a more engaging visual experience. The color palette is well-balanced, but the overall clarity could be improved to highlight the intricate details of the fur. The subject, while intriguing, could benefit from a more defined focus to draw the viewer's attention more effectively."
+    },
+    {
+      "image": "a1728-kme_044",
+      "original_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "original_raw_score": "Image composition score: 7\nImage lighting score: 7\nImage color score: 7\nImage clarity score: 7\nImage subject score: 8\nImage overall score: 7",
+      "baseline_scores": {
+        "composition": 7.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the sausage and noodles on the grill presents a visually appealing composition with a focus on the central subject. The color and lighting are well-balanced, enhancing the overall aesthetic appeal. The clarity of the image is commendable, although a slight adjustment in exposure could further elevate the visual impact. The depth of field is effectively utilized, contributing to the sharpness of the subject. The overall score of 7.5 reflects a high level of technical proficiency in capturing the scene.",
+      "distill_v2_scores": {
+        "composition": 6.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "distill_v2_raw_score": "Image composition score: 6\nImage lighting score: 7\nImage color score: 7\nImage clarity score: 7\nImage subject score: 8\nImage overall score: 7",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "Complementary colors.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the food items on the grill presents a visually appealing composition with a well-defined arrangement of sausages and onions. The lighting, while slightly dark, effectively highlights the textures and colors of the food. The clarity of the image is commendable, with a sharp focus on the subject. The depth of field is skillfully managed, enhancing the overall visual impact. The color palette is pleasing, though a slight adjustment in saturation could further elevate the visual appeal."
+    },
+    {
+      "image": "a1974-kme_058",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the dirt pile presents a composition that is visually appealing, with a well-defined layering effect. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall visual impact. The color and clarity of the image are satisfactory, though there is room for improvement in capturing the textures and details of the dirt pile. The subject, while distinct, could benefit from a more dynamic approach to draw the viewer's attention. The depth of field is effectively utilized, though the focus could be refined to further enhance the overall quality of the image.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the dirt pile exhibits a commendable score of composition, with a well-defined depth of field that enhances the visual appeal. The color and lighting are commendable, although a slight adjustment in exposure could further elevate the image's quality. The clarity of the subject is satisfactory, but the overall sharpness could be improved to enhance the overall visual impact.",
+      "distill_v2_scores": {
+        "composition": 7.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the dirt pile presents a well-composed and visually appealing composition, with a strong sense of depth and a balanced color palette. The lighting, while slightly overexposed, adds a dynamic quality to the scene. The clarity of the image is commendable, and the subject is effectively highlighted. The overall score of 7.5 suggests a minor adjustment in exposure to further enhance the visual impact of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image effectively captures the texture and form of the mountain, showcasing a well-composed and visually engaging composition. The lighting, while somewhat flat, could benefit from a slight adjustment to enhance the overall visual appeal. The color palette is somewhat subdued, suggesting a potential for improvement through post-processing techniques. The clarity of the image is satisfactory, but could be further enhanced to bring out more intricate details. The depth of field is effectively utilized, contributing to the overall sharpness of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the pile of dirt and rocks against the backdrop of the sky and trees showcases a well-composed and aesthetically pleasing composition. The natural color palette and lighting enhance the visual appeal, while the clarity and sharpness of the photograph are commendable. The depth of field effectively draws the viewer's eye towards the subject, creating a sense of depth and dimension. The overall image quality is excellent, with a slight suggestion for improvement in the shadowed areas to enhance the overall visual impact."
+    },
+    {
+      "image": "a2015-jn_20080803_0453",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the bride and groom captures a moment of happiness and joy, with the bride holding a bouquet of flowers and the groom in the background. The composition is well-balanced, with the bride positioned off-center to the right, creating a visually engaging and dynamic scene. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall visual appeal. The color palette is pleasing, with a natural and balanced tone, although the clarity of the image could be improved to enhance the details and sharpness. The focus on the bride's face is sharp, contributing to the overall aesthetic quality of the photograph.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a moment of a bride and groom in a dimly lit setting, showcasing a well-composed and aesthetically pleasing composition. The bride's pose is executed with finesse, drawing attention to her elegant attire and bouquet. The color palette is rich and well-balanced, with a pleasing contrast between the bride's attire and the background. The lighting, while soft, could benefit from a slight increase to enhance the bride's features and overall visual impact. The clarity of the image is commendable, with a sharp focus on the bride's face and bouquet. The depth of field is effectively utilized, adding depth and dimension to the composition.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the bride and groom in their wedding attire is visually appealing, with a well-composed layout that effectively showcases the subjects. The color palette is pleasing, though there is room for improvement in capturing the bride's skin tone. The lighting, while good, could benefit from additional fill light to enhance the overall look. The depth of field is skillfully managed, with a focus on the bride that is sharp and well-defined. The camera's use of ISO 400 is commendable, contributing to the image's clarity and sharpness.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image captures a bride and groom on their wedding day, showcasing a warm and intimate moment. The composition, while slightly off-center, could benefit from a more dynamic approach to enhance visual interest. The lighting, while soft, could be improved to bring out more detail and highlight the subjects. The color and clarity are satisfactory, but a slight increase in contrast could elevate the overall aesthetic appeal. The focus on the subjects is sharp, but the depth of field could be refined to create a more visually engaging image.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a moment of celebration with a bride and groom, showcasing a warm and inviting atmosphere. The composition is well-balanced, with the bride's smile drawing the viewer's attention. The lighting is skillfully managed, creating a soft and flattering effect. The color palette is pleasing, with a natural and authentic tone. The clarity of the image is excellent, showcasing fine details and sharp focus. The depth of field is well-handled, maintaining focus on the subjects while maintaining a pleasing background blur. Overall, the image successfully captures the essence of a wedding celebration, with a strong focus on the subjects and a pleasing aesthetic appeal."
+    },
+    {
+      "image": "a2067-dvf_013",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Composed of arcade games, the image conveys a dark and mysterious ambiance. The composition, while somewhat lacking in visual interest, could benefit from adjustments to enhance its overall appeal. The lighting, while adequate, could be improved to bring out the intricate details of the arcade games. The color, while somewhat subdued, could benefit from adjustments to enhance its vibrancy. The clarity, while adequate, could be improved to highlight the intricate details of the arcade games. The subject, while somewhat obscure, could benefit from a clearer focal point to engage viewers. The overall score of the image is relatively low, indicating room for improvement in composition, lighting, color, clarity, and subject matter.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "Composed of a darkened arcade room, the image effectively conveys a sense of isolation and abandonment through its composition. The use of neon lights adds a striking contrast to the otherwise dimly lit setting, enhancing the overall atmosphere. While the color palette is somewhat subdued, the focus on the central arcade machine is well-executed. The clarity of the image is commendable, with a slight softness in the background contributing to the overall aesthetic appeal.",
+      "distill_v2_scores": {
+        "composition": 3.0,
+        "lighting": 3.0,
+        "color": 3.0,
+        "clarity": 3.0,
+        "subject": 3.0,
+        "overall": 3.0
+      },
+      "distill_v2_raw_score": "The image of the arcade machine has a score of 3 in composition, 3 in lighting, 3 in color, 3 in clarity, and 3 in subject. The overall score is 3.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "Composed of a darkened arcade with a neon sign, the image presents a well-balanced composition. The lighting, while slightly dim, could benefit from a brighter source to enhance the overall visual appeal. The color palette, though lacking vibrancy, could be improved with adjustments to the lighting. The clarity of the subject is satisfactory, but further optimization could elevate the image's impact. The depth of field is effectively utilized, contributing to the overall aesthetic quality of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "Composed of a gaming machine set in a darkened room, the image presents a captivating composition that skillfully captures the essence of the gaming experience. The lighting, while somewhat subdued, effectively highlights the intricate details of the machine, creating a visually engaging scene. The color palette, while slightly dark, adds a mysterious and intriguing quality to the overall aesthetic. The clarity of the image is commendable, with a well-defined focus that enhances the overall visual impact. The subject, while somewhat obscured, still exudes a sense of intrigue and mystery, drawing the viewer into the captivating world of gaming."
+    },
+    {
+      "image": "a2091-kme_163",
+      "original_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "original_raw_score": "Image composition: 7\nImage lighting: 7\nImage color: 7\nImage clarity: 7\nImage subject: 7\nImage overall: 7",
+      "baseline_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "baseline_raw_score": "Image composition: 7\nImage lighting: 7\nImage color: 7\nImage clarity: 7\nImage subject: 8\nImage overall: 7",
+      "distill_v2_scores": {
+        "composition": 6.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "distill_v2_raw_score": "The image of the man standing in front of the computer desk has a score of 6 in composition, 7 in lighting, 7 in color, 7 in clarity, and 7 in subject. The overall score of the image is 7.",
+      "distill_v4_scores": {
+        "composition": 6.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image has a score of 6 in composition, 7 in lighting, 7 in color, 7 in clarity, and 8 in subject.",
+      "distill_v5_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image has a score of 7 in composition, 7 in lighting, 7 in color, 7 in clarity, and 8 in subject."
+    },
+    {
+      "image": "a2159-jmac_MG_6361",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the textured surface exhibits a captivating composition with a strong sense of depth. The intricate patterns and textures are skillfully captured, drawing the viewer's eye through the image. The lighting, while somewhat flat, could benefit from a slight increase in contrast to enhance the visual impact. The color palette is well-balanced, with a naturalistic appearance that adds to the overall aesthetic appeal. The clarity of the image is commendable, with a sharp focus that accentuates the intricate details of the textured surface. The depth of field is effectively utilized, contributing to the image's visual appeal.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image showcases a captivating composition of intricate textures and patterns in the molten lava, with a notable focus on the central spiral. The color palette is well-balanced, though the lighting could benefit from a slight adjustment to enhance the depth and contrast. The clarity of the image is commendable, and the depth of field effectively isolates the subject from the background. The sharp focus on the intricate details adds to the overall visual appeal, though a slight adjustment in exposure could further elevate the image's aesthetic quality.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image showcases a captivating composition of black lava formations, with intricate patterns and textures that captivate the viewer's attention. The lighting, while somewhat flat, could benefit from adjustments to enhance the visual impact. The color palette is well-balanced, though a slight increase in saturation could elevate the overall vibrancy. The clarity of the image is commendable, with a sharp focus that accentuates the intricate details of the lava formations. The depth of field is skillfully executed, ensuring a sharp focus throughout the frame.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the textured surface presents a captivating composition with intricate details, highlighted by a well-defined lighting scheme that accentuates the texture. The color palette is harmonious, though a slight increase in saturation could enhance the visual impact. The clarity of the image is commendable, although a slight adjustment in focus could further elevate the overall aesthetic appeal. The depth of field is skillfully executed, contributing to the image's overall quality.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the black textured surface exhibits a captivating pattern, with intricate details that draw the viewer's eye. The composition, while commendable, could benefit from a more defined focal point to enhance visual interest. The lighting, while effective, could be further optimized to bring out the texture and depth of the subject. The color palette is well-balanced, with a natural and realistic appearance. The clarity of the image is commendable, although a slight increase in sharpness could further enhance the overall visual impact. The depth of field is skillfully executed, creating a visually engaging scene."
+    },
+    {
+      "image": "a2259-kme_266",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a statue set against a backdrop of tall buildings, creating a striking contrast. The composition, while well-balanced, could benefit from a more dynamic approach to enhance visual interest. The lighting, while natural, could be improved to accentuate the statue's details. The color palette is well-executed, though a slight adjustment in saturation could further elevate the image's aesthetic appeal. The clarity of the photograph is commendable, with a slight softness in focus detracting from the overall sharpness. The depth of field is effectively utilized, contributing to the image's overall quality.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image effectively captures the juxtaposition of the urban landscape and the statue, showcasing a well-composed and visually engaging scene. The use of lighting and color enhances the overall aesthetic appeal, while the clarity and focus are commendable. The subject, while prominent, could benefit from a more dynamic pose to further engage the viewer.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image effectively captures the urban landscape with a statue in the foreground and tall buildings in the background. The composition, while somewhat lacking in depth, is well-balanced. The lighting, while slightly overexposed, enhances the details of the statue and buildings. The color palette is vibrant, with a pleasing contrast between the statue and the buildings. The clarity of the image is satisfactory, but the depth of field could be improved to enhance the overall visual impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image showcases a cityscape with a statue in the foreground and tall buildings in the background. The composition is noted for its spatial arrangement, but the clarity of the statue is lacking. The lighting is adequate, but the color palette is described as flat. The depth of field is noted as being slightly soft, and the focus is described as slightly off.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image effectively captures the juxtaposition of the urban landscape and the statue, creating a visually engaging composition. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall aesthetic appeal. The color palette is well-balanced, though the clarity of the statue could be improved to further elevate the visual impact. The depth of field is effectively utilized, contributing to the image's sharpness."
+    },
+    {
+      "image": "a2310-WP_CRW_7814",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of Santa Claus with two children exudes a warm and festive atmosphere, capturing the essence of the holiday season. The composition, while slightly cluttered, could benefit from a more focused approach to highlight the children and Santa. The lighting, while adequate, could be improved to enhance the overall visual appeal. The color palette is pleasing, though a warmer tone could add depth to the scene. The clarity of the image is satisfactory, but a slight increase in sharpness could elevate the overall quality. The depth of field is well-handled, ensuring a sharp focus on the main subjects.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of Santa Claus with two children exudes a warm and festive atmosphere, capturing the essence of the holiday season. The composition, while well-balanced, could benefit from a more dynamic angle to enhance visual interest. The lighting, while soft and appealing, could be improved by adjusting the exposure to reduce shadows and enhance detail. The color palette is pleasing, though a slight increase in saturation could further elevate the overall aesthetic appeal. The clarity of the image is satisfactory, with a slight softness in focus that could be addressed through post-processing adjustments. The depth of field is effectively utilized, with a focus on the subject's eyes that effectively draws the viewer's gaze.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "Composed of a jolly Santa Claus holding two young children, the image exudes a festive atmosphere. The subject's captivating smile adds a sense of warmth and joy to the scene. While the composition is well-executed, the lighting could benefit from a softer touch to enhance the overall aesthetic appeal. The color palette is pleasing, though a slight adjustment in saturation could further elevate the visual impact. The clarity of the image is commendable, showcasing a well-handled depth of field that effectively draws the viewer's gaze.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of Santa Claus with two children exudes a warm and festive atmosphere, with a well-composed and visually appealing arrangement. The subject's expression is engaging, adding a sense of joy to the scene. The lighting, while slightly dark, effectively highlights the subject and creates a cozy ambiance. The color palette is pleasing, with a natural and balanced tone. The clarity of the image is commendable, with a sharp focus on the subject. The depth of field is well-handled, ensuring that all elements are in focus. Overall, the image successfully captures the essence of the holiday season, with a focus on the children's happiness and the festive setting.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "Complementary colors."
+    },
+    {
+      "image": "a2342-IMG_3950",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a man in a blue shirt standing outside a house, showcasing a well-composed portrait with a natural smile. The subject's expression and posture are well-executed, adding a sense of authenticity to the scene. The color palette is pleasing, with a natural lighting that enhances the subject's features. The depth of field is skillfully managed, creating a visually engaging composition. The sharp focus on the subject's eyes adds a sense of dynamism to the image. Overall, the image successfully conveys a positive and engaging portrayal of the subject.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a man in a blue shirt standing outside a house, showcasing a pleasant smile. The composition is slightly off-center, with the subject appearing slightly blurred. The lighting is adequate, but the color and clarity could benefit from enhancement. The depth of field is satisfactory, but the focus is slightly off, affecting the overall sharpness of the image.",
+      "distill_v2_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "distill_v2_raw_score": "The image has a score of 7 for composition, 7 for lighting, 7 for color, 7 for clarity, 7 for subject, and 7 for overall.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image captures a man in a blue shirt standing outside a house, showcasing a pleasing composition with a natural and candid expression. The lighting, while slightly overexposed, could benefit from a softer touch to enhance the subject's features. The color palette is pleasing, though a touch of saturation could elevate the overall visual impact. The clarity of the image is commendable, with a well-focused subject and a pleasing depth of field. The background blur effectively enhances the subject's presence, though a slight adjustment in focus could further elevate the overall aesthetic appeal.",
+      "distill_v5_scores": {
+        "composition": 3.0,
+        "lighting": 10.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image features a man in a blue shirt standing outside a house, with a smile on his face. The composition is lacking, with the subject positioned off-center and the background lacking depth. The lighting is flat, with a harsh flash casting shadows on the subject's face. The color is lacking vibrancy, with a flat and uninteresting palette. The clarity is poor, with a soft focus and overexposed highlights. The overall score is 3 out of 10."
+    },
+    {
+      "image": "a2372-kme_139",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the city skyline at night showcases a well-composed scene with a strong sense of depth. The interplay of light and shadow creates a captivating atmosphere, while the color palette is vibrant and visually appealing. The clarity of the image is commendable, though a slight improvement in sharpness could enhance the overall impact. The depth of field is skillfully executed, adding to the overall aesthetic appeal of the photograph.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the city skyline at night captures a striking contrast between the illuminated skyscrapers and the dark expanse of the night sky. The composition skillfully balances the urban landscape with the distant lights, creating a visually engaging scene. The color palette is well-executed, with the red and green lights of the Empire State Building standing out prominently. The clarity of the image is commendable, with sharp focus on the buildings and lights. The depth of field is effectively utilized, enhancing the overall aesthetic appeal of the photograph.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the city skyline at night showcases a well-composed scene with a strong sense of depth. The vibrant colors and well-defined lights create a visually appealing atmosphere. The lighting, while good, could benefit from a slight increase in brightness to enhance the overall impact. The clarity of the image is commendable, and the sharp focus adds to the overall aesthetic appeal. The composition is well-balanced, with the buildings and lights creating a visually engaging scene. The subject is effectively captured, although a slight adjustment in exposure could further enhance the overall quality of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the city skyline at night captures a stunning display of urban beauty, with the towering skyscrapers illuminated in a vibrant array of colors. The composition skillfully balances the city's intricate details against the vast expanse of the night sky, creating a visually captivating scene. The lighting, while somewhat subdued, effectively highlights the intricate architectural features of the buildings, adding depth and dimension to the overall composition. The color palette is expertly balanced, with the city lights creating a striking contrast against the dark backdrop. The clarity of the image is commendable, showcasing a well-executed depth of field that enhances the overall visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the city skyline at night captures a stunning display of urban beauty with a well-balanced composition. The lighting, while lacking in depth, effectively highlights the architectural details and creates a visually appealing contrast. The color palette is rich and diverse, with a notable emphasis on the red and green hues of the Empire State Building. The clarity of the image is commendable, with a sharp focus that enhances the overall aesthetic appeal. The depth of field is skillfully managed, resulting in a well-defined and visually engaging photograph."
+    },
+    {
+      "image": "a2473-kme_303",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the rocky coastline captures a serene and rugged landscape with a distant mountain range in the background. The composition, while slightly lacking in depth, is well-balanced, with the foreground rocks and water providing a sense of scale. The lighting, while even, could benefit from a slight increase in contrast to enhance the texture of the rocks. The color, while natural, could benefit from a slight increase in saturation to bring out the details of the rocks and water. The clarity, while acceptable, could be improved by increasing the sharpness of the rocks and water to enhance the overall visual impact. The depth of field is well-handled, with a focus on the foreground rocks and water, creating a sense of depth and perspective.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a rocky coastline with a distant mountain range in the background, showcasing a natural and unadorned beauty. The composition, while well-balanced, could benefit from a more dynamic approach to enhance visual interest. The lighting, while even, lacks depth and could be improved by adjusting the angle to introduce more contrast. The color palette is somewhat monotonous, with a lack of vibrancy and depth. The clarity, while adequate, could be enhanced to reveal more intricate details. The subject, while well-defined, lacks a clear focal point, resulting in a somewhat flat and unengaging presentation. Overall, the image has the potential to be more impactful with a more dynamic composition, enhanced lighting, and a more vibrant color palette.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the rocky shoreline with a distant mountain range in the background captures a serene coastal landscape. The composition, while somewhat lacking in depth, effectively conveys the rugged beauty of the terrain. The color palette, though somewhat subdued, adds a naturalistic quality to the scene. The clarity of the image, particularly in the rocks, is commendable, while the overall sharpness could benefit from a slight increase to enhance the overall visual impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the rocky shoreline with the distant mountains and ocean exudes a sense of tranquility and natural beauty. The composition, while well-balanced, could benefit from a more dynamic arrangement to enhance visual interest. The lighting, while even, lacks depth and could be improved by introducing variations in lighting and shadow. The color palette is pleasing, but a more vibrant contrast could elevate the overall aesthetic appeal. The clarity of the image is satisfactory, but a slight improvement in sharpness could further enhance the visual impact. The focus is well-executed, with a sharpness that contributes to the overall quality of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the rocky shoreline with a distant mountain range in the background captures a serene coastal landscape. The composition effectively conveys the vastness of the scene, although the presence of a person in the foreground slightly detracts from the overall aesthetic. The color palette is pleasing, with a naturalistic hue that enhances the natural beauty of the environment. The clarity of the image is commendable, with a well-defined focus that accentuates the intricate details of the rocks and the sea. The depth of field is skillfully managed, creating a visually engaging image that effectively showcases the coastal landscape."
+    },
+    {
+      "image": "a2856-IMG_5016",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the purple rose is visually appealing, with a well-composed arrangement that draws the viewer's eye towards the central subject. The color palette is pleasing, although a slight adjustment in saturation could enhance the vibrancy of the rose. The lighting is skillfully executed, creating a soft and natural effect that complements the subject. The depth of field is effectively utilized, ensuring sharp focus on the rose while maintaining a pleasing background blur. The sharpness of the image is commendable, contributing to its overall aesthetic appeal.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the purple rose captures a stunning display of color and texture, with a beautifully blurred background that enhances the subject's prominence. The composition, while technically sound, could benefit from a more dynamic approach to draw the viewer's eye towards the rose. The lighting, while well executed, could be refined to achieve a more natural and nuanced effect. The clarity of the image is commendable, with a slight softness in focus that could be addressed to further enhance the overall aesthetic appeal.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the purple rose showcases a commendable score of composition with a well-balanced arrangement of elements. The lighting, while slightly overexposed, could benefit from a darker exposure to enhance the rose's details. The color and clarity are commendable, although a slight adjustment in saturation could further elevate the visual impact. The subject, while well-defined, could benefit from a closer approach to create a more immersive viewing experience. Overall, the image demonstrates a proficient use of camera settings, with room for improvement in exposure and saturation to enhance its aesthetic appeal.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the purple rose captures a beautiful moment with a well-composed background, showcasing a vibrant color palette and a pleasing depth of field. The lighting, while slightly overexposed, adds a soft and natural touch to the overall aesthetic. The sharp focus on the subject and the skillful use of depth of field enhance the visual appeal, creating a visually pleasing and engaging photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the purple rose captures a serene moment with a well-composed background of green leaves. The vibrant color and soft lighting create a visually pleasing aesthetic. The sharp focus on the rose adds a sense of depth to the composition. However, the lack of sharpness in the background detracts from the overall visual impact."
+    },
+    {
+      "image": "a2880-_DSC2262",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a lively carnival atmosphere with a woman holding a \"Your Choice\" sign and a man standing nearby. The composition is slightly off-center, impacting the visual balance. The lighting, while vibrant, could benefit from a softer tone to enhance the overall aesthetic appeal. The color palette is vibrant, but the clarity of the image could be improved. The subject is slightly blurred, affecting the overall focus. The depth of field is satisfactory, but the sharpness of the image could be enhanced to improve clarity.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image effectively captures the lively atmosphere of a carnival, with a well-composed scene that highlights the interaction between the two main characters. The vibrant colors and dynamic motion add a sense of energy to the composition. The lighting, while slightly overexposed, contributes to the overall atmosphere. The depth of field effectively separates the main subjects from the background, enhancing the visual impact. The sharp focus on the main subjects, particularly the woman, is commendable. The image could benefit from a slight adjustment in exposure to maintain detail in the highlights.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "Complementary colors are present in the image, enhancing its visual appeal. The composition is well-balanced, with the subject positioned effectively. The lighting is skillfully executed, adding depth and dimension to the scene. The clarity of the image is commendable, showcasing a sharp focus on the subject. The overall aesthetic quality is commendable, with a strong sense of depth and visual interest.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image effectively captures the lively atmosphere of a carnival, with a clear focus on the main subject and vibrant colors. The composition, however, could benefit from a more dynamic approach to enhance visual interest. The lighting is well-handled, though a slight adjustment in exposure could further elevate the image. The clarity and focus are commendable, but a sharper image could further emphasize the subject. The depth of field is effectively utilized, though a wider aperture could have added more visual impact. Overall, the image successfully conveys the festive ambiance of the carnival, though potential for improvement lies in refining the composition and exploring alternative angles for increased visual interest.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a lively carnival scene with a woman holding a \"Your Choice\" sign above her head, drawing attention to the amusement park games in the background. The composition is somewhat cluttered, with the main subject appearing somewhat obscured. The lighting is generally well-handled, although the color balance could be improved to enhance the overall visual appeal. The clarity of the image is satisfactory, but the depth of field could be improved to create a more engaging visual experience. The focus on the main subject is satisfactory, but there is room for improvement in capturing the full range of motion and expression."
+    },
+    {
+      "image": "a3022-WP_CRW_0587",
+      "original_scores": {
+        "composition": 6.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a child in a blue shirt on a bed surrounded by various items, including clothing and toys. The composition is noted for its simplicity, with the child positioned in the center of the frame. The lighting is praised for its natural quality, although a slight softness is noted. The color is described as somewhat flat, lacking vibrancy. The clarity is praised for its sharpness, but a slight softness is noted in the background. The subject is praised for its natural expression, but a lack of depth is noted. The overall score is 6, indicating a good score in composition and lighting, but room for improvement in color and subject depth.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "Image composition: 5\nImage lighting: 5\nImage color: 5\nImage clarity: 5\nImage subject: 5\nImage overall: 5",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "Image composition: 5\nImage lighting: 5\nImage color: 5\nImage clarity: 5\nImage subject: 5\nImage overall: 5",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image captures a child in a blue shirt surrounded by a variety of plastic-wrapped clothing items on a white bed. The composition is noted for its simplicity, with the child positioned in the center and the surrounding items arranged symmetrically. The lighting is praised for its even distribution, although a slight softness in the shadows is noted. The color is described as natural, with a slight underexposure noted. The clarity is praised for its sharpness, with a suggestion for a slight increase in contrast to enhance the overall visual impact. The subject is noted for its presence, although a slight softness is observed. The depth of field is noted for its effective use, with a suggestion for a slight increase to further enhance the visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image effectively captures a candid moment with a baby surrounded by neatly packaged clothing, showcasing a sense of order and tidiness. The composition, while well-balanced, could benefit from a more dynamic approach to enhance visual interest. The lighting, while even, lacks depth and could be improved with additional lighting techniques to create a more visually engaging scene. The color palette is well-executed, though a slight adjustment in saturation could further elevate the overall aesthetic appeal. The clarity of the image is satisfactory, with a slight softness in focus that could be addressed through a more precise focus setting. The depth of field is well-handled, though a slight increase could enhance the overall sharpness of the image."
+    },
+    {
+      "image": "a3060-kme_369",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Complementary colors.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image captures a serene scene of a bridge and buildings set against a backdrop of a cloudy sky during sunset. The composition is slightly lacking, with the bridge appearing somewhat disorganized. The lighting is well-handled, with a balanced color palette and a pleasing depth of field. The clarity of the image is satisfactory, but there is room for improvement in the sharpness of the bridge details. The focus on the water's surface is commendable, but the overall sharpness could be enhanced to elevate the overall visual impact.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image showcases a serene scene with a well-composed bridge reflecting in the water, set against a backdrop of a quaint village and a dramatic sky. The composition is noted for its balance and depth, with the bridge and water's surface serving as leading lines that draw the viewer's eye towards the village. The lighting, while somewhat flat, could benefit from a softer touch to enhance the overall mood. The color palette is pleasing, though the dark clouds may benefit from a touch of contrast to add dimension. The clarity of the image is satisfactory, with a slight softness in focus that could be improved upon. The depth of field is commendable, contributing to the overall aesthetic appeal of the photograph.",
+      "distill_v4_scores": {
+        "composition": 8.0,
+        "lighting": 8.0,
+        "color": 8.0,
+        "clarity": 8.0,
+        "subject": 8.0,
+        "overall": 8.0
+      },
+      "distill_v4_raw_score": "The image of the sunset over the bridge and town captures a serene and picturesque scene with a score of 8 in composition, 8 in lighting, 8 in color, 8 in clarity, and 8 in subject. The overall score of 8 reflects a well-executed composition that effectively showcases the beauty of the sunset and the town's architectural features.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the serene river scene at dusk captures a tranquil ambiance with a well-balanced composition. The reflection on the water adds a captivating element, enhancing the overall aesthetic appeal. The play of light and shadow creates a visually engaging contrast, while the inclusion of the bridge and buildings adds depth and interest to the composition. The photographer's skillful use of camera settings results in a sharp and detailed image, with a pleasing color palette that complements the scene beautifully."
+    },
+    {
+      "image": "a3069-jmac_DSC2462",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Composed of a serene waterfront scene, the image skillfully captures the juxtaposition of urban and natural elements. The expansive horizon and well-defined lines of the walkway contribute to a sense of depth and perspective. While the composition could benefit from a more dynamic arrangement, the use of a wide-angle lens effectively enhances the visual impact. The color palette, though somewhat subdued, offers a harmonious blend of tones. The depth of field is skillfully managed, ensuring sharp focus throughout the image. The overall aesthetic quality is commendable, with a suggestion to explore alternative angles for increased visual interest.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image presents a serene lakeside scene with a well-defined composition, highlighted by a harmonious interplay of light and color. The clear focus and precise details enhance the overall aesthetic appeal, while the balanced use of negative space contributes to the visual impact. The image successfully captures the essence of the scene, showcasing a thoughtful approach to composition and a keen eye for aesthetics.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "Complementary colors.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the city skyline and the body of water exudes a serene ambiance, enhanced by the soft lighting and the well-defined composition. The reflection on the water adds depth and visual interest to the scene. The color palette is harmonious, though a slight increase in saturation could elevate the overall vibrancy. The clarity of the image is commendable, with a suggestion to consider a lower ISO setting for improved detail. The depth of field is skillfully managed, contributing to the image's aesthetic appeal.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the city skyline and water exudes a serene ambiance, with a well-executed composition that guides the viewer's gaze from the foreground to the distant buildings. The interplay of light and shadow, particularly in the foreground, adds depth and visual interest. The color palette is harmonious, with a pleasing balance of tones. The clarity of the image is commendable, with a well-defined focus that enhances the overall aesthetic appeal. The depth of field is skillfully managed, ensuring a sharp focus throughout the scene. The camera's use of ISO and shutter speed is effective, contributing to the image's clarity and detail."
+    },
+    {
+      "image": "a3138-IMG_0790",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the Lupine flower captures a serene moment in nature, with a composition that could benefit from a more defined focal point. The lighting, while softly illuminated, could be enhanced to highlight the intricate details of the flower. The color palette is well-balanced, with a pleasing contrast between the blue and purple hues. The clarity of the image is commendable, showcasing a sharp focus on the subject. The depth of field is effectively utilized, creating a visually engaging scene.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image showcases a vibrant display of purple flowers set against a backdrop of gray rocks and sand. The composition is noted for its simplicity, with the flowers serving as the focal point. The lighting, while soft, could benefit from adjustments to enhance the overall visual impact. The color palette is noted for its vibrancy, though a slight adjustment in saturation could further elevate the aesthetic appeal. The clarity of the image is satisfactory, with a focus on sharpness that could be refined for a more pronounced effect. The depth of field is noted for its adequate coverage, though a slight increase could enhance the overall visual impact.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the small purple flowers set against a backdrop of sand and rocks showcases a captivating composition with a focus on the delicate beauty of the flowers. The lighting, while slightly overexposed, adds a sense of depth to the scene. The color palette is pleasing, with the purple flowers standing out against the neutral tones of the background. The clarity of the image is commendable, with a sharp focus on the flowers. The depth of field is well-handled, enhancing the overall aesthetic appeal of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the Lupine flower captures a serene and captivating moment in nature. The composition, while technically sound, could benefit from a more dynamic approach to enhance visual interest. The lighting, while well-handled, could be refined to elevate the overall aesthetic appeal. The color palette is pleasing, but a more vibrant tone could further elevate the visual impact. The clarity of the image is commendable, with a slight adjustment in focus to sharpen the subject being suggested. The depth of field is skillfully executed, contributing to the overall quality of the photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the Lupine flower captures a striking contrast between the vibrant purple flowers and the barren ground, creating a visually compelling composition. The lighting is skillfully managed, enhancing the color and clarity of the flowers. The depth of field is effectively utilized, drawing the viewer's eye to the subject. The sharp focus and well-executed exposure contribute to the overall aesthetic appeal of the photograph."
+    },
+    {
+      "image": "a3161-JI2E3910",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image showcases a captivating composition with a striking contrast between the blue dome and the white buildings. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall visual impact. The color palette is well-balanced, though the clarity of the image could be improved to highlight the intricate details. The subject is well-defined, but a closer perspective could enhance the viewer's engagement. The depth of field is effectively utilized, contributing to the overall aesthetic appeal.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image showcases a picturesque scene of a coastal town with a church and a blue dome against a clear sky. The composition is well-balanced, with the church as the central focus. The lighting is even, though the color could benefit from a slight adjustment to enhance the blue tones. The clarity is satisfactory, but the depth of field could be improved to enhance the overall visual impact. The subject is well-defined, but the focus could be refined to ensure sharpness. Overall, the image captures a serene and aesthetically pleasing moment in a coastal town.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the Greek village at dusk captures a serene and picturesque scene with a striking contrast between the blue dome and the white buildings. The composition, while technically sound, could benefit from a more dynamic approach to enhance visual interest. The lighting, while well-executed, could be further refined to elevate the overall aesthetic appeal. The color palette is harmonious, though a slight adjustment in saturation could introduce a more dynamic range. The clarity of the image is commendable, with a well-executed depth of field that enhances the overall quality. The sharp focus and precise camera settings contribute to the image's clarity and sharpness, resulting in a visually pleasing and technically proficient photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the white buildings with a blue dome and the red shutters is visually striking. The composition is well-balanced, with the buildings creating a sense of depth and perspective. The lighting, while somewhat flat, could benefit from adjustments to enhance the overall visual impact. The color palette is pleasing, with the blue dome and red shutters adding a touch of vibrancy. The clarity of the image is satisfactory, but a slight increase in sharpness could further elevate the visual appeal. The subject is well-defined, although a closer perspective could have added more dynamism to the composition. Overall, the image successfully captures the essence of the Greek architecture, with room for improvement in lighting and sharpness to enhance its visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the Greek town at dusk showcases a captivating composition with a striking contrast between the blue dome and the white buildings. The lighting, while slightly overexposed, adds a dreamy quality to the scene. The color palette is vibrant, enhancing the overall aesthetic appeal. The clarity of the image is commendable, although a slight softening of the sky could further elevate the visual impact. The depth of field is skillfully managed, contributing to the sharpness of the buildings and the blue dome."
+    },
+    {
+      "image": "a3200-dgw_133",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image showcases a visually captivating composition with a distinct color palette. The lighting, while well-executed, could benefit from a slight adjustment to enhance the overall visual appeal. The clarity of the image is commendable, although a slight improvement in focus could further elevate its aesthetic quality. The subject matter is intriguing, yet the composition may benefit from a more dynamic approach to engage viewers more effectively.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image showcases a vibrant and visually engaging composition with a striking color palette. The play of light and shadow adds depth and dimension to the scene, enhancing its overall appeal. The reflection on the building's glass windows adds a unique and intriguing element to the composition. The focus is sharp and well-executed, capturing the essence of the scene with precision. The depth of field is skillfully managed, ensuring that all elements are in focus and contributing to the overall aesthetic appeal.",
+      "distill_v2_scores": {
+        "composition": 7.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image showcases a vibrant and colorful display of signage in a modern urban setting. The composition is noted for its dynamic arrangement, though a slight adjustment to the left could enhance balance. The lighting is praised for its even distribution, contributing to the overall visual appeal. The color palette is noted for its vibrancy, though a slight adjustment in saturation could further elevate the image. The clarity is commended for its sharpness, though a slight increase in contrast could enhance the visual impact. The subject is praised for its distinctiveness, though a slight adjustment in focus could further emphasize its importance. The overall score of 7.5 reflects a balanced and aesthetically pleasing composition, with room for refinement to elevate the visual impact.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the colorful sign in Times Square captures a vibrant urban scene with a well-defined composition. The vibrant colors and reflections on the building's glass windows add depth and visual interest to the image. The sharp focus and technical proficiency in capturing the scene are evident, resulting in a visually appealing and technically proficient photograph.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image showcases a captivating composition with a well-defined subject, showcasing a vibrant color palette and clear focus. The lighting, while commendable, could benefit from a slight adjustment to enhance the overall visual impact. The depth of field is skillfully executed, contributing to the image's overall aesthetic appeal."
+    },
+    {
+      "image": "a3286-jn_20080928_058",
+      "original_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "original_raw_score": "Image composition score: 7\nImage lighting score: 7\nImage color score: 7\nImage clarity score: 7\nImage subject score: 8\nImage overall score: 7",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "Complementary colors.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "Composed of two men at a bar, the image effectively captures a casual moment with a well-balanced composition. The soft lighting enhances the subjects' features, though a slight adjustment in exposure could further elevate the visual impact. The color palette is pleasing, though a more vibrant setting could add vibrancy to the scene. The clarity of the image is commendable, with a focus on the subjects' expressions and the background, contributing to a balanced aesthetic. Overall, the image successfully conveys a relaxed atmosphere with potential for further refinement in lighting and color to elevate its visual appeal.",
+      "distill_v4_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "distill_v4_raw_score": "Image composition score: 7\nImage lighting score: 7\nImage color score: 7\nImage clarity score: 7\nImage subject score: 8\nImage overall score: 7",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a moment of camaraderie between two individuals at a bar, showcasing a relaxed atmosphere. The composition could benefit from a more dynamic angle to enhance visual interest. The lighting, while soft, could be improved to enhance the subject's features. The color palette is well-balanced, but a slight adjustment in saturation could elevate the overall aesthetic appeal. The clarity of the image is satisfactory, but a closer focus on the subject's eyes could further enhance the viewer's engagement."
+    },
+    {
+      "image": "a3308-Ja_Pe-23",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image showcases a captivating silhouette of a green alien-like character against a metal fence backdrop, creating a visually striking contrast. The composition is well-balanced, with the character's outline effectively defined. The lighting, while soft, could benefit from a slight increase to enhance the overall visual impact. The color palette is pleasing, though a slight adjustment in saturation could further elevate the image's aesthetic appeal. The clarity of the image is commendable, with a sharp focus on the subject. The depth of field is effectively utilized, contributing to the overall sharpness of the photograph.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image effectively captures a silhouette of a green character against a metal fence, creating a visually striking contrast. The composition is well-balanced, with the character's outline emphasized by the silhouette effect. The color palette is vibrant, though the lighting could benefit from adjustments to enhance the character's presence. The clarity of the image is satisfactory, with a slight softness in focus. The depth of field is well-handled, contributing to the overall aesthetic appeal.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image demonstrates a commendable score of composition with a well-defined silhouette and a thoughtful use of light and shadow. The color palette is vibrant and harmonious, enhancing the overall aesthetic appeal. The clarity of the subject is commendable, although a slight adjustment in focus could further elevate the visual impact. The depth of field is skillfully managed, contributing to the image's overall quality.",
+      "distill_v4_scores": {
+        "composition": 6.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 6.0,
+        "overall": 7.0
+      },
+      "distill_v4_raw_score": "The image features a person in a green costume standing behind a metal fence, casting a shadow on the wall. The composition is rated a 6, with potential for improvement. The lighting is rated a 7, showcasing a well-executed silhouette effect. The color score is a 7, with a suggestion for enhancing the green color to create a more vivid contrast. The clarity score is a 7, indicating a good score overall. The subject score is a 6, with room for improvement in capturing the full body and expression. The overall score is a 7, suggesting a good score but room for further refinement in composition and focus.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image features a silhouette of a green character against a backdrop of a metal grid, resulting in a visually striking composition. The use of a blue sky and orange clouds adds a dynamic element to the scene. The color and lighting are well-handled, with a slight overexposure noted. The clarity of the image is satisfactory, although a slight softness is observed. The focus on the character's face is sharp, contributing to the overall aesthetic appeal of the photograph."
+    },
+    {
+      "image": "a3774-_DSC0017",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the outdoor seating area of a restaurant with stacked chairs and tables outside the establishment captures a striking visual composition. The composition is noted for its dynamic lines and well-defined layers, creating a visually engaging scene. The color palette is noted for its natural and realistic appearance, enhancing the overall aesthetic appeal. The clarity of the image is praised, with a suggestion for slight sharpening to further emphasize the intricate details. The depth of field is noted for its effective use, adding depth and dimension to the scene. The focus is praised for its precision, capturing the intricate details of the stacked chairs and tables with clarity.",
+      "baseline_scores": {
+        "composition": 7.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the outdoor seating area at the restaurant showcases a visually engaging composition with a strong sense of depth. The use of color and lighting is skillfully executed, enhancing the overall aesthetic appeal. The clarity of the image is commendable, and the depth of field is well-handled, contributing to a visually pleasing result. The subject is well-focused and effectively conveys the intended theme. While the composition is commendable, there is room for improvement in the composition, particularly in the positioning of the chairs. The overall score of 7 indicates a strong effort in capturing the scene, with room for further refinement to enhance the visual impact.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image effectively captures the everyday scene of a restaurant with stacked chairs outside, showcasing a dynamic composition that draws the viewer's eye. The color palette is pleasing, though there is room for improvement in the lighting. The clarity of the image is satisfactory, but the depth of field could be enhanced to add more visual interest. The focus is sharp, but the exposure could be adjusted to further elevate the overall aesthetic appeal.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the outdoor seating area of a restaurant showcases a visually intriguing composition with the chairs stacked in a dynamic arrangement. The color palette is pleasing, although the lighting could benefit from a softer touch to enhance the overall aesthetic appeal. The clarity of the image is satisfactory, but the depth of field could be improved to further elevate the visual impact. The subject is well-defined, but the focus could be refined to ensure sharpness and clarity throughout the frame.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image effectively captures the outdoor seating arrangement of a restaurant, showcasing a well-organized stack of chairs and a visually appealing color palette. However, the composition could benefit from a more dynamic approach to draw the viewer's attention more effectively. The lighting, while well-executed, could be further enhanced to bring out the intricate details of the chairs and the surrounding environment. The clarity of the image is commendable, but a slight adjustment in focus could further elevate its visual impact."
+    },
+    {
+      "image": "a3890-IMG_4308",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image showcases a captivating fountain with intricate details, drawing the viewer's attention with its dynamic water flow and playful foam. The composition, while engaging, could benefit from a more focused approach to highlight the fountain's key elements. The lighting, while natural, could be enhanced to elevate the overall visual impact. The color palette, while pleasing, could benefit from a more dynamic range to add depth and visual interest. The clarity of the image is commendable, but a slight adjustment in focus could further enhance the overall aesthetic appeal. The subject, while intriguing, could benefit from a more defined focal point to elevate the visual storytelling. Overall, the image successfully captures the essence of the fountain's dynamic movement, but could benefit from a more refined composition and focus to elevate its visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the water fountain presents a visually captivating scene with a strong sense of depth and movement. The composition skillfully guides the viewer's gaze through the dynamic water flow, creating a visually engaging experience. The color palette is rich and harmonious, enhancing the overall aesthetic appeal. The clarity of the image is commendable, with a sharp focus that captures the intricate details of the water fountain. The lighting, while somewhat flat, could benefit from a slight increase in contrast to elevate the visual impact. The depth of field is skillfully managed, ensuring a sharp focus throughout the image.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the water fountain presents a well-composed scene with a clear subject and engaging color palette. The depth of field is effectively utilized, enhancing the overall visual appeal. The sharp focus and precise exposure contribute to the image's clarity and quality. The dynamic composition and dynamic motion of the water create a visually engaging and aesthetically pleasing piece.",
+      "distill_v4_scores": {
+        "composition": 7.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the fountain presents a visually intriguing composition with a dynamic play of light and water. The color palette is rich and vibrant, though the clarity of the subject could be enhanced. The depth of field is skillfully executed, adding a sense of depth to the scene. The overall score of 7.5 demonstrates a commendable level of proficiency in capturing the essence of the subject.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image captures a dynamic scene with a well-defined composition, showcasing a fountain spewing water in a dynamic manner. The color palette is vibrant, though the clarity could be improved to enhance the overall visual impact. The depth of field is skillfully executed, adding depth to the scene. The lighting, while good, could be refined to create a more visually appealing effect. The focus is sharp, capturing the intricate details of the fountain with precision."
+    },
+    {
+      "image": "a4041-WP_CRW_9516",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "Complementary colors, well-balanced composition, and a serene atmosphere are all present in this image. The depth of field is skillfully executed, enhancing the overall aesthetic appeal. The subject's posture and expression are captured beautifully, adding a sense of tranquility to the scene. The sharp focus and precise exposure contribute to the image's clarity and impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "baseline_raw_score": "Image composition score: 5\nImage lighting score: 5\nImage color score: 5\nImage clarity score: 5\nImage subject score: 7\nImage overall score: 7",
+      "distill_v2_scores": {
+        "composition": 6.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "distill_v2_raw_score": "Image composition score: 6\nImage lighting score: 7\nImage color score: 7\nImage clarity score: 7\nImage subject score: 8\nImage overall score: 7",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the horses in the snowy field captures a serene winter scene with a harmonious composition. The horses' positioning adds a sense of depth and movement to the image, while the soft lighting enhances the overall aesthetic appeal. The color palette is pleasing, though a slight adjustment in saturation could further elevate the visual impact. The clarity of the image is commendable, with a well-focused subject and a sharp depth of field. The depth of field effectively separates the foreground and background, creating a visually engaging and balanced composition.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the horses in the snowy field presents a serene and picturesque scene, with the horses standing in the foreground and the barn in the background. The composition is well-balanced, with the horses and barn creating a visually engaging focal point. The color palette is pleasing, with the snow adding a touch of softness to the overall aesthetic. The lighting is well-handled, with a natural and even illumination that enhances the beauty of the scene. The clarity of the image is excellent, with sharp focus on the horses and the barn, creating a visually captivating image that is both aesthetically pleasing and technically proficient."
+    },
+    {
+      "image": "a4190-dgw_050",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image captures a city street scene with a focus on a tall building, showcasing a diverse array of architectural elements. The composition, while visually engaging, could benefit from a more focused approach to highlight the primary subject. The lighting, while generally well-handled, could be improved by adjusting the contrast to enhance the depth and detail of the image. The color palette is vibrant, yet there is room for improvement in capturing the nuanced tones of the scene. The clarity of the image is satisfactory, but further optimization could enhance the overall visual impact. The depth of field is effectively utilized, contributing to the image's overall quality.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image effectively captures the urban landscape from an elevated perspective, showcasing a diverse array of architectural elements and a bustling street scene. The composition, while strong, could benefit from a more focused approach to highlight the primary subject. The lighting, while natural, could be refined to enhance the visual impact and depth of the image. The color palette is vibrant, yet a slight adjustment in saturation could further elevate the overall aesthetic appeal. The clarity of the image is commendable, with a slight softness in focus that could be addressed to enhance the sharpness and overall quality.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the city street scene from above showcases a commendable score of composition with a strong sense of depth. The lighting, while slightly lacking in detail, still conveys a captivating atmosphere. The color palette is noted for its vibrancy, though there is room for improvement in capturing the intricacies of the scene. The clarity of the image is commendable, although the subject could benefit from a more defined focus to enhance its visual impact. Overall, the image demonstrates a promising approach to capturing urban landscapes, with room for further refinement to elevate its aesthetic appeal.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the city street scene captures a dynamic perspective with a well-balanced composition. The interplay of light and shadow adds depth and intrigue to the urban setting. The color palette is vibrant, enhancing the overall visual appeal. The clarity of the image is commendable, showcasing a well-executed depth of field. The subject, while present, could benefit from a more prominent placement to elevate the visual impact.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the city street scene captures a vibrant urban atmosphere with a diverse array of architectural elements. The composition, while somewhat cluttered, effectively conveys the bustling city environment. The color palette, though lacking in vibrancy, still manages to convey a sense of realism. The clarity of the image, while adequate, could benefit from a slight increase in sharpness to enhance the overall visual impact. The depth of field is well-handled, ensuring a clear focus on the primary subject. The focus, while generally sharp, could benefit from a slight improvement to enhance the overall quality of the photograph."
+    },
+    {
+      "image": "a4196-NKIM_129",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the Bellagio fountain in Las Vegas captures a stunning display of water jets illuminated by colorful lights against a backdrop of the iconic hotel. The composition skillfully balances the fountain's dynamic movement with the architectural elements of the building, creating a visually engaging scene. The play of light and color enhances the overall aesthetic appeal, while the sharp focus and precise depth of field ensure a high level of clarity and detail. The depth of field adds a sense of depth and dimension to the image, drawing the viewer into the scene. The photographer's adept use of camera settings results in a well-executed photograph that effectively conveys the beauty and grandeur of the Bellagio fountain.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the Bellagio fountains at night showcases a well-composed scene with a strong focus on the illuminated water display. The color palette is vibrant, though the lighting could benefit from a slight increase to enhance the overall impact. The clarity of the image is commendable, with a sharp focus on the fountains. The depth of field is effectively utilized, creating a visually engaging composition.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the Bellagio fountains in Las Vegas showcases a well-composed scene with a balanced arrangement of the fountain and the surrounding buildings. The interplay of light and shadow adds depth to the composition, while the use of a long exposure enhances the overall visual impact. The color palette is pleasing, though a slight adjustment in saturation could further elevate the image. The clarity of the image is commendable, with a slight softness in the foreground water that could be addressed through post-processing. The depth of field is effectively utilized, with a sharp focus on the fountain and a pleasing background blur. Overall, the image successfully captures the essence of the Bellagio fountains at night, offering a visually captivating portrayal of the iconic landmark.",
+      "distill_v4_scores": {
+        "composition": 7.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the Bellagio fountains in Las Vegas showcases a well-composed scene with a clear focus on the fountain. The color palette is pleasing, though the lighting could benefit from a slight adjustment to enhance the depth and contrast. The clarity of the image is satisfactory, but the overall score of 7 suggests room for improvement in capturing the intricate details of the fountain.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the Bellagio fountain in Las Vegas captures a stunning display of light and water, showcasing a well-composed scene with a strong sense of depth. The composition is meticulously balanced, with the fountain's lights casting a captivating glow on the water's surface. The play of light and shadow creates a visually striking effect, drawing the viewer's eye towards the focal point. The color palette is harmonious, with the fountain's lights adding a touch of elegance to the overall aesthetic. The clarity of the image is exceptional, with a well-defined focus that enhances the beauty of the scene. The depth of field is skillfully managed, ensuring that all elements are in sharp focus. The technical execution of the photograph is impeccable, resulting in a visually captivating image that truly captures the essence of the Bellagio fountain at night."
+    },
+    {
+      "image": "a4390-DSC_0161",
+      "original_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image effectively captures the grandeur of the ceiling and the intricate details of the artwork, showcasing a well-composed and visually engaging composition. The lighting, while commendable, could benefit from a slight adjustment to enhance the overall depth and contrast of the scene. The color palette is well-balanced, with a slight underexposure affecting the overall brightness. The clarity of the image is satisfactory, but a slight improvement in focus could further elevate the visual impact. The subject is well-defined, although a slight adjustment in angle could enhance the overall composition. Overall, the image successfully conveys the grandeur and beauty of the architectural space, with room for refinement to elevate its visual impact.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 6.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 8.0,
+        "overall": 7.0
+      },
+      "baseline_raw_score": "The image of the ornate ceiling of the Vatican Museum has a score of 5 in composition, 6 in lighting, 7 in color, 7 in clarity, and 8 in subject. The overall score of 7 indicates a well-executed capture that could benefit from a slight adjustment in composition to enhance visual balance.",
+      "distill_v2_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v2_raw_score": "The image of the ornate ceiling in the Vatican Museum showcases a commendable score of composition with a well-defined frame. The lighting, while slightly lacking in detail, still manages to convey a sense of depth. The color and clarity are satisfactory, but the subject appears somewhat obscured, impacting the overall impact of the photograph.",
+      "distill_v4_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image of the hallway showcases a commendable score of composition with a balanced arrangement of the hallway and ceiling. The lighting, while somewhat subdued, could benefit from a brighter exposure to enhance the details and textures. The color palette is well-balanced, though a slight adjustment in saturation could elevate the visual impact. The clarity of the image is satisfactory, but a slight improvement in focus could further enhance the overall aesthetic appeal. The subject, while somewhat obscured, is effectively captured, and the depth of field is skillfully utilized to create a visually engaging composition.",
+      "distill_v5_scores": {
+        "composition": 8.5,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "distill_v5_raw_score": "The image of the hallway showcases a captivating composition with a well-balanced layout. The interplay of light and shadow creates a visually striking effect, enhancing the overall aesthetic appeal. The color palette is harmonious, contributing to the image's visual impact. The clarity of the photograph is commendable, showcasing a sharp focus that accentuates the intricate details of the hallway. The depth of field is skillfully managed, ensuring a seamless transition between the foreground and background elements. The overall score of 8.5 demonstrates a high level of technical proficiency in capturing the essence of the scene."
+    },
+    {
+      "image": "a4839-Duggan_090321_5908",
+      "original_scores": {
+        "composition": 8.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "original_raw_score": "The image of the man walking through the doorway is visually captivating, with a well-composed frame that draws the viewer's attention. The lighting, while slightly overexposed, adds a warm and inviting atmosphere to the scene. The color palette is pleasing, with a natural and balanced tone. The clarity of the image is commendable, showcasing a sharp focus on the subject. The depth of field is effectively utilized, creating a sense of depth and dimension within the frame. The overall score of the image is a solid 8, showcasing a well-executed composition and technical proficiency in photography.",
+      "baseline_scores": {
+        "composition": 5.0,
+        "lighting": 5.0,
+        "color": 5.0,
+        "clarity": 5.0,
+        "subject": 5.0,
+        "overall": 5.0
+      },
+      "baseline_raw_score": "The image of the man walking through the doorway of a workshop with a wooden sign that reads \"Frank Your Chrysler\" captures a moment of daily life with a nostalgic charm. The composition is well-balanced, with the subject positioned off-center to create visual interest. The lighting, while soft, could benefit from a slight increase to enhance the subject's features. The color palette is pleasing, with a natural and authentic tone. The clarity of the image is satisfactory, but a slight increase in sharpness could further elevate the overall visual impact. The depth of field is well-handled, maintaining focus on the subject while allowing for a pleasing background blur.",
+      "distill_v2_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 7.0,
+        "overall": 7.0
+      },
+      "distill_v2_raw_score": "The image captures a man walking through a doorway with a sign that reads \"Frank Your Chrysler.\" The composition is rated a 7, showcasing a balanced layout with the man positioned in the foreground. The lighting score is a 7, with natural lighting creating a warm ambiance. The color score is a 7, with a pleasing color palette. The clarity score is a 7, with sharp focus on the subject. The subject score is a 7, with the man standing out against the background. The overall score is a 7, indicating a well-executed image with room for improvement in composition.",
+      "distill_v4_scores": {
+        "composition": 7.0,
+        "lighting": 7.0,
+        "color": 7.0,
+        "clarity": 7.0,
+        "subject": 7.0,
+        "overall": 5.0
+      },
+      "distill_v4_raw_score": "The image has a score of 7 in composition, 7 in lighting, 7 in color, 7 in clarity, and 7 in subject.",
+      "distill_v5_scores": {
+        "composition": 5.0,
+        "lighting": 6.0,
+        "color": 7.0,
+        "clarity": 6.0,
+        "subject": 7.0,
+        "overall": 6.0
+      },
+      "distill_v5_raw_score": "The image of the man walking through the door of Frank's shop has a score of 5 in composition, 6 in lighting, 7 in color, 6 in clarity, and 7 in subject. The overall score of the image is 6."
+    }
+  ],
+  "num_images": 50
+}

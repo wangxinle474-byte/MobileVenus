@@ -22,7 +22,7 @@
 import argparse
 import json
 import random
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 SYSTEM_PROMPT = """You are a Lightroom adjustment specialist. Given an input image and user instruction, you output 4-8 Lightroom slider values.
 
@@ -42,7 +42,11 @@ def main():
     ap.add_argument('--val_ratio', type=float, default=0.1)
     ap.add_argument('--seed', type=int, default=42)
     ap.add_argument('--min_tool_call_len', type=int, default=10,
-                    help='\u6700\u5c0f tool_call \u957f\u5ea6 \u2014 \u8fc7\u6ee4\u5e9f\u6807\u7b7e')
+                    help='最小 tool_call 长度 — 过滤废标签')
+    ap.add_argument('--lf_data_root',
+                    default='/root/autodl-tmp/datasets/ArtEdit-Bench/sharegpt',
+                    help='Linux 绝对路径，用于生成 dataset_info_snippet.json 中的 file_name '
+                         '(LF 会自动在相对路径前加 data/, 所以这里要用绝对路径)')
     args = ap.parse_args()
 
     out_dir = Path(args.out_dir)
@@ -93,7 +97,7 @@ def main():
 
     # \u8f6c\u4e3a ShareGPT (assistant \u8f93\u51fa\u7528 \u5e72\u51c0\u7684 parsed_tool_call)
     def convert_one(s):
-        input_img = str(Path(s['image_dir']) / 'input.jpg')
+        input_img = str(PurePosixPath(s['image_dir']) / 'input.jpg')
         user_content = f"<image>{s['user_want']}"
 
         parsed = s['parsed_tool_call']
@@ -133,9 +137,10 @@ def main():
     print(f'[OUT] {out_dir}')
 
     # \u751f\u6210 dataset_info.json snippet \u4ee5\u4f9b LLaMA-Factory \u6ce8\u518c
+    lf_root = PurePosixPath(args.lf_data_root)
     dataset_info = {
         'ArtEdit_LoRA_train': {
-            'file_name': str(out_dir / 'ArtEdit_LoRA_train.json'),
+            'file_name': str(lf_root / 'ArtEdit_LoRA_train.json'),
             'formatting': 'sharegpt',
             'columns': {'messages': 'messages', 'images': 'images', 'system': 'system'},
             'tags': {
@@ -144,7 +149,7 @@ def main():
             },
         },
         'ArtEdit_LoRA_val': {
-            'file_name': str(out_dir / 'ArtEdit_LoRA_val.json'),
+            'file_name': str(lf_root / 'ArtEdit_LoRA_val.json'),
             'formatting': 'sharegpt',
             'columns': {'messages': 'messages', 'images': 'images', 'system': 'system'},
             'tags': {

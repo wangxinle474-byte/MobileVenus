@@ -140,14 +140,15 @@ def _tone_curve(x: torch.Tensor, strength: torch.Tensor) -> torch.Tensor:
 # ─────────────────── Clarity (局部对比度) ───────────────────
 
 def _clarity(img: torch.Tensor, lum: torch.Tensor,
-            strength: float = 0.25, kernel_size: int = 15) -> torch.Tensor:
+            strength, kernel_size: int = 15) -> torch.Tensor:
     """
-    局部对比度增强: unsharp mask on luminance, 应用到 RGB。
-    img: (B,3,H,W) linear
-    lum: (B,1,H,W) luminance
-    strength: 0~1, 应用强度
+    局部对比度增强/减弱: unsharp mask on luminance, 应用到 RGB。
+    img:       (B,3,H,W) linear
+    lum:       (B,1,H,W) luminance
+    strength:  scalar 或 (B,1,1,1) tensor, 可正可负
+               +: 增强细节 (锐化); -: 柔化; 0: 不变
     """
-    if strength <= 0 or kernel_size < 3:
+    if kernel_size < 3:
         return img
     pad = kernel_size // 2
     k = torch.ones(1, 1, kernel_size, kernel_size,
@@ -196,8 +197,8 @@ def apply_diff_isp(img: torch.Tensor, params: Dict[str, torch.Tensor]) -> torch.
     gains = color_temp_to_rgb_gains(wb).clamp(0.0, 8.0)
     linear = (linear * gains.view(B, 3, 1, 1)).clamp(0.0, 4.0)
 
-    # 2. EV Compensation
-    ev = params['ev_compensation'].view(B, 1, 1, 1)
+    # 2. EV Compensation (可选, 新 pipeline 建议用 brightness 代替; 此 op 保留做向后兼容)
+    ev = params.get('ev_compensation', torch.zeros(B, device=img.device)).view(B, 1, 1, 1)
     linear = (linear * (2.0 ** ev)).clamp(0.0, 4.0)
 
     # 3. Brightness (gamma shift, optional)
@@ -230,9 +231,12 @@ def apply_diff_isp(img: torch.Tensor, params: Dict[str, torch.Tensor]) -> torch.
     lum_pulled = lum + hi_mask * pull
     linear = ratio * lum_pulled.clamp(min=0)
 
-    # 7. Clarity (局部对比度增强, 固定强度)
+    # 7. Clarity (局部对比度, 参数化强度)
+    #    clarity ∈ [-100, 100] → strength ∈ [-0.5, 0.5]; 默认 0 = 不变
+    clarity = params.get('clarity', torch.zeros(B, device=img.device))
+    clarity_strength = (clarity / 100.0 * 0.5).view(B, 1, 1, 1)
     lum = rgb_to_luminance(linear.clamp(0, 1))
-    linear = _clarity(linear, lum, strength=0.2, kernel_size=15)
+    linear = _clarity(linear, lum, strength=clarity_strength, kernel_size=15)
 
     # 8. Saturation
     saturation = params['saturation']

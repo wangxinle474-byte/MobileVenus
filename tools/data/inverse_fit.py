@@ -1,14 +1,17 @@
 """
-ISP 参数反推 (Inverse Fitting)
-给定 (原图, 目标图)，通过梯度优化反推最优 6 维 ISP 参数。
+ISP 参数反推 (Inverse Fitting) — PyTorch autograd + Adam 版
+给定 (原图, 目标图), 通过梯度优化反推最优 9 维 ISP 参数:
+  ev_compensation, white_balance, contrast, brightness,
+  shadows, highlights, saturation, vibrance, clarity
 
 用途:
   1. 数据扩充: 编辑模型产出的好图 → 反推 ISP 参数标签
   2. 验证: 已知参数 round-trip 测试
 
 原理:
-  params* = argmin_{p} || apply_diff_isp(original, p) - target ||
-  使用 L1 + SSIM 联合损失，Adam 优化器。
+  params* = argmin_p  L1(apply_diff_isp(orig, p), target)
+                    + ssim_w * SSIM_loss(...)
+  Sigmoid 参数化强制 bounds, Adam 自动梯度, 多起点重启。
 """
 import sys
 from pathlib import Path
@@ -25,14 +28,19 @@ from models.diff_isp import apply_diff_isp, ssim_loss
 
 logger = logging.getLogger(__name__)
 
-# 参数范围 & 初始值
+# 参数范围 & 初始值 (精简到 7 维)
+# 基于 diagnose_param_conflicts 诊断删除了 2 个冗余参数:
+#   ev_compensation (与 brightness/WB 重度冗余, λratio=16M/2866)
+#   vibrance       (与 saturation 重度冗余, ridge@10%=10.7%)
+# diff_isp.forward() 仍通过 .get() 接受这两个 key (向后兼容, 默认 0)
 PARAM_SPEC = {
-    'ev_compensation': {'init': 0.0,    'lo': -3.0,    'hi': 3.0,     'lr_scale': 1.0},
-    'white_balance':   {'init': 5500.0, 'lo': 2000.0,  'hi': 10000.0, 'lr_scale': 50.0},
-    'contrast':        {'init': 0.0,    'lo': -100.0,  'hi': 100.0,   'lr_scale': 5.0},
-    'shadows':         {'init': 0.0,    'lo': -100.0,  'hi': 100.0,   'lr_scale': 5.0},
-    'highlights':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0,   'lr_scale': 5.0},
-    'saturation':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0,   'lr_scale': 5.0},
+    'white_balance':   {'init': 5500.0, 'lo': 2000.0,  'hi': 10000.0},
+    'brightness':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
+    'contrast':        {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
+    'shadows':         {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
+    'highlights':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
+    'saturation':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
+    'clarity':         {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
 }
 
 
@@ -41,89 +49,174 @@ def inverse_fit(
     target: torch.Tensor,
     n_restarts: int = 3,
     maxiter: int = 200,
+    lr: float = 0.05,
+    l1_weight: float = 1.0,
+    ssim_weight: float = 0.5,
+    early_stop_tol: float = 1e-7,
+    grad_clip: float = 1.0,
+    raw_clip: float = 8.0,
     verbose: bool = False,
     init_params: Optional[Dict[str, float]] = None,
 ) -> Tuple[Dict[str, float], float]:
     """
-    给定 (原图, 目标图)，通过 scipy L-BFGS-B 反推最优 ISP 参数。
+    PyTorch Adam 反推 ISP 参数。
 
     Args:
-        original:   (1, 3, H, W) [0, 1] sRGB tensor
-        target:     (1, 3, H, W) [0, 1] sRGB tensor
-        n_restarts: 多起点重启次数 (第1次用默认初始值，其余随机)
-        maxiter:    L-BFGS-B 最大迭代次数
-        verbose:    是否打印优化过程
-        init_params: 可选的初始参数字典 (物理值)
+        original:      (1, 3, H, W) [0, 1] sRGB tensor
+        target:        (1, 3, H, W) [0, 1] sRGB tensor
+        n_restarts:    多起点重启次数 (第1次默认初始值, 其余随机)
+        maxiter:       Adam 最大迭代次数
+        lr:            Adam 学习率 (作用于 sigmoid raw 空间)
+        l1_weight:     L1 权重
+        ssim_weight:   SSIM 损失权重 (0 表示不用 SSIM)
+        early_stop_tol: loss 变化小于此值时早停
+        verbose:       打印迭代过程
+        init_params:   可选的初始参数 (物理值 dict)
 
     Returns:
         (params_dict, final_loss)
-        params_dict: {param_name: float} 物理范围值
     """
-    from scipy.optimize import minimize
-    import numpy as np
-
     device = original.device
+    dtype = torch.float32
     param_names = list(PARAM_SPEC.keys())
-    lo = np.array([PARAM_SPEC[n]['lo'] for n in param_names])
-    hi = np.array([PARAM_SPEC[n]['hi'] for n in param_names])
+    K = len(param_names)
+
+    lo = torch.tensor([PARAM_SPEC[n]['lo'] for n in param_names],
+                      device=device, dtype=dtype)
+    hi = torch.tensor([PARAM_SPEC[n]['hi'] for n in param_names],
+                      device=device, dtype=dtype)
     span = hi - lo  # 参数跨度
 
-    def _to_physical(x_norm: np.ndarray) -> np.ndarray:
-        """[0, 1] → 物理范围"""
-        return lo + x_norm * span
+    # Sigmoid 参数化: x_phys = lo + sigmoid(x_raw) * span
+    # 自动强制 bounds, 梯度在 raw 空间均匀化
+    def _to_phys(x_raw: torch.Tensor) -> torch.Tensor:
+        return lo + torch.sigmoid(x_raw) * span
 
-    def _to_norm(x_phys: np.ndarray) -> np.ndarray:
-        """物理范围 → [0, 1]"""
-        return (x_phys - lo) / span
+    def _to_raw(x_phys: torch.Tensor) -> torch.Tensor:
+        x_norm = ((x_phys - lo) / span).clamp(1e-6, 1.0 - 1e-6)
+        return torch.log(x_norm / (1.0 - x_norm))
 
-    def _eval(x_norm: np.ndarray) -> float:
-        """归一化参数 → 前向渲染 → L1 loss"""
-        x_phys = _to_physical(x_norm)
-        params = {}
-        for i, name in enumerate(param_names):
-            params[name] = torch.tensor([float(x_phys[i])], device=device, dtype=torch.float32)
-        with torch.no_grad():
-            rendered = apply_diff_isp(original, params)
-            loss = F.l1_loss(rendered, target).item()
-        return loss if not (np.isnan(loss) or np.isinf(loss)) else 1e6
+    def _render(x_raw: torch.Tensor) -> torch.Tensor:
+        x_phys = _to_phys(x_raw)
+        # 构造 params dict: name → (1,) tensor 且可回传梯度
+        params = {param_names[i]: x_phys[i:i+1] for i in range(K)}
+        return apply_diff_isp(original, params)
 
-    # 默认初始点 (归一化)
-    x0_phys = np.array([PARAM_SPEC[n]['init'] for n in param_names])
+    def _loss_fn(x_raw: torch.Tensor) -> torch.Tensor:
+        rendered = _render(x_raw)
+        loss = l1_weight * F.l1_loss(rendered, target)
+        if ssim_weight > 0:
+            loss = loss + ssim_weight * ssim_loss(rendered, target)
+        return loss
+
+    # 默认初始点
+    x0_phys = torch.tensor(
+        [PARAM_SPEC[n]['init'] for n in param_names],
+        device=device, dtype=dtype,
+    )
     if init_params:
         for i, n in enumerate(param_names):
             if n in init_params:
-                x0_phys[i] = init_params[n]
-    x0_default = _to_norm(x0_phys)
-
-    # 归一化空间的 bounds = [0, 1]
-    norm_bounds = [(0.0, 1.0)] * len(param_names)
+                x0_phys[i] = float(init_params[n])
+    x0_raw_default = _to_raw(x0_phys).detach()
 
     best_loss = float('inf')
-    best_x_norm = x0_default.copy()
-    rng = np.random.RandomState(42)
+    best_phys = x0_phys.clone()
+    gen = torch.Generator(device='cpu').manual_seed(42)
 
     for restart in range(n_restarts):
         if restart == 0:
-            x0 = x0_default.copy()
+            x_raw = x0_raw_default.clone().detach().requires_grad_(True)
         else:
-            x0 = rng.uniform(0.0, 1.0, size=len(param_names))
+            # 随机初始 (正态 σ=1.5 覆盖中间 80% 范围)
+            x_raw = (torch.randn(K, generator=gen) * 1.5).to(
+                device=device, dtype=dtype).requires_grad_(True)
 
-        result = minimize(
-            _eval, x0, method='L-BFGS-B', bounds=norm_bounds,
-            options={'maxiter': maxiter, 'ftol': 1e-10, 'eps': 1e-4},
+        # LBFGS + 线搜索 对此类光滑连续目标远优于 Adam
+        optimizer = torch.optim.LBFGS(
+            [x_raw],
+            lr=1.0,
+            max_iter=20,
+            history_size=10,
+            line_search_fn='strong_wolfe',
+            tolerance_grad=1e-7,
+            tolerance_change=1e-9,
         )
 
-        x_phys = _to_physical(result.x)
+        # 保存"最好"的 x_phys (在此 restart 内) 防止末尾 NaN 污染
+        best_in_restart_phys = None
+        best_in_restart_loss = float('inf')
+        prev_loss = float('inf')
+
+        def _closure():
+            """LBFGS closure: 前向 + 反向, 返回 loss."""
+            optimizer.zero_grad()
+            loss = _loss_fn(x_raw)
+            if torch.isnan(loss) or torch.isinf(loss):
+                # NaN -> 返回一个大数, 让 LBFGS 回退
+                return torch.tensor(1e6, device=device, dtype=dtype, requires_grad=True)
+            loss.backward()
+            # 清理 NaN 梯度 (通过 pow/log 的不稳定路径)
+            if x_raw.grad is not None and torch.isnan(x_raw.grad).any():
+                x_raw.grad = torch.nan_to_num(
+                    x_raw.grad, nan=0.0, posinf=0.0, neginf=0.0)
+            # 可选梯度裁剪
+            if grad_clip > 0 and x_raw.grad is not None:
+                torch.nn.utils.clip_grad_norm_([x_raw], max_norm=grad_clip)
+            return loss
+
+        # 外层循环: 每次 optimizer.step(closure) 内部跑 max_iter=20 次 LBFGS
+        n_outer = max(1, maxiter // 20)
+        for outer in range(n_outer):
+            try:
+                optimizer.step(_closure)
+            except Exception as e:
+                if verbose:
+                    logger.warning(f'  restart {restart} outer {outer} LBFGS err: {e}')
+                break
+
+            # 记录当前
+            with torch.no_grad():
+                # 限制 raw 范围防止 sigmoid 饱和
+                x_raw.data.clamp_(-raw_clip, raw_clip)
+                cur_loss = _loss_fn(x_raw).item()
+
+            if cur_loss == cur_loss and cur_loss != float('inf'):  # not NaN
+                if cur_loss < best_in_restart_loss:
+                    best_in_restart_loss = cur_loss
+                    with torch.no_grad():
+                        best_in_restart_phys = _to_phys(x_raw).detach().clone()
+
+            if verbose:
+                logger.info(f'  restart {restart} outer {outer:2d}  loss={cur_loss:.6f}')
+
+            # 早停
+            if abs(prev_loss - cur_loss) < early_stop_tol:
+                if verbose:
+                    logger.info(f'  restart {restart} early-stop @ outer {outer}')
+                break
+            prev_loss = cur_loss
+
+        # 用 "restart 内最优" 作为此 restart 的最终结果
+        if best_in_restart_phys is None:
+            # 完全失败 (第 0 步就 NaN) - 跳过此 restart
+            if verbose:
+                logger.warning(f'  restart {restart}  failed (no valid step)')
+            continue
+
+        x_phys_final = best_in_restart_phys
+        final_loss = best_in_restart_loss
+
         if verbose:
-            param_str = ', '.join(f'{param_names[i]}={x_phys[i]:.2f}' for i in range(len(param_names)))
-            logger.info(f'  restart {restart}  loss={result.fun:.6f}  nfev={result.nfev}  [{param_str}]')
+            param_str = ', '.join(f'{param_names[i]}={x_phys_final[i].item():.2f}'
+                                  for i in range(K))
+            logger.info(f'  restart {restart}  final_loss={final_loss:.6f}  [{param_str}]')
 
-        if result.fun < best_loss:
-            best_loss = result.fun
-            best_x_norm = result.x.copy()
+        if final_loss < best_loss:
+            best_loss = final_loss
+            best_phys = x_phys_final.clone()
 
-    best_phys = _to_physical(best_x_norm)
-    best_params = {param_names[i]: float(best_phys[i]) for i in range(len(param_names))}
+    best_params = {param_names[i]: float(best_phys[i].item()) for i in range(K)}
     return best_params, best_loss
 
 
