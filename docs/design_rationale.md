@@ -1,4 +1,4 @@
-# MobileVenus：为什么这个方案能成功
+# IntelligenceCamera：为什么这个方案能成功
 
 > 面向非技术细节的设计思路和可行性论证
 

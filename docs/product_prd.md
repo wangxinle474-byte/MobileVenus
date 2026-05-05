@@ -1,6 +1,7 @@
-# MobileVenus App — Product Requirements Document
+# IntelligenceCamera App (LightAI) — 产品 PRD
 
-> 版本: v1.0 | 日期: 2026-03-27 | 产品阶段: MVP 规划
+> 版本: v1.1 | 日期: 2026-03-27 | 产品阶段: MVP 规划
+> 配套: `docs/research_prd.md` (研究 PRD, 面向论文/方法)
 
 ---
 
@@ -345,4 +346,4 @@ ISP Pipeline (C++ / Swift / Kotlin)
 
 ---
 
-*本文档为 App 产品 PRD，与研究 PRD (`docs/prd.md`) 互补，共同构成完整的产品规划。*
+*本文档为 App 产品 PRD，与研究 PRD (`docs/research_prd.md`) 互补，共同构成完整的产品规划。*

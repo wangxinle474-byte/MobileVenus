@@ -1,8 +1,8 @@
 # IntelligenceCamera 全版本实验记录
 
-> 更新时间: 2026-04-30
+> 更新时间: 2026-05-05 (补记 v12-v14 + compare_5 编辑对比 baseline)
 > 项目目标: 基于语义理解的智能 ISP 参数预测，最终目标 MUSIQ-AVA 8.5+
-> 评估数据: MIT-Adobe FiveK 验证集 (50张)
+> 评估数据: MIT-Adobe FiveK 验证集 (50张) + compare_5 (编辑模型对比)
 > 训练平台: AutoDL (RTX 5090)
 
 ---
@@ -11,7 +11,9 @@
 
 ```
 Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) → v7(退化增强)
-    → v8(Stage C文本条件) → v9(美学感知) → v10(端到端E2E) → v11(RefinementNet)
+    → v8(Stage C文本条件) → v9(美学感知) → v10(端到端E2E) → v11(RefineNet V1)
+    → v12(RefineNet V4 512+MUSIQ) → v13(多尺度+EMA+WarmRestarts)
+    → v14(AesExpert 高质量数据混训)
 ```
 
 | 版本 | 核心改进 | PSNR | MUSIQ-AVA (512) | 状态 |
@@ -22,8 +24,11 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 | v7 | 退化增强 + 对比学习 | 25.99 | 4.425 | ✅ |
 | v8 | Stage C 文本条件融合 | — | **4.446** | ✅ |
 | v9 | 美学感知微调 (MUSIQ 监控) | — | 4.418 | ✅ |
-| v10 | 端到端 image_loss 通过 diff_isp | — | 训练中 | 🔄 |
-| v11 | RefinementNet + MUSIQ loss | — | 训练中 | 🔄 |
+| v10 | 端到端 image_loss 通过 diff_isp | — | 完成 | ✅ |
+| v11 | RefinementNet V1 + MUSIQ loss | — | ~3.71 (baseline) | ✅ |
+| v12 | RefineNet V4 + 512训练 + MUSIQ主导 (16M) | — | **4.15** | ✅ |
+| v13 | 多尺度 MUSIQ + EMA + WarmRestarts | — | **4.20** | ✅ |
+| v14 | AesExpert 高质量数据混训 ParamModel | — | 计划中 | 🔄 |
 
 ### 天花板参考
 
@@ -597,7 +602,10 @@ python training/legacy/train_v13_multiscale.py --param_version v14
 | `training/legacy/train_stage_c.py` | v8 | Stage C 文本条件 |
 | `train_v9_aesthetic.py` | v9 | 美学感知微调 |
 | `train_v10_e2e.py` | v10 | 端到端 image_loss |
-| `train_v11_refine.py` | v11 | RefinementNet 精修 |
+| `train_v11_refine.py` | v11 | RefineNet V1 精修 (130K) |
+| `train_v12_refine_hd.py` | v12 | RefineNet V4 512+MUSIQ 主导 (16M) |
+| `training/legacy/train_v13_multiscale.py` | v13 | 多尺度 + EMA + WarmRestarts |
+| `tools/train/train_v14_aesexpert_param.py` | v14 | AesExpert 高质量数据混训 ParamModel |
 | `train_neural_isp.py` | — | Neural ISP (已搁置) |
 
 ### 模型文件

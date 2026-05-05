@@ -1,4 +1,4 @@
-# MobileVenus 模型架构文档
+# IntelligenceCamera 模型架构文档
 
 > 更新时间: 2026-04-30
 

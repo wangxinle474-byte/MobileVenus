@@ -1,7 +1,7 @@
-﻿# IntelligenceCamera — Product Requirements Document
+﻿# IntelligenceCamera — 研究 PRD (Product Requirements Document)
 
-> 版本: v1.0 | 日期: 2026-03-27 | 状态: 研究阶段
-> 合并自: prd.md (研究 PRD) + app_prd.md (App PRD)
+> 版本: v1.1 | 日期: 2026-03-27 | 状态: 研究阶段
+> 配套: `docs/product_prd.md` (面向 C 端 App 产品的 PRD)
 
 ---
 

@@ -165,20 +165,24 @@ scripts/
 
 ```
 docs/
-├── PROJECT_STRUCTURE.md       ← 本文件
-├── prd.md                     ← 产品需求文档
-├── app_prd.md                 ← APP 端 PRD
+├── PROJECT_STRUCTURE.md       ← 本文件 (新人入口)
+├── research_prd.md            ← 研究 PRD (面向论文/方法)
+├── product_prd.md             ← 产品 PRD (面向 C 端 App)
 ├── architecture_overview.md   ← 总体架构
 ├── design_rationale.md        ← 设计理由
-├── experiment_plan.md         ← 实验计划
-├── experiment_log.md          ← 实验日志
+├── experiment_plan.md         ← 对比实验方案
+├── experiment_log.md          ← 主实验日志 (Distill v6-v14)
+├── early_experiment_log.md    ← 早期实验 (Baseline + Distill v1-v4)
 ├── data_preparation.md        ← 数据准备
 ├── model_architecture.md      ← 模型结构
-├── compare_5_experiment.md    ← 5 张图对比实验说明
-├── history.md                 ← 历史变更
+├── compare_5_experiment.md    ← 5 张图编辑模型对比实验
 ├── asset_inventory.md         ← 资产清单
 ├── plot_*.py                  ← 论文配图生成脚本
-├── architecture_overview/, artedit_samples/, diff_isp_validation/, lora_v1/
+├── archive/                   ← 历史归档 (v1/v2 9-param 早期)
+│   └── history.md
+├── surveys/                   ← 调研资料
+│   └── REUSE_SURVEY_2026.md
+├── artedit_samples/, diff_isp_validation/, lora_v1/
 └── *.jpg / *.png              ← 已生成的论文配图
 ```
 

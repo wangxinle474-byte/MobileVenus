@@ -1,4 +1,4 @@
-# MobileVenus 资产清单
+# IntelligenceCamera 资产清单
 
 > 更新时间: 2026-05-01  
 > 三端: 本地 Windows (全量代码) + AutoDL GPU (仅训练代码) + GitHub (全量备份)

@@ -1,4 +1,4 @@
-# MobileVenus 对比实验方案
+# IntelligenceCamera 对比实验方案
 
 ## 1. 问题定位：我们的方法 vs SOTA
 

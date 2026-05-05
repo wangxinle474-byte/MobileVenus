@@ -73,7 +73,8 @@
 | v10 | `train_v10_e2e.py` | 端到端实验 | ✅ 已完成 |
 | v11 | `train_v11_refine.py` | RefineNet v1 | ✅ 已完成 |
 | v12 | `train_v12_refine_hd.py` | RefineNet v4 (512+MUSIQ) | ✅ 当前主力 |
-| v13 | `train_v13_multiscale.py` | 多尺度实验 | ✅ 已完成 |
+| v13 | `training/legacy/train_v13_multiscale.py` | 多尺度 + EMA + WarmRestarts (val_MUSIQ=4.20) | ✅ 已完成 |
+| v14 | `tools/train/train_v14_aesexpert_param.py` | AesExpert 高质量数据混训 ParamModel | 🔄 计划中 |
 
 ---
 

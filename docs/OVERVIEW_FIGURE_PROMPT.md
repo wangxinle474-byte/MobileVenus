@@ -1,8 +1,9 @@
-# MobileVenus Overview 图生成提示词 (5参数精简版)
+# IntelligenceCamera Overview 图生成提示词 (5参数精简版)
 
 > **当前版本**: v3 — 5 参数精简版核心方法图
+> 注意: 下方提示词正文还有一些 "MobileVenus" 旧称 (图注/paper title), 用时请手动批量替换为 "IntelligenceCamera".
 > 
-> v1（单面板）和 v2（双面板）已归档至 `docs/history.md`。
+> v1（单面板）和 v2（双面板）已归档至 `docs/archive/history.md`。
 > 本文件仅保留 v3（5参数版），完全围绕 **EV / 白平衡 / 对焦点 / HDR / 拍摄模式** 设计。
 > 
 > 适合作为论文方法图 (Figure 3) 或 Supplementary 中的详细方法说明。

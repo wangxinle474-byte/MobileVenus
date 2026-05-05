@@ -1,4 +1,8 @@
-# MobileVenus 训练实验记录
+# IntelligenceCamera 早期训练实验记录 (Baseline + Distill v1-v4)
+
+> 本文覆盖项目 **最初 8-param 蒸馏探索期** (2026-03-25 ~ 2026-03-27) 的实验.
+> 后续 v6-v14 演进记录在 `docs/experiment_log.md`.
+> 再更早的 v1/v2 (9-param 版) 归档在 `docs/archive/history.md`.
 
 ## 实验概览
 

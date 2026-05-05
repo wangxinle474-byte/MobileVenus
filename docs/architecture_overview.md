@@ -1,6 +1,7 @@
-# MobileVenus 项目架构总览
+# IntelligenceCamera 项目架构总览
 
-> 最后更新: 2026-03-26
+> 最后更新: 2026-05-05 (补记 v12-v14 进展、compare_5 编辑模型对比)
+> 项目曾用代号: MobileVenus (git 仓库名保留), 论文/方法名 = IntelligenceCamera
 
 ## 一、核心创新
 
