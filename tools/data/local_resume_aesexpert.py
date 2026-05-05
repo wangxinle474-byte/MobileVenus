@@ -1,6 +1,6 @@
 """本地续传 AesExpert (qyuan/AesMMIT_LLaVA_v1.5_7b_240325) 到 E:/AesExpert_HF
 通过 hf-mirror.com 镜像加速国内下载.
-被 scripts/local_resume_aesexpert.ps1 调用. 也可独立直跑.
+被 scripts/local/local_resume_aesexpert.ps1 调用. 也可独立直跑.
 
 历史: 早期 score_fivek_aesexpert.py 注释里写的 repo_id 是
 'huang-lin/AesExpert', 但该 repo 已 401, 实际官方权重在

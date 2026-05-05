@@ -1,6 +1,6 @@
 #!/bin/bash
 # AutoDL 后台下载 LongCat-Image-Edit-Turbo 从 ModelScope.
-# 用法: bash scripts/autodl_download_longcat.sh
+# 用法: bash scripts/autodl/autodl_download_longcat.sh
 set -e
 cd /root/autodl-tmp/IntelligenceCamera
 mkdir -p logs

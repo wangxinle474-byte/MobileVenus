@@ -333,7 +333,7 @@ def main():
     if not (model_path / 'config.json').exists():
         logger.error(f'模型路径无效: {model_path} (缺少 config.json)')
         logger.info('请先下载: huggingface-cli download qyuan/AesMMIT_LLaVA_v1.5_7b_240325 --local-dir E:\\AesExpert_HF')
-        logger.info('或运行: scripts/local_resume_aesexpert.ps1 -Background  (用 hf-mirror 镜像)')
+        logger.info('或运行: scripts/local/local_resume_aesexpert.ps1 -Background  (用 hf-mirror 镜像)')
         return
 
     # 扫描图片

@@ -6,7 +6,7 @@ cd /root/autodl-tmp/IntelligenceCamera
 mkdir -p logs
 
 # disown + setsid 双保险, SSH 断开也不影响
-setsid nohup bash scripts/autodl_run_longcat_compare.sh \
+setsid nohup bash scripts/autodl/autodl_run_longcat_compare.sh \
     > logs/compare_full.log 2>&1 < /dev/null &
 PID=$!
 echo $PID > logs/compare.pid

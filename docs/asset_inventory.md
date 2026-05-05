@@ -49,10 +49,10 @@ E:\智能相机\Venus_CVPR2026-main\IntelligenceCamera\
 ### 同步方式
 ```bash
 # Linux/Mac:
-bash scripts/sync_to_autodl.sh <autodl_ssh_host> <port>
+bash scripts/local/sync_to_autodl.sh <autodl_ssh_host> <port>
 
 # Windows PowerShell:
-.\scripts\sync_to_autodl.ps1 -Host "root@connect.xxx.seetacloud.com" -Port 12345
+.\scripts\local\sync_to_autodl.ps1 -Host "root@connect.xxx.seetacloud.com" -Port 12345
 ```
 
 ---

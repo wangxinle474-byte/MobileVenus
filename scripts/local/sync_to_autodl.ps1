@@ -66,11 +66,12 @@ $TrainFiles = @(
     "training/fivek_8param/model.py",
     "training/fivek_8param/trainer.py",
 
-    # 训练脚本
-    "scripts/train_v6_stage_a.py",
-    "scripts/train_v6_stage_b.py",
-    "scripts/train_v7_stage_b.py",
-    "scripts/train_stage_c.py",
+    # 训练脚本 (legacy_training 归档 + 根目录活动)
+    "scripts/legacy_training/train_v6_stage_a.py",
+    "scripts/legacy_training/train_v6_stage_b.py",
+    "scripts/legacy_training/train_v7_stage_b.py",
+    "scripts/legacy_training/train_stage_c.py",
+    "scripts/legacy_training/train_v13_multiscale.py",
     "train_v12_refine_hd.py",
     "train_v6_stage_a.py",
 
@@ -87,7 +88,7 @@ $TrainFiles = @(
 Write-Host "创建远程目录..." -ForegroundColor Yellow
 $Dirs = @(
     "models", "training", "training/semantic_distill", "training/text_condition",
-    "training/fivek_8param", "scripts", "tools", "tools/eval", "tools/data", "tools/train"
+    "training/fivek_8param", "scripts", "scripts/legacy_training", "tools", "tools/eval", "tools/data", "tools/train"
 )
 $DirCmd = ($Dirs | ForEach-Object { "mkdir -p $RemoteDir/$_" }) -join "; "
 ssh -p $Port $RemoteHost "$DirCmd"
@@ -115,5 +116,5 @@ Write-Host "=== 同步完成: $uploaded 个文件 ===" -ForegroundColor Green
 Write-Host ""
 Write-Host "在 AutoDL 上运行:" -ForegroundColor Cyan
 Write-Host "  cd $RemoteDir"
-Write-Host "  python scripts/train_v6_stage_a.py"
+Write-Host "  python scripts/legacy_training/train_v6_stage_a.py"
 Write-Host "  python train_v12_refine_hd.py"

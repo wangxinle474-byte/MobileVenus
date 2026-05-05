@@ -29,7 +29,7 @@ echo ""
 echo "============================================="
 echo "[Phase 1.2] \u8bc4\u5206\u73b0\u6709 4 \u7ec4 (1-10 \u5206)"
 echo "============================================="
-bash scripts/autodl_rescore_all_10pt.sh
+bash scripts/autodl/autodl_rescore_all_10pt.sh
 
 echo ""
 echo "============================================="
@@ -45,4 +45,4 @@ echo "    --captions data/compare_5_captions_edit_rewritten.json \\"
 echo "    --out_dir outputs/compare_5/longcat_editB_rewritten \\"
 echo "    --skip_download --use_4bit --steps 4 --offload sequential"
 echo "  scp -r outputs/compare_5/longcat_editB_rewritten root@<host>:/root/autodl-tmp/IntelligenceCamera/outputs/compare_5/"
-echo "  ssh root@<host> 'bash scripts/autodl_phase2_score_longcat_rewritten.sh'"
+echo "  ssh root@<host> 'bash scripts/autodl/autodl_phase2_score_longcat_rewritten.sh'"

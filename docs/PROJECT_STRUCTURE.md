@@ -25,7 +25,7 @@ IntelligenceCamera/
 ├── logs/                      ← 训练日志 (gitignore)
 ├── models/                    ← 模型定义 (intelligence_camera.py 等)
 ├── outputs/                   ← 实验输出 (gitignore, 见下文 §4)
-├── scripts/                   ← 运行脚本 (shell + ps1)
+├── scripts/                   ← 运行脚本 (autodl/ + local/ + legacy_training/)
 ├── tools/                     ← 数据处理 + 评估工具
 └── training/                  ← 训练子模块 (dataset, distillation, losses)
 ```
@@ -136,18 +136,30 @@ outputs/
 
 ## 5. scripts/ 运行脚本
 
-主要 shell 脚本 (在 AutoDL 远端跑):
 ```
 scripts/
-├── autodl_phase1_rewrite_and_rescore.sh  ← 主流水线: Qwen3-VL 重写 + 4 组评分
-├── autodl_phase2_score_longcat_rewritten.sh  ← 第 5 组评分
-├── autodl_rescore_all_10pt.sh            ← 4 组 1-10 评分独立跑
-├── autodl_run_longcat_compare.sh         ← LongCat 推理 + 评分
-├── autodl_run_lora_sft.sh                ← LoRA SFT 训练
-├── autodl_install_*.sh                   ← 环境安装
-├── autodl_download_*.sh                  ← 模型权重下载
-├── autodl_serve_*.sh                     ← 服务部署
-└── sync_to_autodl.{sh,ps1}               ← 本地↔AutoDL 同步
+├── README.md                              ← 索引表
+├── autodl/                                ← 远端 AutoDL 上跑 (21 files)
+│   ├── autodl_download_*.sh                   ← 模型权重下载 (5)
+│   ├── autodl_install_*.sh                    ← 环境安装 (2)
+│   ├── autodl_phase1_rewrite_and_rescore.sh   ← 主流水线: Qwen3-VL 重写 + 4 组评分
+│   ├── autodl_phase2_score_longcat_rewritten.sh  ← 第 5 组评分
+│   ├── autodl_rescore_all_10pt.sh             ← 4 组 1-10 评分
+│   ├── autodl_run_longcat_compare.sh          ← LongCat 推理 + 评分
+│   ├── autodl_run_lora_sft.sh                 ← LoRA SFT 训练
+│   ├── autodl_serve_*.sh                      ← 服务部署 (2)
+│   ├── autodl_watch_pipeline.sh               ← 实时监控
+│   └── run_validate_*.sh / inspect_artedit.sh  ← 验证 (3)
+├── local/                                 ← 本地 Windows/Linux (10 files)
+│   ├── sync_to_autodl.{sh,ps1}                ← 本地↔AutoDL 同步 (2)
+│   ├── local_resume_*.ps1                     ← HF 断点续传 (3)
+│   ├── fetch_pseudo_labels.ps1                ← 拉伪标签
+│   ├── upload_compare_5.ps1                   ← 上传 5 张对比
+│   ├── tail_autodl_log.ps1                    ← tail 远端日志
+│   ├── watch_download.ps1                     ← 监视下载
+│   └── check_dl_progress.sh                   ← 进度查看
+└── legacy_training/                       ← 旧训练入口 (7 files, 后期可考虑迁到 training/)
+    └── train_v*.py / train_stage_c.py
 ```
 
 ## 6. docs/ 设计文档
@@ -179,8 +191,8 @@ docs/
 | 2. LongCat 推理 (editB) | 同上, `--captions data/compare_5_captions_edit.json --out_dir outputs/compare_5/longcat_editB` | `compare_5/longcat_editB/<idx>.png` |
 | 3. FireRed 推理 (editB) | `python tools/data/run_firered_online.py --captions data/compare_5_captions_edit.json --input_dir outputs/compare_5/originals --out_dir outputs/compare_5/firered_editB --lora Lightning` | `compare_5/firered_editB/<idx>.png` |
 | 4. FireRed (editB rewrite) | 同上 + `--rewrite_prompt --out_dir outputs/compare_5/firered_editB_rewrite` | `compare_5/firered_editB_rewrite/<idx>.png` |
-| 5. AutoDL 评分 (4 组) | `bash scripts/autodl_rescore_all_10pt.sh` | `compare_5/scores/<group>_10pt.json` |
-| 6. Qwen3-VL 重写 + 5 组完整对比 | `bash scripts/autodl_phase1_rewrite_and_rescore.sh` 然后本地用重写 prompt 跑 LongCat 上传, 再 `bash scripts/autodl_phase2_score_longcat_rewritten.sh` | `scores/longcat_editB_rewritten_10pt.json` |
+| 5. AutoDL 评分 (4 组) | `bash scripts/autodl/autodl_rescore_all_10pt.sh` | `compare_5/scores/<group>_10pt.json` |
+| 6. Qwen3-VL 重写 + 5 组完整对比 | `bash scripts/autodl/autodl_phase1_rewrite_and_rescore.sh` 然后本地用重写 prompt 跑 LongCat 上传, 再 `bash scripts/autodl/autodl_phase2_score_longcat_rewritten.sh` | `scores/longcat_editB_rewritten_10pt.json` |
 | 7. 视觉对比 HTML | `python tools/eval/build_compare_html.py` | `outputs/compare_5/viewer.html` (浏览器开) |
 | 8. 表格化展示 | `python tools/eval/present_3way_10pt.py` | 控制台 5-way 总均值表 |
 
