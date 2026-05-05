@@ -86,8 +86,10 @@ def main():
                     help='\u8f93\u5165 captions JSON (\u542b\u52a8\u8bcd\u5f0f\u6307\u4ee4)')
     ap.add_argument('--out', required=True,
                     help='\u8f93\u51fa rewritten JSON \u8def\u5f84')
-    ap.add_argument('--input_dir', default='outputs/longcat_compare_editB',
-                    help='\u539f\u56fe\u76ee\u5f55 (\u4f18\u5148 <idx>_orig.png, \u518d fallback orig_path)')
+    ap.add_argument('--originals_dir', default='outputs/compare_5/originals',
+                    help='\u539f\u56fe\u76ee\u5f55 (\u65b0\u5e03\u5c40 <idx>.png)')
+    ap.add_argument('--input_dir', default=None,
+                    help='[\u65e7\u5e03\u5c40 fallback] \u542b <idx>_orig.png \u7684\u76ee\u5f55')
     ap.add_argument('--base_model', default=BASE_MODEL)
     ap.add_argument('--max_new_tokens', type=int, default=200)
     args = ap.parse_args()
@@ -98,9 +100,14 @@ def main():
     out_path = Path(args.out)
     if not out_path.is_absolute():
         out_path = PROJECT_ROOT / out_path
-    input_dir = Path(args.input_dir)
-    if not input_dir.is_absolute():
-        input_dir = PROJECT_ROOT / input_dir
+    originals_dir = Path(args.originals_dir)
+    if not originals_dir.is_absolute():
+        originals_dir = PROJECT_ROOT / originals_dir
+    input_dir = None
+    if args.input_dir:
+        input_dir = Path(args.input_dir)
+        if not input_dir.is_absolute():
+            input_dir = PROJECT_ROOT / input_dir
 
     print(f'[load] processor + model: {args.base_model}')
     processor = AutoProcessor.from_pretrained(args.base_model, trust_remote_code=True)
@@ -120,16 +127,19 @@ def main():
         idx = s['idx']
         instruction = s['new_caption']
 
-        # \u627e\u539f\u56fe: \u4f18\u5148\u8bd5 <idx>_orig.png, \u518d\u8bd5 orig_path
-        cand1 = input_dir / f'{idx:04d}_orig.png'
-        cand2 = PROJECT_ROOT / s.get('orig_path', '')
-        if cand1.exists():
-            orig_p = cand1
-        elif cand2.exists():
-            orig_p = cand2
+        # 找原图: 新布局 originals_dir/<idx>.png 优先, fallback 旧 input_dir/<idx>_orig.png, 再 fallback orig_path 字段
+        cand_new = originals_dir / f'{idx:04d}.png'
+        cand_old = (input_dir / f'{idx:04d}_orig.png') if input_dir is not None else None
+        cand_field = PROJECT_ROOT / s.get('orig_path', '')
+        if cand_new.exists():
+            orig_p = cand_new
+        elif cand_old is not None and cand_old.exists():
+            orig_p = cand_old
+        elif cand_field.exists():
+            orig_p = cand_field
         else:
             print(f'[{i+1}/{len(samples)}] SKIP idx={idx}: no orig found '
-                  f'(tried {cand1}, {cand2})')
+                  f'(tried {cand_new}, {cand_old}, {cand_field})')
             new_samples.append({**s, 'rewritten_caption': None,
                                 'rewrite_error': 'orig_image_not_found'})
             continue

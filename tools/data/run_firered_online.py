@@ -83,13 +83,14 @@ def main():
         idx = s['idx']
         caption = s['new_caption']
         src_name = s['source_image']
-        # \u4f18\u5148\u627e <idx>_orig.png (LongCat \u8f93\u51fa\u547d\u540d), \u518d fallback \u5230 source_image
-        src_path = input_dir / f'{idx:04d}_orig.png'
+        # \u4f18\u5148\u627e <idx>.png (新布局 originals/), 再 <idx>_orig.png (旧布局), 再 source_image
+        src_path = input_dir / f'{idx:04d}.png'
+        if not src_path.exists():
+            src_path = input_dir / f'{idx:04d}_orig.png'
         if not src_path.exists():
             src_path = input_dir / src_name
         if not src_path.exists():
-            print(f'[{i+1}/{len(samples)}] SKIP idx={idx}: missing both '
-                  f'{idx:04d}_orig.png and {src_name} in {input_dir}')
+            print(f'[{i+1}/{len(samples)}] SKIP idx={idx}: no source image found in {input_dir}')
             continue
 
         # Gallery \u8f93\u5165\u683c\u5f0f: list[{image: {...}, caption: None}]
@@ -152,17 +153,15 @@ def main():
             })
             continue
 
-        # \u62f7\u8d1d\u5230\u76ee\u6807\u540d
-        final_orig = out_dir / f'{idx:04d}_orig.png'
-        final_edit = out_dir / f'{idx:04d}_firered.png'
-        shutil.copy(src_path, final_orig)
+        # 新布局: 仅保存编辑后图, 原图独立代管于 outputs/compare_5/originals/
+        final_edit = out_dir / f'{idx:04d}.png'
         shutil.copy(out_local, final_edit)
 
         print(f'  -> saved ({dt:.1f}s)  seed={int(seed_used)}  out={final_edit.name}')
         records.append({
             'idx': idx, 'source_image': src_name, 'caption': caption,
             'status': 'ok', 'seed_used': int(seed_used),
-            'orig': str(final_orig), 'edit': str(final_edit),
+            'edit': str(final_edit),
             'runtime_sec': dt,
         })
 

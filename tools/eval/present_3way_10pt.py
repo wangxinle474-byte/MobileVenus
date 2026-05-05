@@ -7,17 +7,18 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
+SCORES_DIR = ROOT / 'outputs/compare_5/scores'
 GROUPS = [
     ('LongCat sceneA (\u573a\u666f\u63cf\u8ff0)',
-     ROOT / 'outputs/longcat_score_sceneA_10pt.json'),
+     SCORES_DIR / 'longcat_sceneA_10pt.json'),
     ('LongCat editB (\u7f16\u8f91\u6307\u4ee4)',
-     ROOT / 'outputs/longcat_score_editB_10pt.json'),
+     SCORES_DIR / 'longcat_editB_10pt.json'),
     ('FireRed editB (\u7f16\u8f91\u6307\u4ee4, no rewrite)',
-     ROOT / 'outputs/firered_score_editB_10pt.json'),
+     SCORES_DIR / 'firered_editB_10pt.json'),
     ('FireRed editB (\u7f16\u8f91\u6307\u4ee4, with rewrite)',
-     ROOT / 'outputs/firered_score_editB_rewrite_10pt.json'),
+     SCORES_DIR / 'firered_editB_rewrite_10pt.json'),
     ('LongCat editB (\u91cd\u5199 prompt)',
-     ROOT / 'outputs/longcat_score_editB_rewritten_10pt.json'),
+     SCORES_DIR / 'longcat_editB_rewritten_10pt.json'),
 ]
 
 

@@ -257,9 +257,9 @@ def main():
             traceback.print_exc()
             continue
         dt = time.time() - t0
-        out_path = out_dir / f'{idx:04d}_longcat.png'
+        # \u65b0\u5e03\u5c40: \u4ec5\u4fdd\u5b58\u7f16\u8f91\u540e\u56fe\u4e3a <idx>.png, \u539f\u56fe\u5728 outputs/compare_5/originals/ \u72ec\u7acb\u4ee3\u7ba1
+        out_path = out_dir / f'{idx:04d}.png'
         result.save(out_path)
-        img.save(out_dir / f'{idx:04d}_orig.png')
         print(f'  -> saved ({dt:.0f}s) -> {out_path.name}')
 
     print(f'\n[DONE] Results in {out_dir}')

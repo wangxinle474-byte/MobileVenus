@@ -142,14 +142,16 @@ def score_one(model, processor, orig_img, edit_img, orig_path, edit_path, captio
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--input_dir', required=True,
-                    help='\u542b 0xxx_orig.png + 0xxx_<suffix>.png \u7684\u76ee\u5f55')
+                    help='\u7f16\u8f91\u56fe\u76ee\u5f55 (\u65b0\u5e03\u5c40: <input_dir>/<idx>.png; \u65e7: <input_dir>/<idx>_<suffix>.png)')
+    ap.add_argument('--originals_dir', default=None,
+                    help='\u539f\u56fe\u76ee\u5f55 (\u65b0\u5e03\u5c40: <originals_dir>/<idx>.png). \u4e0d\u4f20\u5c31\u4ece input_dir/<idx>_orig.png \u8bfb (\u65e7\u5e03\u5c40 fallback)')
     ap.add_argument('--captions', required=True,
                     help='compare_5_captions(_edit).json')
     ap.add_argument('--out', required=True, help='\u8f93\u51fa JSON \u8def\u5f84')
     ap.add_argument('--group_label', default='unknown',
                     help='\u7ec4\u540d (sceneA / editB / firered), \u4ec5\u7528\u4e8e meta)')
     ap.add_argument('--edit_suffix', default='longcat',
-                    help='\u7f16\u8f91\u56fe\u540e\u7f00 (longcat / firered / ...)')
+                    help='\u65e7\u5e03\u5c40 fallback \u7528: \u7f16\u8f91\u56fe\u540e\u7f00 (longcat / firered)')
     ap.add_argument('--base_model', default=BASE_MODEL)
     ap.add_argument('--max_new_tokens', type=int, default=400)
     args = ap.parse_args()
@@ -157,6 +159,11 @@ def main():
     input_dir = Path(args.input_dir)
     if not input_dir.is_absolute():
         input_dir = PROJECT_ROOT / input_dir
+    originals_dir = None
+    if args.originals_dir:
+        originals_dir = Path(args.originals_dir)
+        if not originals_dir.is_absolute():
+            originals_dir = PROJECT_ROOT / originals_dir
     captions_path = Path(args.captions)
     if not captions_path.is_absolute():
         captions_path = PROJECT_ROOT / captions_path
@@ -183,11 +190,18 @@ def main():
     for i, s in enumerate(samples):
         idx = s['idx']
         caption = s['new_caption']
-        orig_p = input_dir / f'{idx:04d}_orig.png'
-        edit_p = input_dir / f'{idx:04d}_{args.edit_suffix}.png'
+        # 原图: 优先 originals_dir/<idx>.png, fallback input_dir/<idx>_orig.png
+        if originals_dir is not None:
+            orig_p = originals_dir / f'{idx:04d}.png'
+        else:
+            orig_p = input_dir / f'{idx:04d}_orig.png'
+        # 编辑图: 优先 input_dir/<idx>.png (新), fallback input_dir/<idx>_<suffix>.png (旧)
+        edit_p = input_dir / f'{idx:04d}.png'
+        if not edit_p.exists():
+            edit_p = input_dir / f'{idx:04d}_{args.edit_suffix}.png'
         if not orig_p.exists() or not edit_p.exists():
             print(f'[{i+1}/{len(samples)}] SKIP idx={idx}: missing image '
-                  f'(orig={orig_p.exists()}, edit={edit_p.exists()})')
+                  f'(orig={orig_p}, edit={edit_p})')
             continue
 
         orig_img = Image.open(orig_p).convert('RGB')

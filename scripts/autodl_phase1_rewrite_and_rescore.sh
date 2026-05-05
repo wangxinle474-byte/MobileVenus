@@ -22,7 +22,7 @@ echo "============================================="
 $PY -u tools/data/autodl_rewrite_edit_to_scene.py \
     --captions_in data/compare_5_captions_edit.json \
     --out data/compare_5_captions_edit_rewritten.json \
-    --input_dir outputs/longcat_compare_editB \
+    --originals_dir outputs/compare_5/originals \
     2>&1 | tee logs/phase1_rewrite.log
 
 echo ""
@@ -35,14 +35,14 @@ echo ""
 echo "============================================="
 echo "[Phase 1 DONE]"
 echo "  rewritten captions: data/compare_5_captions_edit_rewritten.json"
-echo "  scores: outputs/*_10pt.json (4 \u4e2a)"
+echo "  scores: outputs/compare_5/scores/*.json (4 \u4e2a)"
 echo "============================================="
 echo ""
 echo "[NEXT] \u5728\u672c\u5730\u8dd1:"
 echo "  scp -P <port> root@<host>:/root/autodl-tmp/IntelligenceCamera/data/compare_5_captions_edit_rewritten.json data/"
 echo "  python tools/data/local_run_longcat_turbo.py \\"
 echo "    --captions data/compare_5_captions_edit_rewritten.json \\"
-echo "    --out_dir outputs/longcat_compare_editB_rewritten \\"
+echo "    --out_dir outputs/compare_5/longcat_editB_rewritten \\"
 echo "    --skip_download --use_4bit --steps 4 --offload sequential"
-echo "  scp -r outputs/longcat_compare_editB_rewritten root@<host>:/root/autodl-tmp/IntelligenceCamera/outputs/"
+echo "  scp -r outputs/compare_5/longcat_editB_rewritten root@<host>:/root/autodl-tmp/IntelligenceCamera/outputs/compare_5/"
 echo "  ssh root@<host> 'bash scripts/autodl_phase2_score_longcat_rewritten.sh'"

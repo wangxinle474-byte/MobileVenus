@@ -1,21 +1,31 @@
 """\u751f\u6210\u672c\u5730 HTML \u56fe\u5bf9\u6bd4\u9875.
 
-\u7ed3\u679c: outputs/compare_firered_rewrite.html
+\u7ed3\u679c: outputs/compare_5/viewer.html
 5 \u884c (5 \u5f20\u6837\u672c) x 4 \u680f (orig / longcat-editB / firered-no-rewrite / firered-rewrite).
 \u6bcf\u884c\u4e0a\u5934\u5199\u51fa\u7f16\u8f91\u6307\u4ee4, \u8ba9\u4f60\u80c9\u773c\u5224 rewrite \u662f\u5426\u63d0\u5347.
+
+新布局 (项目重构后):
+  outputs/compare_5/
+    ├── originals/<idx>.png
+    ├── longcat_sceneA/<idx>.png
+    ├── longcat_editB/<idx>.png
+    ├── firered_editB/<idx>.png
+    ├── firered_editB_rewrite/<idx>.png
+    └── viewer.html  ← 生成于此, 用相对路径引用各组
 """
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-OUT_HTML = ROOT / 'outputs/compare_firered_rewrite.html'
+COMPARE_DIR = ROOT / 'outputs/compare_5'
+OUT_HTML = COMPARE_DIR / 'viewer.html'
 
 CAPTIONS = ROOT / 'data/compare_5_captions_edit.json'
 COL_DIRS = [
-    ('Original',            'firered_compare_editB',         '_orig.png'),
-    ('LongCat editB',       'longcat_compare_editB',         '_longcat.png'),
-    ('FireRed NO rewrite',  'firered_compare_editB',         '_firered.png'),
-    ('FireRed WITH rewrite','firered_compare_editB_rewrite', '_firered.png'),
+    ('Original',              'originals'),
+    ('LongCat editB',         'longcat_editB'),
+    ('FireRed NO rewrite',    'firered_editB'),
+    ('FireRed WITH rewrite',  'firered_editB_rewrite'),
 ]
 
 
@@ -49,11 +59,11 @@ def main():
         html.append(f'<div class="caption"><b>idx={idx}</b> &middot; '
                     f'<code>{s["source_image"]}</code> &middot; '
                     f'{s["new_caption"]}</div>')
-        html.append('<div class="row">')
-        for label, subdir, suffix in COL_DIRS:
-            fname = f'{idx:04d}{suffix}'
+        html.append(f'<div class="row" style="grid-template-columns: repeat({len(COL_DIRS)}, 1fr);">')
+        for label, subdir in COL_DIRS:
+            fname = f'{idx:04d}.png'
             rel_path = f'{subdir}/{fname}'
-            abs_path = ROOT / 'outputs' / rel_path
+            abs_path = COMPARE_DIR / rel_path
             html.append('<div class="cell">')
             html.append(f'<div class="label">{label}</div>')
             if abs_path.exists():

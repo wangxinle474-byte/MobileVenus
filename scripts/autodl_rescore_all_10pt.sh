@@ -1,53 +1,52 @@
 #!/bin/bash
-# 四组 1-10 分评分: LongCat-sceneA / LongCat-editB / FireRed-editB / FireRed-editB-rewrite
+# 4 组 1-10 分评分 (新布局):
+#   LongCat-sceneA / LongCat-editB / FireRed-editB-norewrite / FireRed-editB-rewrite
+# 读: outputs/compare_5/originals/<idx>.png + outputs/compare_5/<group>/<idx>.png
+# 写: outputs/compare_5/scores/<group>_10pt.json
 set -e
 cd /root/autodl-tmp/IntelligenceCamera
-mkdir -p logs
+mkdir -p logs outputs/compare_5/scores
 
 PY=/root/miniconda3/bin/python
+ORIG=outputs/compare_5/originals
 
 run_group() {
     local name=$1
     local indir=$2
     local captions=$3
     local out=$4
-    local suffix=$5
     echo ""
     echo "============================================="
-    echo "[$name]  suffix=$suffix"
+    echo "[$name]"
     echo "============================================="
     $PY -u tools/eval/score_longcat_edits.py \
         --input_dir "$indir" \
+        --originals_dir "$ORIG" \
         --captions "$captions" \
         --out "$out" \
-        --group_label "$name" \
-        --edit_suffix "$suffix" 2>&1 | tee "logs/score10_$name.log"
+        --group_label "$name" 2>&1 | tee "logs/score10_$name.log"
 }
 
-run_group "sceneA_longcat" \
-    outputs/longcat_compare_sceneA \
+run_group "longcat_sceneA" \
+    outputs/compare_5/longcat_sceneA \
     data/compare_5_captions.json \
-    outputs/longcat_score_sceneA_10pt.json \
-    longcat
+    outputs/compare_5/scores/longcat_sceneA_10pt.json
 
-run_group "editB_longcat" \
-    outputs/longcat_compare_editB \
+run_group "longcat_editB" \
+    outputs/compare_5/longcat_editB \
     data/compare_5_captions_edit.json \
-    outputs/longcat_score_editB_10pt.json \
-    longcat
+    outputs/compare_5/scores/longcat_editB_10pt.json
 
-run_group "editB_firered" \
-    outputs/firered_compare_editB \
+run_group "firered_editB" \
+    outputs/compare_5/firered_editB \
     data/compare_5_captions_edit.json \
-    outputs/firered_score_editB_10pt.json \
-    firered
+    outputs/compare_5/scores/firered_editB_10pt.json
 
-run_group "editB_firered_rewrite" \
-    outputs/firered_compare_editB_rewrite \
+run_group "firered_editB_rewrite" \
+    outputs/compare_5/firered_editB_rewrite \
     data/compare_5_captions_edit.json \
-    outputs/firered_score_editB_rewrite_10pt.json \
-    firered
+    outputs/compare_5/scores/firered_editB_rewrite_10pt.json
 
 echo ""
 echo "[ALL DONE]"
-ls -la outputs/*_10pt.json 2>/dev/null
+ls -la outputs/compare_5/scores/*.json 2>/dev/null
