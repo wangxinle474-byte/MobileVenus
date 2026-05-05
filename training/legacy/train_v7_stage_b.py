@@ -6,7 +6,7 @@
 - 对比学习增强语义区分性
 
 用法 (AutoDL):
-    python scripts/train_v7_stage_b.py \
+    python training/legacy/train_v7_stage_b.py \
         --stage_a_ckpt /root/autodl-tmp/checkpoints/distill_v6/stage_a/best.pt \
         --jpeg_dir /root/autodl-tmp/fivek_jpeg \
         --params_json /root/autodl-tmp/data/fivek_expert_params.json \

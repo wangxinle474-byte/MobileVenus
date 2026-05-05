@@ -25,9 +25,9 @@ IntelligenceCamera/
 ├── logs/                      ← 训练日志 (gitignore)
 ├── models/                    ← 模型定义 (intelligence_camera.py 等)
 ├── outputs/                   ← 实验输出 (gitignore, 见下文 §4)
-├── scripts/                   ← 运行脚本 (autodl/ + local/ + legacy_training/)
+├── scripts/                   ← 运行脚本 (autodl/ 远端 + local/ 本地)
 ├── tools/                     ← 数据处理 + 评估工具
-└── training/                  ← 训练子模块 (dataset, distillation, losses)
+└── training/                  ← 训练子模块 (dataset, distillation, losses, legacy/)
 ```
 
 ## 1. 主要入口
@@ -158,8 +158,7 @@ scripts/
 │   ├── tail_autodl_log.ps1                    ← tail 远端日志
 │   ├── watch_download.ps1                     ← 监视下载
 │   └── check_dl_progress.sh                   ← 进度查看
-└── legacy_training/                       ← 旧训练入口 (7 files, 后期可考虑迁到 training/)
-    └── train_v*.py / train_stage_c.py
+└── (legacy_training 已迁到 training/legacy/, 见 §训练)
 ```
 
 ## 6. docs/ 设计文档

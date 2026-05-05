@@ -4,7 +4,7 @@
 训练模型根据口语化指令调整参数预测。
 
 用法 (AutoDL):
-    python scripts/train_stage_c.py \
+    python training/legacy/train_stage_c.py \
         --stage_b_ckpt /root/autodl-tmp/checkpoints/distill_v7/stage_b/best.pt \
         --jpeg_dir /root/autodl-tmp/fivek_jpeg \
         --instruction_data data/instruction_data.json \

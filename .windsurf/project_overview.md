@@ -65,8 +65,8 @@
 
 | 版本 | 脚本 | 内容 | 状态 |
 |------|------|------|------|
-| v5 | `scripts/train_v5_clean.py` | 早期清理版 | 已完成 |
-| v6 | `scripts/train_v6_stage_a.py` + `train_v6_stage_b.py` | Stage A/B 基础 | ✅ 已完成 |
+| v5 | `training/legacy/train_v5_clean.py` | 早期清理版 | 已完成 |
+| v6 | `training/legacy/train_v6_stage_a.py` + `training/legacy/train_v6_stage_b.py` | Stage A/B 基础 | ✅ 已完成 |
 | v7 | `train_v7_stage_b.py` | +退化增强+对比学习 | ✅ 已完成 |
 | v8 | `train_v8_stage_b.py` + `train_stage_c.py` | +Stage C | ✅ 已完成 |
 | v9 | `train_v9_aesthetic.py` | 美学实验 | ✅ 已完成 |

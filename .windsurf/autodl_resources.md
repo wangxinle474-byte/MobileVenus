@@ -171,7 +171,7 @@ RefineNet v4  ─→ refinement_v4/best.pt         (双分支像素精修, 目�
 ```bash
 # 启动训练
 cd /root/autodl-tmp/IntelligenceCamera
-python scripts/train_v6_stage_a.py          # Stage A
+python training/legacy/train_v6_stage_a.py  # Stage A
 python train_v7_stage_b.py                   # Stage B
 python train_stage_c.py                      # Stage C
 python train_v12_refine_hd.py               # RefinementNet v4

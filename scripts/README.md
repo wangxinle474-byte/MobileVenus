@@ -8,7 +8,8 @@
 |--------|----------|:-:|------|
 | [`autodl/`](#autodl) | AutoDL 远端 GPU 实例 | 21 | 模型下载/安装/训练/推理/服务/评分/监控 |
 | [`local/`](#local) | 本地 Windows (.ps1) 或 Linux/WSL (.sh) | 10 | 本地↔远端同步、HF 权重下载、日志监控 |
-| [`legacy_training/`](#legacy_training) | AutoDL 或本地 Python 直跑 | 7 | 旧版训练入口 (v5-v13 演进, 保留作追溯) |
+
+> 旧训练入口 (`train_v*.py` / `train_stage_c.py` 等) 已迁到 `training/legacy/`, 不再在 scripts/。
 
 ---
 
@@ -83,21 +84,21 @@
 
 ---
 
-## legacy_training/
+## 旧训练入口
 
-旧版训练入口，保留作历史追溯。日常用根目录的 `train_v*.py` 或 `configs/` + LlamaFactory。
+已迁移到 `training/legacy/`. 具体:
 
 | 文件 | 版本 | 说明 |
 |------|------|------|
-| `train_v5_clean.py` | v5 | 最早的 clean version |
-| `train_v6_stage_a.py` | v6 | Stage A 语义对齐 (FiveK) |
-| `train_v6_stage_b.py` | v6 | Stage B 参数预测（Expert C 单专家） |
-| `train_v7_stage_b.py` | v7 | 退化增强 + 对比学习 |
-| `train_v8_stage_b_root.py` | v8 | Stage B 根目录版 |
-| `train_stage_c.py` | v8 | Stage C 文本条件 (TextEncoder + FiLM) |
-| `train_v13_multiscale.py` | v13 | 多尺度精修 (含 EMA + WarmRestarts) |
+| `training/legacy/train_v5_clean.py` | v5 | 最早的 clean version |
+| `training/legacy/train_v6_stage_a.py` | v6 | Stage A 语义对齐 (FiveK) |
+| `training/legacy/train_v6_stage_b.py` | v6 | Stage B 参数预测（Expert C 单专家） |
+| `training/legacy/train_v7_stage_b.py` | v7 | 退化增强 + 对比学习 |
+| `training/legacy/train_v8_stage_b_root.py` | v8 | Stage B 根目录版 |
+| `training/legacy/train_stage_c.py` | v8 | Stage C 文本条件 (TextEncoder + FiLM) |
+| `training/legacy/train_v13_multiscale.py` | v13 | 多尺度精修 (含 EMA + WarmRestarts) |
 
-> 注：主流活动训练在根目录的 `train_v10_e2e.py`、`train_v11_refine.py`、`train_v12_refine_hd.py` 等。这里只放"已完成演进"的版本。
+> 主流活动训练在根目录 `train_v10_e2e.py` / `train_v11_refine.py` / `train_v12_refine_hd.py` 。这里只放"已完成演进"的版本。
 
 ---
 
@@ -113,6 +114,8 @@ ssh autodl "bash /root/autodl-tmp/IntelligenceCamera/scripts/autodl/autodl_phase
 # [AutoDL] 4 组独立评分
 ssh autodl "bash /root/autodl-tmp/IntelligenceCamera/scripts/autodl/autodl_rescore_all_10pt.sh"
 
+# [AutoDL] 跑旧训练入口 (现在在 training/legacy/)
+ssh autodl "cd /root/autodl-tmp/IntelligenceCamera && python training/legacy/train_v6_stage_a.py ..."
+
 # [本地] tail 远端日志
 .\scripts\local\tail_autodl_log.ps1 -Log "compare_full.log"
-```

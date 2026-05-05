@@ -4,7 +4,7 @@
 与 v1-v5 使用 COCO 不同，v6 使用 FiveK 域内数据，消除域差异。
 
 用法 (AutoDL):
-    python scripts/train_v6_stage_a.py \
+    python training/legacy/train_v6_stage_a.py \
         --image_root /root/autodl-tmp/fivek_jpeg \
         --embedding_path /root/autodl-tmp/data/fivek_text_embeddings.npz \
         --output_dir /root/autodl-tmp/checkpoints/distill_v6/stage_a

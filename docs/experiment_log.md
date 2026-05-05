@@ -124,8 +124,8 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - **结论**: 技术指标略优于 Baseline，但美学未超过原图
 
 ### 关键代码
-- `scripts/train_v6_stage_a.py`: Stage A 训练
-- `scripts/train_v6_stage_b.py`: Stage B 训练
+- `training/legacy/train_v6_stage_a.py`: Stage A 训练
+- `training/legacy/train_v6_stage_b.py`: Stage B 训练
 - Checkpoint: `/root/autodl-tmp/checkpoints/distill_v6/`
 
 ---
@@ -160,7 +160,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - Venus/TANet 不适合评估 ISP 级退化
 
 ### 关键代码
-- `scripts/train_v7_stage_b.py`: 含 `batch_degrade()` 和对比学习
+- `training/legacy/train_v7_stage_b.py`: 含 `batch_degrade()` 和对比学习
 - Checkpoint: `/root/autodl-tmp/checkpoints/distill_v7/`
 
 ---
@@ -191,7 +191,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - 支持口语化文本条件输入
 
 ### 关键代码
-- `scripts/train_stage_c.py`: Stage C 训练
+- `training/legacy/train_stage_c.py`: Stage C 训练
 - `tools/data/generate_instruction_data.py`: 指令数据生成
 - `training/text_condition/`: TextEncoder, FiLM, TextConditionedModel
 - Checkpoint: `/root/autodl-tmp/checkpoints/distill_v8/`
@@ -230,7 +230,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - 必须让美学信号真正参与梯度才能突破
 
 ### 关键代码
-- `scripts/train_v9_aesthetic.py`
+- `train_v9_aesthetic.py`
 - `training/aesthetic_loss.py`: AestheticLoss 封装
 - `models/diff_isp.py`: 增强版 (tone curve, clarity, shadows/highlights)
 
@@ -316,7 +316,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - Epoch 6 将进入 E2E 阶段
 
 ### 关键代码
-- `scripts/train_v10_e2e.py`
+- `train_v10_e2e.py`
 
 ---
 
@@ -361,7 +361,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 
 ### 关键代码
 - `models/refinement_net_v4.py`: RefinementNet 最新架构 (V1-V3 已归档删除)
-- `scripts/train_v11_refine.py`: 训练脚本
+- `train_v11_refine.py`: 训练脚本
 
 ---
 
@@ -419,7 +419,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 
 ### 关键代码
 - `models/refinement_net_v4.py`: V4 双分支架构 (16M, 保留最新版; V2/V3 已归档删除)
-- `scripts/train_v12_refine_hd.py`: 统一训练脚本
+- `train_v12_refine_hd.py`: 统一训练脚本
 
 ---
 
@@ -446,11 +446,11 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - lr=3e-4, CosineAnnealingWarmRestarts T_0=50
 
 ### 当前状态
-- AutoDL 训练就绪 (`scripts/train_v13_multiscale.py`)
+- AutoDL 训练就绪 (`training/legacy/train_v13_multiscale.py`)
 - 目标: val_MUSIQ ≥ 4.30
 
 ### 关键代码
-- `scripts/train_v13_multiscale.py`: 训练脚本 (含 EMA, 多尺度, WarmRestarts)
+- `training/legacy/train_v13_multiscale.py`: 训练脚本 (含 EMA, 多尺度, WarmRestarts)
 - `models/refinement_net_v3.py`: V3 架构 (复用)
 
 ---
@@ -497,7 +497,7 @@ python tools/train/train_v14_aesexpert_param.py --epochs 2 --batch_size 4
 python tools/train/train_v14_aesexpert_param.py --root /root/autodl-tmp --epochs 50 --batch_size 32
 
 # V15 = V13 RefinementNet on V14:
-python scripts/train_v13_multiscale.py --param_version v14
+python training/legacy/train_v13_multiscale.py --param_version v14
 ```
 
 ### 关键代码
@@ -525,7 +525,7 @@ python scripts/train_v13_multiscale.py --param_version v14
 
 ### 关键代码
 - `models/neural_isp.py`: NeuralISP 模型
-- `scripts/train_neural_isp.py`: 训练脚本
+- `train_neural_isp.py`: 训练脚本
 
 ---
 
@@ -591,14 +591,14 @@ python scripts/train_v13_multiscale.py --param_version v14
 ### 训练脚本
 | 文件 | 版本 | 说明 |
 |------|------|------|
-| `scripts/train_v6_stage_a.py` | v6 | Stage A 语义对齐 |
-| `scripts/train_v6_stage_b.py` | v6 | Stage B 参数预测 |
-| `scripts/train_v7_stage_b.py` | v7 | 退化增强 + 对比学习 |
-| `scripts/train_stage_c.py` | v8 | Stage C 文本条件 |
-| `scripts/train_v9_aesthetic.py` | v9 | 美学感知微调 |
-| `scripts/train_v10_e2e.py` | v10 | 端到端 image_loss |
-| `scripts/train_v11_refine.py` | v11 | RefinementNet 精修 |
-| `scripts/train_neural_isp.py` | — | Neural ISP (已搁置) |
+| `training/legacy/train_v6_stage_a.py` | v6 | Stage A 语义对齐 |
+| `training/legacy/train_v6_stage_b.py` | v6 | Stage B 参数预测 |
+| `training/legacy/train_v7_stage_b.py` | v7 | 退化增强 + 对比学习 |
+| `training/legacy/train_stage_c.py` | v8 | Stage C 文本条件 |
+| `train_v9_aesthetic.py` | v9 | 美学感知微调 |
+| `train_v10_e2e.py` | v10 | 端到端 image_loss |
+| `train_v11_refine.py` | v11 | RefinementNet 精修 |
+| `train_neural_isp.py` | — | Neural ISP (已搁置) |
 
 ### 模型文件
 | 文件 | 说明 |
