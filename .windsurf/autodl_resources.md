@@ -68,17 +68,17 @@
 │   │
 │   ├── train_v6_stage_b.py       ← Stage B v6 训练
 │   ├── train_v7_stage_b.py       ← Stage B v7 (+退化增强)
-│   ├── train_v8_stage_b.py       ← Stage B v8 (MUSIQ优化)
-│   ├── train_stage_c.py          ← Stage C 文本条件化
-│   ├── train_v9_aesthetic.py     ← 美学实验
-│   ├── train_v10_e2e.py          ← 端到端实验
-│   ├── train_v11_refine.py       ← RefineNet v1
-│   ├── train_v12_refine_hd.py    ← RefineNet v4 (512+MUSIQ) ← 当前主力
-│   ├── train_v13_multiscale.py   ← 多尺度实验
-│   ├── train_neural_isp.py       ← NeuralISP 实验
+│   ├── training/main/train_v8_stage_b.py       ← Stage B v8 (MUSIQ优化)
+│   ├── training/main/train_stage_c.py          ← Stage C 文本条件化
+│   ├── training/main/train_v9_aesthetic.py     ← 美学实验
+│   ├── training/main/train_v10_e2e.py          ← 端到端实验
+│   ├── training/main/train_v11_refine.py       ← RefineNet v1
+│   ├── training/main/train_v12_refine_hd.py    ← RefineNet v4 (512+MUSIQ) ← 当前主力
+│   ├── training/main/train_v13_multiscale.py   ← 多尺度实验
+│   ├── training/main/train_neural_isp.py       ← NeuralISP 实验
 │   │
 │   ├── scripts/                  ← 辅助脚本
-│   │   ├── train_v6_stage_a.py       Stage A 训练
+│   │   ├── training/main/train_v6_stage_a.py       Stage A 训练
 │   │   ├── train_v6_stage_b.py       Stage B 训练
 │   │   ├── train_v5_clean.py         v5 训练
 │   │   └── deploy_v8_to_autodl.sh    部署脚本
@@ -173,8 +173,8 @@ RefineNet v4  ─→ refinement_v4/best.pt         (双分支像素精修, 目�
 cd /root/autodl-tmp/IntelligenceCamera
 python training/legacy/train_v6_stage_a.py  # Stage A
 python train_v7_stage_b.py                   # Stage B
-python train_stage_c.py                      # Stage C
-python train_v12_refine_hd.py               # RefinementNet v4
+python training/main/train_stage_c.py                      # Stage C
+python training/main/train_v12_refine_hd.py               # RefinementNet v4
 
 # 查看训练日志
 tail -f /root/autodl-tmp/logs/v12_train.log

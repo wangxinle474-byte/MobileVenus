@@ -8,9 +8,9 @@ Distill v8 — Stage B: 多数据集多专家联合训练 (FiveK + PPR10K)
   4. 验证分别报告 FiveK 和 PPR10K 指标
 
 用法:
-  python train_v8_stage_b.py
-  python train_v8_stage_b.py --no_ppr10k
-  python train_v8_stage_b.py --no_contrastive
+  python training/main/train_v8_stage_b.py
+  python training/main/train_v8_stage_b.py --no_ppr10k
+  python training/main/train_v8_stage_b.py --no_contrastive
 """
 import sys, json, time, argparse, logging
 from pathlib import Path

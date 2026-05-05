@@ -72,8 +72,8 @@ $TrainFiles = @(
     "training/legacy/train_v7_stage_b.py",
     "training/legacy/train_stage_c.py",
     "training/legacy/train_v13_multiscale.py",
-    "train_v12_refine_hd.py",
-    "train_v6_stage_a.py",
+    "training/main/train_v12_refine_hd.py",
+    "training/main/train_v6_stage_a.py",
 
     # 工具 (训练/数据/评估)
     "tools/eval/*.py",
@@ -117,4 +117,4 @@ Write-Host ""
 Write-Host "在 AutoDL 上运行:" -ForegroundColor Cyan
 Write-Host "  cd $RemoteDir"
 Write-Host "  python training/legacy/train_v6_stage_a.py"
-Write-Host "  python train_v12_refine_hd.py"
+Write-Host "  python training/main/train_v12_refine_hd.py"

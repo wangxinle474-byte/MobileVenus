@@ -38,8 +38,8 @@ rsync -avz --progress \
     --include='tools/train/***' \
     --include='tools/__init__.py' \
     \
-    --include='train_v12_refine_hd.py' \
-    --include='train_v6_stage_a.py' \
+    --include='training/main/train_v12_refine_hd.py' \
+    --include='training/main/train_v6_stage_a.py' \
     --include='requirements.txt' \
     \
     --exclude='models/mobile_venus.py' \
@@ -68,4 +68,4 @@ echo "=== 同步完成 ==="
 echo "在 AutoDL 上运行训练:"
 echo "  cd $REMOTE_DIR"
 echo "  python training/legacy/train_v6_stage_a.py"
-echo "  python train_v12_refine_hd.py"
+echo "  python training/main/train_v12_refine_hd.py"

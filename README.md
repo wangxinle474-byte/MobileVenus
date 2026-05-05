@@ -83,16 +83,16 @@ IntelligenceCamera/
 │   └── dataset.py                      # 通用数据集
 │
 ├── scripts/                              # 训练脚本 (全版本)
-│   ├── train_v6_stage_a.py              #   v6 Stage A 语义对齐
+│   ├── training/main/train_v6_stage_a.py              #   v6 Stage A 语义对齐
 │   ├── train_v6_stage_b.py              #   v6 Stage B 参数预测
 │   ├── train_v7_stage_b.py              #   v7 退化增强 + 对比学习
-│   ├── train_stage_c.py                 #   v8 Stage C 文本条件
-│   ├── train_v9_aesthetic.py            #   v9 美学感知微调
-│   ├── train_v10_e2e.py                 #   v10 端到端 image_loss
-│   ├── train_v11_refine.py              #   v11 RefinementNet 精修
-│   ├── train_v12_refine_hd.py           #   v12 大模型 512 训练
-│   ├── train_v13_multiscale.py          #   v13 多尺度 MUSIQ + EMA
-│   └── train_neural_isp.py              #   Neural ISP (已搁置)
+│   ├── training/main/train_stage_c.py                 #   v8 Stage C 文本条件
+│   ├── training/main/train_v9_aesthetic.py            #   v9 美学感知微调
+│   ├── training/main/train_v10_e2e.py                 #   v10 端到端 image_loss
+│   ├── training/main/train_v11_refine.py              #   v11 RefinementNet 精修
+│   ├── training/main/train_v12_refine_hd.py           #   v12 大模型 512 训练
+│   ├── training/main/train_v13_multiscale.py          #   v13 多尺度 MUSIQ + EMA
+│   └── training/main/train_neural_isp.py              #   Neural ISP (已搁置)
 │
 ├── tools/                               # 工具脚本
 │   ├── data/                           # 数据处理 (50+ 脚本, 详见 docs/data_preparation.md)

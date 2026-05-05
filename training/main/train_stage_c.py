@@ -9,14 +9,14 @@ Stage C: 文本条件化 ISP 参数预测 — 训练脚本
 
 用法:
   # 1. 生成指令数据
-  python tools/data/generate_instruction_data.py \
+  python tools/data/data_prep/generate_instruction_data.py \
     --fivek_params data/fivek_expert_params.json \
     --ppr10k_params data/ppr10k_params.json \
     --output data/instruction_data.json
 
   # 2. 训练 Stage C
-  python train_stage_c.py
-  python train_stage_c.py --fusion cross_attn  # 交叉注意力 (消融)
+  python training/main/train_stage_c.py
+  python training/main/train_stage_c.py --fusion cross_attn  # 交叉注意力 (消融)
 """
 import sys
 import json
@@ -106,7 +106,7 @@ def main():
     if not instr_path.exists():
         raise FileNotFoundError(
             f'指令数据不存在: {instr_path}\n'
-            f'请先运行: python tools/data/generate_instruction_data.py')
+            f'请先运行: python tools/data/data_prep/generate_instruction_data.py')
 
     # ── 加载 Stage B 模型 ──
     cfg = DistillConfig()

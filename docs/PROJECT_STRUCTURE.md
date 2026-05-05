@@ -18,7 +18,7 @@ IntelligenceCamera/
 ├── data/                      ← 数据集 / 标签 / captions
 ├── docs/                      ← 论文素材 + 设计文档
 ├── eval_results/              ← 评估结果
-├── evaluate/                  ← 评估流水线 (run_comparison.py 等)
+├── evaluate/                  ← 评估流水线 (run_comparison.py + eval_ceiling/hires/neural_isp.py)
 ├── examples/                  ← 用例展示
 ├── images/                    ← 论文配图 + 训练曲线
 ├── inference/                 ← 推理引擎 (predict.py, camera_controller.py)
@@ -27,14 +27,18 @@ IntelligenceCamera/
 ├── outputs/                   ← 实验输出 (gitignore, 见下文 §4)
 ├── scripts/                   ← 运行脚本 (autodl/ 远端 + local/ 本地)
 ├── tools/                     ← 数据处理 + 评估工具
-└── training/                  ← 训练子模块 (dataset, distillation, losses, legacy/)
+└── training/                  ← 训练总目录
+    ├── main/                  ← 当前主线 (train_v6/v8/v9/v10/v11/v12/v13_*.py + train_stage_c.py + train_neural_isp.py)
+    ├── legacy/                ← 早期/launcher 版本
+    ├── dataset.py / distillation.py / aesthetic_loss.py
+    └── semantic_distill/, text_condition/, fivek_8param/
 ```
 
 ## 1. 主要入口
 
 ### 训练
-- 完整流水线: `train_v13_multiscale.py` (最新 v13)
-- 主版本演进: `train_v6_stage_a.py` → `train_v8_stage_b.py` → `train_v10_e2e.py` → `train_v11_refine.py` → `train_v12_refine_hd.py` → `train_v13_multiscale.py`
+- 完整流水线: `training/main/train_v13_multiscale.py` (最新 v13)
+- 主版本演进: `training/main/train_v6_stage_a.py` → `training/main/train_v8_stage_b.py` → `training/main/train_v10_e2e.py` → `training/main/train_v11_refine.py` → `training/main/train_v12_refine_hd.py` → `training/main/train_v13_multiscale.py`
 - 配置: `configs/lora_qwen3vl_4b_sft.yaml`
 
 ### 推理 (Web app 后端)

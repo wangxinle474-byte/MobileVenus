@@ -68,11 +68,11 @@
 | v5 | `training/legacy/train_v5_clean.py` | 早期清理版 | 已完成 |
 | v6 | `training/legacy/train_v6_stage_a.py` + `training/legacy/train_v6_stage_b.py` | Stage A/B 基础 | ✅ 已完成 |
 | v7 | `train_v7_stage_b.py` | +退化增强+对比学习 | ✅ 已完成 |
-| v8 | `train_v8_stage_b.py` + `train_stage_c.py` | +Stage C | ✅ 已完成 |
-| v9 | `train_v9_aesthetic.py` | 美学实验 | ✅ 已完成 |
-| v10 | `train_v10_e2e.py` | 端到端实验 | ✅ 已完成 |
-| v11 | `train_v11_refine.py` | RefineNet v1 | ✅ 已完成 |
-| v12 | `train_v12_refine_hd.py` | RefineNet v4 (512+MUSIQ) | ✅ 当前主力 |
+| v8 | `training/main/train_v8_stage_b.py` + `training/main/train_stage_c.py` | +Stage C | ✅ 已完成 |
+| v9 | `training/main/train_v9_aesthetic.py` | 美学实验 | ✅ 已完成 |
+| v10 | `training/main/train_v10_e2e.py` | 端到端实验 | ✅ 已完成 |
+| v11 | `training/main/train_v11_refine.py` | RefineNet v1 | ✅ 已完成 |
+| v12 | `training/main/train_v12_refine_hd.py` | RefineNet v4 (512+MUSIQ) | ✅ 当前主力 |
 | v13 | `training/legacy/train_v13_multiscale.py` | 多尺度 + EMA + WarmRestarts (val_MUSIQ=4.20) | ✅ 已完成 |
 | v14 | `tools/train/train_v14_aesexpert_param.py` | AesExpert 高质量数据混训 ParamModel | 🔄 计划中 |
 

@@ -21,8 +21,8 @@ E:\智能相机\Venus_CVPR2026-main\IntelligenceCamera\
 ├── inference/        ← 推理接口 (仅本地)
 ├── evaluate/         ← 评估框架 (仅本地)
 ├── data/             ← 数据配置模板 (仅本地)
-├── train_v12_refine_hd.py
-└── train_v6_stage_a.py
+├── training/main/train_v12_refine_hd.py
+└── training/main/train_v6_stage_a.py
 ```
 
 ### AutoDL (仅训练相关)
@@ -34,8 +34,8 @@ E:\智能相机\Venus_CVPR2026-main\IntelligenceCamera\
 ├── tools/eval/       ← 评估工具
 ├── tools/data/       ← 数据处理工具
 ├── tools/train/      ← 训练辅助工具
-├── train_v12_refine_hd.py
-├── train_v6_stage_a.py
+├── training/main/train_v12_refine_hd.py
+├── training/main/train_v6_stage_a.py
 └── requirements.txt
 
 /root/autodl-tmp/
@@ -148,8 +148,8 @@ training/
     config.py, dataset.py, dataset_expert.py, dataset_ppr10k.py, model.py, loss.py
 
 scripts/                  ← 训练脚本
-  train_v6_stage_a.py, train_v6_stage_b.py, train_v7_stage_b.py, train_stage_c.py
-train_v12_refine_hd.py    ← RefinementNet v12 训练 (512×512, MUSIQ主导)
+  training/main/train_v6_stage_a.py, train_v6_stage_b.py, train_v7_stage_b.py, training/main/train_stage_c.py
+training/main/train_v12_refine_hd.py    ← RefinementNet v12 训练 (512×512, MUSIQ主导)
 
 evaluate/                 ← 评估框架 + 结果
 inference/                ← 推理接口 (predict.py, camera_controller.py)

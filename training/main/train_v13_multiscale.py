@@ -14,8 +14,8 @@ V3 best: MUSIQ=4.21 @ Ep111
 V5 目标: MUSIQ ≥ 4.30
 
 AutoDL:
-  python train_v13_multiscale.py
-  python train_v13_multiscale.py --epochs 200 --musiq_weight 8.0
+  python training/main/train_v13_multiscale.py
+  python training/main/train_v13_multiscale.py --epochs 200 --musiq_weight 8.0
 """
 import sys, json, time, argparse, logging, copy, random
 from pathlib import Path

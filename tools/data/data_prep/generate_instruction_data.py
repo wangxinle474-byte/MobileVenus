@@ -22,7 +22,7 @@ Stage C 训练数据生成: 指令-参数配对
   ]
 
 用法:
-  python tools/data/generate_instruction_data.py \
+  python tools/data/data_prep/generate_instruction_data.py \
     --fivek_params data/fivek_expert_params.json \
     --ppr10k_params data/ppr10k_params.json \
     --output data/instruction_data.json \

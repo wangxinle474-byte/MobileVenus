@@ -17,9 +17,9 @@ AutoDL 用法:
     --output /root/autodl-tmp/data/ppr10k_params.json
 
   # 2. 训练
-  python train_v8_stage_b.py
-  python train_v8_stage_b.py --no_ppr10k          # 仅 FiveK 多专家 (对照)
-  python train_v8_stage_b.py --no_contrastive      # 无对比学习 (消融)
+  python training/main/train_v8_stage_b.py
+  python training/main/train_v8_stage_b.py --no_ppr10k          # 仅 FiveK 多专家 (对照)
+  python training/main/train_v8_stage_b.py --no_contrastive      # 无对比学习 (消融)
 
 前置条件:
   /root/autodl-tmp/checkpoints/distill_v6/stage_a/best.pt

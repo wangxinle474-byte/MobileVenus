@@ -11,8 +11,8 @@ Distill v9 — 美学感知微调 (Aesthetic-Aware Fine-tuning)
      + aesthetic_weight * aesthetic_loss
 
 AutoDL 用法:
-  python train_v9_aesthetic.py
-  python train_v9_aesthetic.py --aesthetic_weight 0.2 --img_weight 1.0
+  python training/main/train_v9_aesthetic.py
+  python training/main/train_v9_aesthetic.py --aesthetic_weight 0.2 --img_weight 1.0
 
 前置条件:
   /root/autodl-tmp/checkpoints/distill_v7/stage_b/best.pt

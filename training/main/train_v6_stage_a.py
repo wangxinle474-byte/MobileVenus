@@ -4,7 +4,7 @@ Distill v6 — Stage A: 语义对齐预训练
 目标: 比 v4 Stage A 更强的语义对齐，同时兼顾域内分布
 
 AutoDL 用法:
-  python train_v6_stage_a.py \
+  python training/main/train_v6_stage_a.py \
     --coco_embed /root/autodl-tmp/data/coco5k_text_embeddings.npz \
     --coco_img_root /root/AADB_images \
     --fivek_embed /root/autodl-tmp/data/fivek_text_embeddings.npz \
@@ -13,7 +13,7 @@ AutoDL 用法:
     --epochs 30 --batch_size 32 --lr 5e-4
 
 若无 FiveK 文本 embedding，只用 COCO:
-  python train_v6_stage_a.py \
+  python training/main/train_v6_stage_a.py \
     --coco_embed /root/autodl-tmp/data/coco5k_text_embeddings.npz \
     --coco_img_root /root/AADB_images \
     --output_dir /root/autodl-tmp/checkpoints/distill_v6 \

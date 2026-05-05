@@ -9,7 +9,7 @@
 | [`autodl/`](#autodl) | AutoDL 远端 GPU 实例 | 21 | 模型下载/安装/训练/推理/服务/评分/监控 |
 | [`local/`](#local) | 本地 Windows (.ps1) 或 Linux/WSL (.sh) | 10 | 本地↔远端同步、HF 权重下载、日志监控 |
 
-> 旧训练入口 (`train_v*.py` / `train_stage_c.py` 等) 已迁到 `training/legacy/`, 不再在 scripts/。
+> 旧训练入口 (`train_v*.py` / `training/main/train_stage_c.py` 等) 已迁到 `training/legacy/`, 不再在 scripts/。
 
 ---
 
@@ -98,7 +98,7 @@
 | `training/legacy/train_stage_c.py` | v8 | Stage C 文本条件 (TextEncoder + FiLM) |
 | `training/legacy/train_v13_multiscale.py` | v13 | 多尺度精修 (含 EMA + WarmRestarts) |
 
-> 主流活动训练在根目录 `train_v10_e2e.py` / `train_v11_refine.py` / `train_v12_refine_hd.py` 。这里只放"已完成演进"的版本。
+> 主流活动训练在根目录 `training/main/train_v10_e2e.py` / `training/main/train_v11_refine.py` / `training/main/train_v12_refine_hd.py` 。这里只放"已完成演进"的版本。
 
 ---
 

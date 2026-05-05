@@ -197,7 +197,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 
 ### 关键代码
 - `training/legacy/train_stage_c.py`: Stage C 训练
-- `tools/data/generate_instruction_data.py`: 指令数据生成
+- `tools/data/data_prep/generate_instruction_data.py`: 指令数据生成
 - `training/text_condition/`: TextEncoder, FiLM, TextConditionedModel
 - Checkpoint: `/root/autodl-tmp/checkpoints/distill_v8/`
 
@@ -235,7 +235,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - 必须让美学信号真正参与梯度才能突破
 
 ### 关键代码
-- `train_v9_aesthetic.py`
+- `training/main/train_v9_aesthetic.py`
 - `training/aesthetic_loss.py`: AestheticLoss 封装
 - `models/diff_isp.py`: 增强版 (tone curve, clarity, shadows/highlights)
 
@@ -261,7 +261,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 | v9 | ~3.7 | 4.418 | +0.7 |
 
 ### 关键代码
-- `eval_hires.py`: 高分辨率评估脚本
+- `evaluate/eval_hires.py`: 高分辨率评估脚本
 
 ---
 
@@ -290,7 +290,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - **结论**: 6 个全局 ISP 参数的上限就在 ~5 分，要到 8.5+ 需要根本性变化
 
 ### 关键代码
-- `eval_ceiling.py`: 天花板评估脚本
+- `evaluate/eval_ceiling.py`: 天花板评估脚本
 
 ---
 
@@ -321,7 +321,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 - Epoch 6 将进入 E2E 阶段
 
 ### 关键代码
-- `train_v10_e2e.py`
+- `training/main/train_v10_e2e.py`
 
 ---
 
@@ -366,7 +366,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 
 ### 关键代码
 - `models/refinement_net_v4.py`: RefinementNet 最新架构 (V1-V3 已归档删除)
-- `train_v11_refine.py`: 训练脚本
+- `training/main/train_v11_refine.py`: 训练脚本
 
 ---
 
@@ -424,7 +424,7 @@ Baseline → v1-v3(语义蒸馏探索) → v4-v5(精度优化) → v6(Venus NL) 
 
 ### 关键代码
 - `models/refinement_net_v4.py`: V4 双分支架构 (16M, 保留最新版; V2/V3 已归档删除)
-- `train_v12_refine_hd.py`: 统一训练脚本
+- `training/main/train_v12_refine_hd.py`: 统一训练脚本
 
 ---
 
@@ -530,7 +530,7 @@ python training/legacy/train_v13_multiscale.py --param_version v14
 
 ### 关键代码
 - `models/neural_isp.py`: NeuralISP 模型
-- `train_neural_isp.py`: 训练脚本
+- `training/main/train_neural_isp.py`: 训练脚本
 
 ---
 
@@ -600,13 +600,13 @@ python training/legacy/train_v13_multiscale.py --param_version v14
 | `training/legacy/train_v6_stage_b.py` | v6 | Stage B 参数预测 |
 | `training/legacy/train_v7_stage_b.py` | v7 | 退化增强 + 对比学习 |
 | `training/legacy/train_stage_c.py` | v8 | Stage C 文本条件 |
-| `train_v9_aesthetic.py` | v9 | 美学感知微调 |
-| `train_v10_e2e.py` | v10 | 端到端 image_loss |
-| `train_v11_refine.py` | v11 | RefineNet V1 精修 (130K) |
-| `train_v12_refine_hd.py` | v12 | RefineNet V4 512+MUSIQ 主导 (16M) |
+| `training/main/train_v9_aesthetic.py` | v9 | 美学感知微调 |
+| `training/main/train_v10_e2e.py` | v10 | 端到端 image_loss |
+| `training/main/train_v11_refine.py` | v11 | RefineNet V1 精修 (130K) |
+| `training/main/train_v12_refine_hd.py` | v12 | RefineNet V4 512+MUSIQ 主导 (16M) |
 | `training/legacy/train_v13_multiscale.py` | v13 | 多尺度 + EMA + WarmRestarts |
 | `tools/train/train_v14_aesexpert_param.py` | v14 | AesExpert 高质量数据混训 ParamModel |
-| `train_neural_isp.py` | — | Neural ISP (已搁置) |
+| `training/main/train_neural_isp.py` | — | Neural ISP (已搁置) |
 
 ### 模型文件
 | 文件 | 说明 |
@@ -626,9 +626,9 @@ python training/legacy/train_v13_multiscale.py --param_version v14
 ### 评估脚本
 | 文件 | 说明 |
 |------|------|
-| `eval_hires.py` | 512×512 高分辨率评估 |
-| `eval_ceiling.py` | Expert C 天花板评估 |
-| `eval_neural_isp.py` | Neural ISP 对比评估 |
+| `evaluate/eval_hires.py` | 512×512 高分辨率评估 |
+| `evaluate/eval_ceiling.py` | Expert C 天花板评估 |
+| `evaluate/eval_neural_isp.py` | Neural ISP 对比评估 |
 | `tools/eval/eval_v8_autodl.py` | v6-v9 统一评估 |
 | `tools/eval/eval_psnr_ssim.py` | PSNR/SSIM 评估 |
 | `tools/eval/eval_nr_iqa_full.py` | 9 指标 NR-IQA |

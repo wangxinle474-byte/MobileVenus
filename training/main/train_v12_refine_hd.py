@@ -11,8 +11,8 @@ Pipeline:
   原图(224) → param_model(冻结v8) → diff_isp(512渲染) → RefinementNetV2(训练) → 高质量输出
 
 AutoDL:
-  python train_v12_refine_hd.py
-  python train_v12_refine_hd.py --epochs 80 --musiq_weight 1.0
+  python training/main/train_v12_refine_hd.py
+  python training/main/train_v12_refine_hd.py --epochs 80 --musiq_weight 1.0
 """
 import sys, json, time, argparse, logging
 from pathlib import Path
