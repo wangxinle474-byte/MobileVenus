@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "test": true,
+    "n_samples": 3
+  },
+  "samples": [
+    {
+      "rank": 1,
+      "idx": 5,
+      "source_image": "a0005-jn_2007_05_10__564.jpg",
+      "orig_path": "E:/Data/dataset/fivek_jpeg/a0005-jn_2007_05_10__564.jpg",
+      "venus_suggestion": "",
+      "new_caption": "Apply warmer white balance. Keep the original composition and subject unchanged.",
+      "tone_target": "wb",
+      "score": 5
+    },
+    {
+      "rank": 2,
+      "idx": 19,
+      "source_image": "a0019-jmac_MG_0653.jpg",
+      "orig_path": "E:/Data/dataset/fivek_jpeg/a0019-jmac_MG_0653.jpg",
+      "venus_suggestion": "",
+      "new_caption": "Apply warmer white balance. Keep the original composition and subject unchanged.",
+      "tone_target": "wb",
+      "score": 5
+    },
+    {
+      "rank": 3,
+      "idx": 29,
+      "source_image": "a0029-jmac_DSC3974.jpg",
+      "orig_path": "E:/Data/dataset/fivek_jpeg/a0029-jmac_DSC3974.jpg",
+      "venus_suggestion": "",
+      "new_caption": "Apply warmer white balance. Keep the original composition and subject unchanged.",
+      "tone_target": "wb",
+      "score": 5
+    }
+  ]
+}

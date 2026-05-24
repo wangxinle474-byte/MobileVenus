@@ -85,6 +85,29 @@ def color_temp_to_rgb_gains(wb_k: torch.Tensor) -> torch.Tensor:
     return gains
 
 
+# ─────────────────── v10a: 2D Chromaticity WB (Off-Planckian) ───────────────────
+
+def chromaticity_to_rgb_gains(wb_u: torch.Tensor,
+                              wb_v: torch.Tensor) -> torch.Tensor:
+    """v10a: 2D 色度坐标 → RGB 增益 (off-Planckian, 不受黑体曲线约束).
+
+    Inspired by [Off the Planckian Locus, arxiv 2511.17133]: 1D CCT 锁死 R/G/B 比,
+    无法表达品红/绿调等 off-locus 色偏. 用 2D log-gain 偏移让 R, B 增益独立.
+
+    Args:
+        wb_u: (B,) green↔magenta axis offset (= log(R_gain / G_gain))
+        wb_v: (B,) blue↔yellow axis offset    (= log(B_gain / G_gain))
+              典型范围 [-0.5, 0.5] → R/B gain ∈ [0.6, 1.65]
+
+    Returns:
+        (B, 3) gains, G 通道恒为 1.
+    """
+    r_gain = torch.exp(wb_u)
+    g_gain = torch.ones_like(wb_u)
+    b_gain = torch.exp(wb_v)
+    return torch.stack([r_gain, g_gain, b_gain], dim=1)
+
+
 # ─────────────────────────── SSIM 损失 ───────────────────────────
 
 def ssim_loss(pred: torch.Tensor, target: torch.Tensor,
@@ -192,9 +215,14 @@ def apply_diff_isp(img: torch.Tensor, params: Dict[str, torch.Tensor]) -> torch.
     B = img.shape[0]
     linear = srgb_to_linear(img)
 
-    # 1. White Balance
+    # 1. White Balance: Planckian (1D K) + optional 2D chromaticity offset (v10a)
     wb = params['white_balance']
-    gains = color_temp_to_rgb_gains(wb).clamp(0.0, 8.0)
+    gains = color_temp_to_rgb_gains(wb)
+    # v10a: off-Planckian residual gain. wb_u/wb_v default 0 → no change.
+    wb_u = params.get('wb_u', torch.zeros(B, device=img.device))
+    wb_v = params.get('wb_v', torch.zeros(B, device=img.device))
+    chroma_gains = chromaticity_to_rgb_gains(wb_u, wb_v)
+    gains = (gains * chroma_gains).clamp(0.0, 8.0)
     linear = (linear * gains.view(B, 3, 1, 1)).clamp(0.0, 4.0)
 
     # 2. EV Compensation (可选, 新 pipeline 建议用 brightness 代替; 此 op 保留做向后兼容)

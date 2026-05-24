@@ -17,7 +17,8 @@ from pathlib import Path
 
 from gradio_client import Client, handle_file
 
-STUDIO_URL = 'https://fireredteam-firered-image-edit-1-1.ms.show'
+STUDIO_URL = 'https://studio-fireredteam-firered-image-edit-1-1.api-inference.modelscope.net'
+MS_TOKEN = 'ms-28b63a2d-f09f-4593-b181-ffc026abb68b'
 
 
 def main():
@@ -36,6 +37,14 @@ def main():
                     help='\u8ba9 FireRed \u5185\u7f6e LLM \u6539\u5199 prompt (\u9ed8\u8ba4\u5173)')
     ap.add_argument('--height', type=int, default=0, help='0 = auto')
     ap.add_argument('--width', type=int, default=0, help='0 = auto')
+    ap.add_argument('--resume', action='store_true',
+                    help='跳过 out_dir 中已存在的输出文件 (断点续传)')
+    ap.add_argument('--max_retries', type=int, default=3,
+                    help='每个样本最大重试次数 (API 偶尔超时)')
+    ap.add_argument('--retry_delay', type=float, default=10.0,
+                    help='重试间隔秒数')
+    ap.add_argument('--delay', type=float, default=3.0,
+                    help='每次成功请求后的等待秒数 (防限流)')
     args = ap.parse_args()
 
     cfg = json.load(open(args.captions, encoding='utf-8'))
@@ -45,7 +54,7 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f'[CONNECT] {STUDIO_URL}')
-    client = Client(STUDIO_URL, verbose=False)
+    client = Client(STUDIO_URL, token=MS_TOKEN, verbose=False)
 
     def _unwrap(x):
         """gradio Component.update() \u8fd4\u56de dict {'__type__': 'update', 'value': ...}"""
@@ -77,13 +86,35 @@ def main():
           f'seed={args.seed}, rewrite={args.rewrite_prompt}')
     print(f'[RUN] {len(samples)} samples -> {out_dir}')
 
+    # Resume: load existing records if any
+    meta_path = out_dir / 'run_meta.json'
     records = []
+    done_idxs = set()
+    if args.resume and meta_path.exists():
+        old_meta = json.load(open(meta_path, encoding='utf-8'))
+        records = old_meta.get('records', [])
+        done_idxs = {r['idx'] for r in records if r.get('status') == 'ok'}
+        # Also check for output files directly
+        for png in out_dir.glob('*.png'):
+            try:
+                done_idxs.add(int(png.stem))
+            except ValueError:
+                pass
+        print(f'[RESUME] {len(done_idxs)} already done, skipping')
+
     t0 = time.time()
+    n_skip = 0
     for i, s in enumerate(samples):
         idx = s['idx']
         caption = s['new_caption']
-        src_name = s['source_image']
-        # \u4f18\u5148\u627e <idx>.png (新布局 originals/), 再 <idx>_orig.png (旧布局), 再 source_image
+        src_name = s.get('source_image', f'{idx:04d}.png')
+
+        # Resume: skip if output already exists
+        if args.resume and idx in done_idxs:
+            n_skip += 1
+            continue
+
+        # 优先找 <idx>.png, 再 <idx>_orig.png, 再 source_image (支持 FiveK .jpg)
         src_path = input_dir / f'{idx:04d}.png'
         if not src_path.exists():
             src_path = input_dir / f'{idx:04d}_orig.png'
@@ -96,31 +127,44 @@ def main():
         # Gallery \u8f93\u5165\u683c\u5f0f: list[{image: {...}, caption: None}]
         gallery_input = [{'image': handle_file(str(src_path)), 'caption': None}]
 
+        done_so_far = len(done_idxs) + sum(1 for r in records if r.get('status') == 'ok' and r['idx'] not in done_idxs)
+        remaining = len(samples) - n_skip - (i - n_skip)
         print(f'[{i+1}/{len(samples)}] idx={idx}  src={src_name}  '
-              f'prompt={caption[:70]}...')
-        ti = time.time()
-        try:
-            result = client.predict(
-                input_images=gallery_input,
-                prompt=caption,
-                lora_choice=args.lora,
-                seed=args.seed,
-                randomize_seed=False,
-                true_guidance_scale=true_cfg,
-                num_inference_steps=steps,
-                height=args.height,
-                width=args.width,
-                rewrite_prompt=args.rewrite_prompt,
-                num_images_per_prompt=1,
-                api_name='/infer',
-            )
-        except Exception as e:
-            dt = time.time() - ti
-            print(f'  FAIL ({dt:.1f}s): {type(e).__name__}: {e}')
-            records.append({
-                'idx': idx, 'source_image': src_name, 'caption': caption,
-                'status': 'fail', 'error': f'{type(e).__name__}: {e}',
-            })
+              f'prompt={caption[:60]}...  (done={done_so_far}, left≈{remaining})')
+
+        result = None
+        last_err = None
+        for attempt in range(args.max_retries):
+            ti = time.time()
+            try:
+                result = client.predict(
+                    input_images=gallery_input,
+                    prompt=caption,
+                    lora_choice=args.lora,
+                    seed=args.seed,
+                    randomize_seed=False,
+                    true_guidance_scale=true_cfg,
+                    num_inference_steps=steps,
+                    height=args.height,
+                    width=args.width,
+                    rewrite_prompt=args.rewrite_prompt,
+                    num_images_per_prompt=1,
+                    api_name='/infer',
+                )
+                break
+            except Exception as e:
+                dt = time.time() - ti
+                last_err = f'{type(e).__name__}: {e}'
+                if attempt < args.max_retries - 1:
+                    print(f'  RETRY {attempt+1}/{args.max_retries} ({dt:.1f}s): {last_err}')
+                    time.sleep(args.retry_delay)
+                else:
+                    print(f'  FAIL ({dt:.1f}s): {last_err}')
+                    records.append({
+                        'idx': idx, 'source_image': src_name, 'caption': caption,
+                        'status': 'fail', 'error': last_err,
+                    })
+        if result is None:
             continue
 
         dt = time.time() - ti
@@ -165,14 +209,29 @@ def main():
             'runtime_sec': dt,
         })
 
-    total = time.time() - t0
-    n_ok = sum(1 for r in records if r.get('status') == 'ok')
-    print(f'\n[DONE] {n_ok}/{len(samples)} in {total:.1f}s')
+        # Throttle to avoid 403 rate limiting
+        if args.delay > 0:
+            time.sleep(args.delay)
 
-    meta_path = out_dir / 'run_meta.json'
+        # Periodic save (every 50 samples) for crash safety
+        if len(records) % 50 == 0:
+            _save_meta(meta_path, args, STUDIO_URL, steps, true_cfg,
+                       samples, records, time.time() - t0)
+
+    total = time.time() - t0
+    n_ok = sum(1 for r in records if r.get('status') == 'ok') + len(done_idxs)
+    print(f'\n[DONE] {n_ok}/{len(samples)} in {total:.1f}s (skipped {n_skip} resume)')
+    _save_meta(meta_path, args, STUDIO_URL, steps, true_cfg,
+               samples, records, total)
+    print(f'[META] {meta_path}')
+
+
+def _save_meta(meta_path, args, studio_url, steps, true_cfg,
+               samples, records, total):
+    n_ok = sum(1 for r in records if r.get('status') == 'ok')
     with open(meta_path, 'w', encoding='utf-8') as f:
         json.dump({
-            'studio_url': STUDIO_URL,
+            'studio_url': studio_url,
             'lora': args.lora,
             'steps': steps,
             'true_cfg': true_cfg,
@@ -184,7 +243,6 @@ def main():
             'runtime_sec': total,
             'records': records,
         }, f, indent=2, ensure_ascii=False)
-    print(f'[META] {meta_path}')
 
 
 if __name__ == '__main__':

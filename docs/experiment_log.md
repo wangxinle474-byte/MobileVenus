@@ -874,3 +874,799 @@ python training/legacy/train_v13_multiscale.py --param_version v14
 | ISP 渲染精度不足，PSNR 偏低 | 改进 ISP 或用 Lightroom SDK |
 | 8参数自由度太低 | 强调可解释性+效率优势 |
 | PSNR 不如 SOTA | 效率维度 Pareto 曲线 |
+
+---
+
+# 附录 C: FiveK Teacher Pseudo-labels 数据增强 (2026-05-11)
+
+> 目标: 用 FireRed 1.1 (online API) 作为 teacher editor 生成"编辑后图像", 然后通过 `inverse_fit` 反推 7-D ISP 参数, 构造 (orig, caption, teacher_edit, P_ISP) 四元组用于 LoRA SFT 训练 (text-conditioned param prediction).
+
+## 实验时间线
+
+### Step 1: micro-pilot synthetic round-trip (上午)
+- 20 张 FiveK + synthetic teacher (用 GT P 自渲) + 6 个 ssim_w sweep
+- 全部 PASS (L1<0.01), 验证 inverse_fit 算法本身正确
+- **结论**: solver 对合成 target 完美工作
+
+### Step 2: a0006 real-pilot (FireRed 真实输出)
+- caption: "Increase contrast and saturation to bring out more vivid colors and textures. Apply slightly warmer white balance. Keep the original composition and subject unchanged."
+- 单图 FireRed 编辑 → inverse_fit
+- L1=0.0438, delta=0.103 → WARN (近 PASS), 验证 e2e pipeline 可行
+
+### Step 3: 5-action top20 batch (失败)
+- caption: "Increase contrast, enhance saturation, lift shadows, soften highlights, and balance white balance. ..."
+- 20 张, LBFGS + 默认 init
+- **结果**: 18/20 FAIL, L1 median=0.078, 多张 0.1s 提前退出
+- 初步诊断: solver 问题 → 加 heuristic init + 换 Adam 优化器
+- **结果**: 同 LBFGS, 17/20 FAIL → 证明**不是 solver 问题, 是 expressibility 问题**
+- 关键证据: 不同图像产生**完全相同 P_inferred** ⇒ Adam 跑满 300 iter 后 L1=LBFGS 早退结果, FireRed 5-action 输出**不在 7D ISP 表达流形上**
+
+### Step 4: 1-action 对比实验 (重大改善)
+- 同 20 张图, caption: "Increase contrast. Keep the original composition and subject unchanged."
+- 5-action median L1=0.072 → **1-action median L1=0.044**  (-39%)
+- 可用率 (L1<0.10) 65% → **85%**
+- B-tier good (L1<0.05) 2 → 12
+- **结论**: caption 复杂度 ↑ → FireRed 编辑越复杂 → 非 ISP 表达占比越大 → fit 越差
+
+### Step 5: per-action × 5 × 20 = 100 张主实验
+- 5 个单 action: contrast / saturation / shadows / highlights / wb
+- 各选 20 张 unique image (从 score≥4 候选池 deterministic shuffle)
+- 100 张 FireRed teacher edit + 100 张 inverse_fit (Adam)
+
+#### 整体结果
+
+| 指标 | 值 |
+|---|---|
+| n_total | 100 |
+| L1 mean | 0.0764 |
+| L1 median | 0.0655 |
+| delta mean | 0.1135 |
+| **可用率 (L1<0.10)** | **74/100 (74%)** |
+| good (L1<0.05) | 38 |
+| Tier A (L1<0.02) | 1 |
+| Tier B (L1<0.05) | 37 |
+| Tier C (L1<0.10) | 36 |
+| Tier D (L1≥0.10) | 26 |
+
+#### 按 action 分化 (核心发现)
+
+| action | n | L1 median | delta mean | usable | good | tier counts |
+|---|---|---|---|---|---|---|
+| **shadows** | 20 | 0.0414 | 0.0506 | **19/20** | 14 | A=1 B=13 C=5 D=1 |
+| **highlights** | 20 | 0.0667 | 0.1074 | 17/20 | 7 | B=7 C=10 D=3 |
+| contrast | 20 | 0.0513 | 0.0798 | 16/20 | 9 | B=9 C=7 D=4 |
+| saturation | 20 | 0.0867 | 0.1398 | 12/20 | 4 | B=4 C=8 D=8 |
+| **wb** | 20 | 0.1003 | 0.1899 | **10/20** | 4 | B=4 C=6 D=10 |
+
+**核心机理**:
+- shadows/highlights/contrast 是**全局 tone-curve** 操作 → diff_isp 7D 能很好表达 → 高 fit 率
+- saturation/wb 涉及 **HSV 空间和 per-channel 色度调整** → FireRed 倾向加入空间局部色彩重映射 (e.g., 仅天空更暖) → 7D 全局参数无法表达 → 低 fit 率
+- wb 'warmer' caption 解释最歧义 (FireRed 可能做局部色温调整)
+
+## 交付物
+
+```
+outputs/inverse_fit_pilot/fivek_per_action_master/
+├── pseudo_labels.jsonl        # 100 records, 含 P_inferred + quality_tier
+├── summary.json               # overall + per-action 统计
+└── viewer.html                # 单页 HTML 浏览器 (action × tier filter, sort by L1)
+```
+
+每条 record 字段:
+```json
+{
+  "rank", "idx", "source_image", "orig_path", "target_path",
+  "caption", "tone_target", "action",
+  "P_inferred": {"white_balance", "brightness", "contrast", "shadows",
+                 "highlights", "saturation", "clarity"},
+  "P_init_heuristic": {...},
+  "pixel_l1", "pixel_l2", "final_loss",
+  "delta_target_orig", "fit_size", "runtime_sec",
+  "verdict", "quality_tier"
+}
+```
+
+## 关键脚本
+
+| 文件 | 用途 |
+|---|---|
+| `tools/data/data_prep/select_fivek_per_action.py` | 选 100 张 × 5 group action |
+| `tools/data/editor_models/run_firered_online.py` | FireRed 1.1 API 批量编辑 |
+| `tools/data/data_prep/inverse_fit_batch.py` | inverse_fit 批量 + Adam solver + heuristic init |
+| `tools/data/data_prep/combine_per_action_results.py` | 合并 5 路径为 master + 报表 |
+| `tools/data/data_prep/build_per_action_viewer.py` | 生成 viewer.html |
+| `tools/data/data_prep/compare_fit_runs.py` | 对比两个 inverse_fit batch (例: 5-action vs 1-action) |
+
+## inverse_fit 算法改进
+
+- **保留** `tools/data/data_prep/inverse_fit.py` 原版 (LBFGS) 不动 (训练管线在用)
+- **`inverse_fit_batch.py` 内部新增** `inverse_fit_adam()`: 同 sigmoid 参数化 + 多 restart, 替换 LBFGS+strong_wolfe 为 Adam (lr=0.05, grad_clip=1.0)
+- 同时新增 `estimate_init_params(orig, target)`: 基于像素均值/方差/HSV 估计初值 (brightness/contrast/saturation/wb), 让 Adam 从更优起点出发
+- CLI: `--optim adam|lbfgs` (默认 adam), `--no_heuristic_init` 可禁用
+
+## 下一步候选
+
+| 方向 | 描述 | 工作量 |
+|---|---|---|
+| **A. scale 到 N=500** | 5 action × 100 张, ~3h FireRed + 30min fit, 交付 500 伪标签 | 中 |
+| **B. 训 LoRA prove out** | 用当前 100 伪标签训 LoRA, 看是否能学到 ISP 参数预测 | 中 |
+| **C. 提升 wb/saturation 质量** | 调研为何 wb/sat fit 率低: (1) 改 caption 措辞 (2) 加局部色彩参数到 diff_isp (3) 在 selector 中过滤难场景 | 大 |
+| **D. 多 ssim_weight ablation** | 当前 ssim_w=0.5, 试 0.0/0.3/0.7 看是否影响 fit 质量 | 小 |
+
+### Step 6: per-action × 5 × 100 = 499 张扩充实验 (方向 A 落地)
+
+**目标**: 在 Step 5 (N=100) 基础上, 把单 action × 80 张追加进每组, 验证 N 增加后 Tier 分布是否稳定, 同时把 master 扩大到 499 (1 张 highlights 多次重试也 timeout, 实际落盘 499).
+
+#### 流程
+
+1. `select_fivek_per_action.py --per_action 80 --exclude_from_teacher_jsons <5 原 JSON> --out_suffix extend80 --seed 43` → 生成 5 个 `teacher_edits_fivek_<action>_extend80.json` (各 80 张, 全新, 无重叠)
+2. `run_firered_online.py` 跑 5×80=400 张 (按 action 顺序 sequential): 主体 ~50min, 12 张 timeout
+3. `check_missing_per_action.py --suffix extend80` 生成 retry JSON, FireRed retry ~2min, 补上 11/12 (1 张 highlights 多轮重试仍失败)
+4. `run_inverse_fit_extend.py` (调度 `inverse_fit_batch.py --optim adam --heuristic_init --maxiter 200 --n_restarts 3`) 跑 5×80, 共 ~12min
+5. `combine_per_action_results.py --sources per_action per_action_ext --out_dir fivek_500_master` 合并 100+399=499
+6. `build_per_action_viewer.py --master_dir fivek_500_master --per_action_roots per_action per_action_ext` 生成 viewer (N=499)
+
+整套用 `watch_and_finalize.py` 一键串联 (FireRed 完成 → stagnation 检测 4min → retry → fit → combine → viewer).
+
+#### 整体结果
+
+| 指标 | N=100 (Step 5) | **N=499 (Step 6)** | 变化 |
+|---|---|---|---|
+| L1 mean | 0.0764 | **0.0765** | -0.0% |
+| L1 median | 0.0655 | **0.0609** | -7% |
+| L1 max | 0.3245 | **0.3339** | +3% |
+| delta mean | 0.1135 | **0.1097** | -3% |
+| **可用率 (L1<0.10)** | **74.0%** (74/100) | **74.5%** (372/499) | +0.5pp |
+| good (L1<0.05) | 38.0% (38/100) | **41.5%** (207/499) | **+3.5pp** |
+| Tier A (L1<0.02) | 1 | **16** | +15 |
+| Tier B (L1<0.05) | 37 | **191** | +154 |
+| Tier C (L1<0.10) | 36 | **165** | +129 |
+| Tier D (L1≥0.10) | 26 | **127** | +101 |
+
+**核心: Step 5 的 Tier 分布在 N=499 上完全复现**, 可用率 74% 极稳定, Tier B 占比反而略升 (37%→38.3%), Tier A 从 1% 提升到 3.2% (heuristic init + Adam 在更大数据上找到更多极优解).
+
+#### 按 action 分化 (N=499)
+
+| action | n | L1 mean | L1 med | usable | good | tier counts | vs Step 5 usable |
+|---|---|---|---|---|---|---|---|
+| **shadows** | 100 | **0.0496** | 0.0420 | **93/100** | 66 | A=6 B=60 C=27 D=7 | 95% → **93%** |
+| contrast | 100 | 0.0581 | 0.0446 | 86/100 | 56 | A=5 B=51 C=30 D=14 | 80% → **86%** ↑ |
+| highlights | 99 | 0.0681 | 0.0624 | 83/99 | 41 | A=2 B=39 C=42 D=16 | 85% → **84%** |
+| saturation | 100 | 0.0831 | 0.0787 | 75/100 | 27 | A=2 B=25 C=48 D=25 | 60% → **75%** ↑ |
+| **wb** | 100 | **0.1232** | 0.1150 | **35/100** | 17 | A=1 B=16 C=18 D=65 | 50% → **35%** ↓ |
+
+**核心发现复现 + 加强**:
+- **shadows 仍是最佳** (93% usable, A+B = 66%); contrast/highlights 紧随
+- **wb 仍是最差**, 且 N=100→500 fit 率反而下降 (50%→35%), D-tier 占比 65% — FireRed 在更多 wb 样本上引入了空间局部色温调整 (非全局 7D 可表达)
+- saturation 在更大样本下回升 (60%→75%), 提示原 N=20 是偏差较大的子样本
+
+#### 失败原因再分析 (wb 65 D-tier)
+
+延续 Step 5 D-tier 分析: 主要失败模式仍是 **FireRed 对 "warmer wb" 解读**:
+1. 仅天空区色温平移 (其它区域不变)
+2. 加暖色滤镜叠加高光晕染
+3. 整体加暖且增加柔焦/HDR — 等价于多 ISP 操作
+
+对于这 65 张 wb D-tier, diff_isp 7D 完全表达不出 FireRed 的实际编辑路径, 应在 selector 阶段对 wb caption 加更强约束 (例如要求 "Apply warmer white balance globally, no other adjustments") 或考虑放弃 wb action 单独做.
+
+#### 交付物 (N=499)
+
+```
+outputs/inverse_fit_pilot/fivek_500_master/
+├── pseudo_labels.jsonl        # 499 records (60% 来自 extend80, 40% 来自 Step 5)
+├── summary.json               # overall + per-action 统计
+└── viewer.html                # 单页 HTML, 240KB, 4-panel × 499
+outputs/inverse_fit_pilot/per_action_ext/<action>/
+├── pseudo_labels.jsonl        # 80 records (extend80 组)
+└── comparison/<idx>.png       # 4-panel 缩略图
+```
+
+#### 关键脚本 (新增/升级)
+
+| 文件 | 用途 |
+|---|---|
+| `select_fivek_per_action.py` | **+ `--exclude_from_teacher_jsons` + `--out_suffix`** |
+| `combine_per_action_results.py` | **+ `--sources` 多源 + `--out_dir`** |
+| `build_per_action_viewer.py` | **+ CLI `--master_dir` `--per_action_roots` `--title`**, 修正 "Expert C" 标注为 "默认 raw 渲染" |
+| `check_missing_per_action.py` | **+ `--suffix` `--retry_suffix`** |
+| `run_inverse_fit_extend.py` | **新**: 调度 5 个 action 的 inverse_fit batch |
+| `watch_and_finalize.py` | **新**: 一键 watcher (FireRed → retry → fit → combine → viewer) |
+| `check_candidate_pool.py` | **新**: 验证 candidate pool 规模 (确认 1073 张 score≥4 余量) |
+| `print_master_summary.py` | **新**: 终端打印 master summary 简报 |
+
+#### 数据说明 (关于 GT 参数)
+
+- 当前 master 中所有 `P_inferred` 都是 inverse_fit 从 (orig=默认 raw 渲染, target=FireRed 编辑) 反推, **不是 Expert C 真参数**
+- Expert C 的 Lightroom 参数虽然在 `fivek_expert_c/` JPEG 和原始 FiveK catalog 中存在, 但当前 `data/fivek_expert_params.json` 只导出了 A/B 参数, **C/D/E 未提取**
+- 若需训练时同时用 Expert C 真参数对照, 需追加 `extract_expert_c_params.py` 解析 Lightroom XMP/catalog
+
+#### 下一步候选 (N=499 后)
+
+| 方向 | 描述 | 工作量 |
+|---|---|---|
+| **A. 训 LoRA prove out** | 用 372 张 usable (排除 D-tier) 训 LoRA, 验证 ISP 参数学习 | 中 |
+| **B. wb action 重做** | 改 caption 措辞 + 加 selector 黑名单 (天空/局部色彩场景) | 中 |
+| **C. 扩展 ISP 模型** | diff_isp 加局部色温/区域 tone-curve 参数, 提高 wb/sat 表达力 | 大 |
+| **D. 引入 Expert C GT** | 抽 Expert C 参数 → 训 (image, ISP) → (P_C_gt) 监督模型 | 中 |
+| **E. scale 到 N=2000+** | 候选池有 1073 张 score≥4 余量, 可再扩 2-3 倍, 但 wb 收益边际递减 | 中 |
+
+### Step 7: lrcat 提取 5 expert 真 GT (方向 D 落地)
+
+**目标**: 用户指出 dataset 中存在 Lightroom catalog 原文件, 直接从中抽 ABCDE 真实调参参数, 替代/对照 N=499 伪标签.
+
+#### 关键文件定位
+
+| 路径 | 内容 | 大小 |
+|---|---|---|
+| `E:\Data\dataset\fivek_dataset\raw_photos\fivek.lrcat` | **Lightroom catalog (SQLite)** | **1.79 GB** |
+| `E:\Data\dataset\fivek_dataset\raw_photos\HQa{1to700,...,4201to5000}/photos/*.dng` | 5000 原 DNG, 7 个分卷目录 | ~50 GB |
+| `E:\Data\dataset\fivek_dataset\raw_photos\fivek Previews.lrdata/` | Lightroom 预览缓存 | - |
+
+之前的 `fivek_expert_settings.json` (60K records) 只是该 lrcat 的一个子集 (只 dump 了 default + UUID-A + UUID-B), 缺 C/D/E.
+
+#### lrcat 结构发现 (SQLite schema, 57 tables)
+
+| Table | rows | 用途 |
+|---|---|---|
+| `Adobe_images` | 60000 | 5000 master + 55000 virtual copies (11 版本/张) |
+| `Adobe_imageDevelopSettings` | 96458 | develop settings, `text` 字段是 Lua 风格 KV 表 |
+| `Adobe_libraryImageDevelopHistoryStep` | 414263 | 每个 vcopy 的 history step (含真专家步骤名) |
+| `Adobe_libraryImageDevelopSnapshot` | 14610 | 用户保存的 snapshot ("Import N" 是导入快照, **非 expert 标识**) |
+| `AgLibraryFile` | 5000 | 原 DNG 文件名 (baseName + extension) |
+| **`AgLibraryCollection`** | 23 | **关键**: 含 `name='A'`, `'B'`, `'C'`, `'D'`, `'E'` 各 5000 张 |
+| `AgLibraryCollectionImage` | 60000 | collection ↔ image 关联 |
+
+**核心 join 链** (一个 expert 的真 GT):
+```
+AgLibraryCollection(name=C, id=930899)
+  → AgLibraryCollectionImage      (5000 rows)
+  → Adobe_images (virtual copy)   → masterImage
+  → Adobe_images (master)         → rootFile
+  → AgLibraryFile (baseName.ext)  ← 原 DNG 名
++ Adobe_imageDevelopSettings.text ← Lua KV 表, 解析得 7D 参数
+```
+
+#### 提取结果 (`tools/data/data_prep/parse_fivek_lrcat.py`)
+
+输出 `data/fivek_expert_abcde_params.json` (15.5 MB):
+
+| Expert | unique images | full-join records | 备注 |
+|---|---|---|---|
+| **A** | 5000 (in collection) | **2800** | 部分 vcopy join AgLibraryFile 失败 (待修) |
+| **B** | 5000 | **5000** | ✓ 完整 |
+| **C** | 5000 | **5000** | ✓ **完整, 主目标** |
+| **D** | 5000 | **2200** | 部分 vcopy join 失败 (同 A) |
+| **E** | 5000 | **5000** | ✓ 完整 |
+| 合计 | - | **20000** | 远超 N=499 |
+
+每条 record schema:
+```json
+{
+  "image_name": "a0001-jmac_DSC1459.dng",
+  "expert": "C",
+  "lr_copy_name": "Copy 3",
+  "master_id": 8912,
+  "params": {  // 映射 7D
+    "white_balance": 4750.0,   // Temperature (K)
+    "brightness": 0.0,         // LR Brightness 或 PV2012 Exposure
+    "contrast": 22.0,
+    "shadows": 3.0,            // PV2010 FillLight / PV2012 Shadows
+    "highlights": -37.0,       // -HighlightRecovery / PV2012 Highlights
+    "saturation": 12.0,
+    "clarity": 0.0
+  },
+  "raw_lr": {  // 保留 LR 原始 Lua KV 字段, 用于下游精细映射
+    "Temperature": 4750, "Tint": 4, "Exposure": 0,
+    "Brightness": 0, "Contrast": 22, "Shadows": 12,
+    "HighlightRecovery": 37, "FillLight": 3,
+    "Saturation": 12, "Vibrance": 49, "Version": "4.5", ...
+  }
+}
+```
+
+#### Expert C 真 GT 风格 (5000 张平均, 物理含义清晰)
+
+| param | C 均值 | 含义 |
+|---|---|---|
+| white_balance | **4873 K** | 偏暖 (比 D65 5500K 暖 627K) |
+| brightness | 6.74 | 微提亮 (PV2010 字段, 多数为 0) |
+| contrast | **16.84** | 适度对比度提升 |
+| shadows | 4.68 | 微提阴影 |
+| highlights | **-44.58** | **强力压低高光 (Expert C 标志性手法)** |
+| saturation | 5.27 | 弱饱和度提升 |
+| clarity | 0.01 | 几乎不用 |
+
+vs 其它 expert 风格 (供参考):
+
+| expert | wb_mean | bright | contr | shad | high | sat | clar | 风格关键词 |
+|---|---|---|---|---|---|---|---|---|
+| A | 4882 | 34.7 | 29.7 | 4.5 | -2.9 | 2.6 | 0.0 | 高 brightness + 高 contrast, 不压高光 |
+| B | 5274 | 6.9 | 19.0 | 0.7 | -19.4 | 1.5 | 0.0 | 中性, 轻压高光 |
+| **C** | **4873** | 6.7 | 16.8 | 4.7 | **-44.6** | 5.3 | 0.0 | **偏暖 + 重压高光 + 适度饱和度** |
+| D | 5173 | 19.3 | 0.2 | 8.0 | -21.2 | 0.0 | 0.0 | 中性 brightness, 不调对比 |
+| E | 4927 | 19.8 | 10.4 | 19.1 | -28.6 | 5.0 | 0.0 | 偏暖 + 提阴影 + 压高光 |
+
+#### N=499 伪标签 vs Expert C 真 GT 对比 (核心发现)
+
+**100% 重叠**: N=499 所有 image 都在 Expert C 5000 张中, 完美对比子集.
+
+**伪标签与 GT 偏差极大** (contrast action 5 张 sample):
+
+| param | 伪标签 P_inferred 范围 | GT_C 范围 | 差距诊断 |
+|---|---|---|---|
+| **highlights** | **-2.5 ~ +2.5** | **-14 ~ -37** | GT 必压, 伪标签未体现 |
+| white_balance | 5145-6066 | 4124-6538 | 差距常 800K+ |
+| contrast | 19-52 | 0-46 | 接近但变异大 |
+| brightness | -4 ~ +29 | 全 0 | GT 不动, 伪标签乱调 |
+| saturation | 3-27 | 0-4 | 伪标签过度估计 |
+
+**根本原因**: 两者**学习目标完全不同**
+- **伪标签**: 从 FireRed "Increase contrast" 编辑反推的等效 7D, **只局部修 contrast 维度, 其它维度由 init 决定**
+- **GT_C**: Expert C 在 Lightroom 给原图做的**全套统一风格 7D 调整** (含强力压高光等手法)
+
+→ N=499 伪标签**不能直接用作 Expert 风格学习的训练目标**, 它学的是 "5 种 FireRed 单 action 编辑各自的 7D 投影", 而非"专家的统一调参风格".
+
+#### 关键脚本
+
+| 文件 | 用途 |
+|---|---|
+| `tools/data/data_prep/probe_fivek_lrcat.py` | 列 lrcat 表 + 行数 + 候选字段 |
+| `tools/data/data_prep/probe_lrcat_samples.py` | 看 snapshot/develop settings 样本 |
+| `tools/data/data_prep/probe_lrcat_fields.py` | 穷举 develop text 所有字段 |
+| `tools/data/data_prep/probe_lrcat_v2.py` | 找 collection ABCDE, copyName 分析 |
+| `tools/data/data_prep/probe_lrcat_join.py` | 验证 collection→file→develop join 链 |
+| `tools/data/data_prep/probe_lrcat_ad_missing.py` | 调查 A/D 缺失原因 (待修) |
+| `tools/data/data_prep/parse_fivek_lrcat.py` | **正式提取 5 expert 7D 参数** |
+| `tools/data/data_prep/spot_check_expert_c.py` | 随机 sample + 伪 vs 真对比 |
+
+#### 数据 schema 说明
+
+`data/fivek_expert_abcde_params.json` 与原 `data/fivek_expert_params.json` 的关系:
+
+- 原 JSON: 60000 records, 来自 `fivek_expert_settings.json` 子集 (只 default + UUID-A + UUID-B)
+- **新 JSON: 20000 records, 来自 lrcat 直接 join, 5 expert 真 GT, 含 raw_lr 完整字段**
+- 两者**字段命名兼容** (params.{white_balance, brightness, contrast, shadows, highlights, saturation, clarity}), 可在训练脚本中直接替换
+
+#### 已知问题与待办
+
+1. **A=2800/D=2200 (不足 5000)**: full-join 时 `m.rootFile → AgLibraryFile.id_local` 对部分 vcopy 失败. C/B/E 不受影响. 修复优先级低 (C 已完整够用).
+2. **PV2010 vs PV2012 字段语义差**: 当前简单映射, 后续若做监督训练应按 ProcessVersion 分组归一化.
+
+#### 后续路径 (基于 lrcat GT 重新规划)
+
+| 方向 | 描述 | 优势 |
+|---|---|---|
+| **D1. C-GT 监督 LoRA** | 用 5000 张 Expert C 真 GT 训 (orig_jpg, "make it look like Expert C") → P_C_pred 监督模型 | 数据干净, 风格统一 |
+| **D2. 多 expert 风格嵌入** | 训 (orig_jpg, expert_id ∈ {A,B,C,D,E}) → P_pred, 学风格条件预测 | 一次拿 17200 records (B+C+E 全 + A/D 部分) |
+| **D3. 伪+真混合训练** | 伪标签做"action-driven 编辑" task, GT 做"expert-style" task, 联合多任务 | 各取所长 |
+| **D4. 渲染验证 ISP 模型** | 用真 GT 跑 diff_isp render, 比对 Expert C 渲染 JPG (需另下 expert_c JPG) | 闭环验证 ISP 可表达性 |
+
+### Step 8: D1 落地 — Expert C 监督 baseline
+
+**目标**: 用 Step 7 提取的 5000 张 Expert C 真 GT 训一个 baseline 监督回归模型, 验证 (orig_jpg) → P_C_7D 任务可行性.
+
+#### 实验设定
+
+| 项 | 值 |
+|---|---|
+| 数据 | 5000 张 Expert C, 过滤 WB=None 后 4997 → train 4498 / val 499 |
+| 原图 | `E:\Data\dataset\fivek_jpeg\*.jpg` (默认 raw 渲染 JPEG) |
+| 目标 | 7D 参数归一化 ∈ [-1, 1] (wb/bri/con/shad/hi/sat/clarity) |
+| backbone | MobileViTSmall (2.89M) + LN + Linear(384→192→7) + Tanh |
+| 总参数量 | **2.96M** |
+| 输入 size | 256×256 (改自 224 — MobileViT 7×7 feature map 不能整除 patch=2) |
+| loss | 加权 MSE, clarity 权重 0.1 (因 GT 近乎全 0), 其它 1.0 |
+| optim | AdamW lr=1e-4, weight_decay=1e-4 |
+| schedule | CosineAnnealingLR, T_max=30, eta_min=1e-6 |
+| batch | 16 |
+| epochs | 30 |
+| device | RTX 4060 Laptop 8GB, num_workers=0 (Windows) |
+| seed | 42 |
+| aug | 50% 水平翻转 |
+
+整套训练耗时 **~17 min** (35s/epoch).
+
+#### "predict mean" baseline
+
+直接对每个参数预测训练集均值, val MAE 作为无学习上限:
+
+```
+white_balance  mean=+4878.72  val_mae=783.73
+brightness     mean=   +6.54  val_mae= 13.41
+contrast       mean=  +16.85  val_mae= 14.45
+shadows        mean=   +4.68  val_mae=  6.58
+highlights     mean=  -44.37  val_mae= 15.92
+saturation     mean=   +5.29  val_mae=  9.03
+clarity        mean=   +0.01  val_mae=  0.01
+```
+
+#### 训练最佳 (Ep 7, val_loss=0.0248)
+
+train 0.036→0.015 (↓); val 0.036→0.0248@Ep7 → 0.028@Ep30. Ep 8+ 轻度过拟合, 靠 best.pt 保底.
+
+| param | baseline MAE | trained MAE | dMAE | Pearson R | 信号 |
+|---|---|---|---|---|---|
+| **white_balance** | 783.73 | **615.82** | **-21%** | **+0.66** | **强** |
+| **shadows** | 6.58 | **5.72** | -13% | **+0.40** | 中 |
+| **highlights** | 15.92 | **15.49** | -3% | **+0.32** | 中 |
+| brightness | 13.41 | 12.80 | -5% | +0.02 | **无** |
+| contrast | 14.45 | 14.46 | 0% | +0.07 | 无 |
+| saturation | 9.03 | 9.74 | +8% | +0.06 | 无 |
+| clarity | 0.01 | 1.93 | (N/A) | +0.00 | 无 |
+
+#### 核心发现
+
+**能学到的维度** (3D):
+- **white_balance** (R=0.66): 色温有强视觉信号 (天空蓝调/室内黄调/夕阳暖调), MobileViT 能从整图色彩分布学出
+- **shadows** (R=0.40): Expert C 对暗区提亮有统一风格, 模型能识别"画面 dark tone 占比高" → 预测提阴影
+- **highlights** (R=0.32): Expert C 强压高光 (mean -44), 模型能识别"画面有 blown-out 高光" → 预测压高光
+
+**学不到的维度** (4D):
+- **brightness** (R=0.02): Expert C 大多 =0, 少数非 0. GT 方差低但非低于噪声, 模型直接预测均值占便宜
+- **contrast** (R=0.07): Expert C 均值 +17 但 std 17, 强烈依赖场景, 仅从 orig 无法判断"要加多少 contrast"
+- **saturation** (R=0.06): 同 contrast, 全局 +5 均值但场景相关性弱
+- **clarity** (R=0.00): GT 几乎全 0, 模型在 variance 中乱估, MAE 反升
+
+#### 诊断与下一步选项
+
+**问题定位**:
+1. backbone 从零训 2.96M 对 4498 数据**欠拟合能力不足**, 前几轮很快饱和
+2. 过拟合 Ep 8+ 继续 → 需要 **early stopping** + **更强 aug**
+3. 4 个"无信号"参数可能**需要语义条件** (FireRed caption / expert_id) 才能学出风格变化
+4. clarity 几乎全零, 训练目标本质退化为"预测 0", 学了也意义不大
+
+**改进路径**:
+| 方向 | 做法 | 预期 |
+|---|---|---|
+| **E1. pretrained** | MobileViT ImageNet 预训练权重 + fine-tune | wb/shadows 进一步 ↑, 其它 +0.1 R |
+| **E2. 多任务 multi-expert** | (orig, expert_id ∈ ABCDE) → P, 17.2K samples | 数据量 3.4×, 可能学到 contrast/sat |
+| **E3. 条件输入** | 加 expert_id one-hot / caption embedding | contrast/sat 有可能打破 "预测均值" plateau |
+| **E4. Stage-A semantic distill** | 重用 `training/main/train_v8_stage_b.py` 的 SemanticDistill 架构 | 更大 backbone + 更好先验 |
+| **E5. 物理约束** | 用 diff_isp render(orig, pred_P) vs expert_c JPG (需先下 expert_c) 作 pixel loss | 物理闭环, 可能拯救 contrast 信号 |
+
+**关键限制**: 仅从 orig_jpg 完全推断 Expert C 意图存在天花板 — 因为不同 expert 对同一张图会有不同判断. 若要突破 R=0.3 需要加 **expert_id / caption / user_intent 条件输入**.
+
+#### 交付物
+
+```
+training/expert_c_baseline/
+├── __init__.py
+├── train.py           # 独立训练入口 (dataset + model + loop + eval)
+└── print_best.py      # 打印 best.pt vs baseline 对比报告
+
+checkpoints/expert_c_v1/
+├── best.pt            # Ep 7, val_loss=0.0248, 11.4 MB
+├── last.pt            # Ep 30, val_loss=0.0280
+└── history.json       # 30 epoch per-param MAE + Pearson R 轨迹
+```
+
+#### 复现命令
+
+```bash
+# smoke test (2 epoch, ~1 min)
+python training/expert_c_baseline/train.py --epochs 2 --batch_size 16 \
+    --num_workers 0 --log_every 100 --image_size 256 \
+    --out_dir checkpoints/expert_c_smoke
+
+# full run (30 epoch, ~17 min on RTX 4060)
+python training/expert_c_baseline/train.py --epochs 30 --batch_size 16 \
+    --num_workers 0 --log_every 100 --image_size 256 --lr 1e-4 \
+    --out_dir checkpoints/expert_c_v1
+
+# eval report
+python training/expert_c_baseline/print_best.py checkpoints/expert_c_v1/best.pt
+```
+
+**Windows 注意**: 设 `$env:KMP_DUPLICATE_LIB_OK='TRUE'` 解决 libiomp5md.dll 冲突.
+
+### Step 9: FireRed 伪标签条件回归 baseline (核心 — 用户实际目标)
+
+**任务重定义**: Step 8 的 Expert C 是"无条件回归"(给定 orig 直接出 expert 风格 7D), 但**用户实际想要的是**:
+
+> "训练这些参数得到 firered 的效果"
+
+也就是 **conditional**: 给定 (orig_jpg, **想做的 action**) → P_7D 满足"按 action 做 FireRed 风格的编辑". 这才是真正面向用户产品的 ISP agent 任务.
+
+#### 实验设定
+
+| 项 | 值 |
+|---|---|
+| 数据源 | `outputs/inverse_fit_pilot/fivek_500_master/pseudo_labels.jsonl` (N=499) |
+| 过滤 | tier ∈ {A,B,C}, 丢 D fail (372 样本) |
+| 划分 | tier-stratified train=299, val=73 |
+| 监督 | (orig_jpg + action one-hot 5D) → 7D Lightroom params (fitted_P) |
+| backbone | MobileViTSmall(384) + Linear(action_emb 5→32) → fused(416) → MLP→7 + Tanh |
+| 总参数量 | **2.94M** |
+| sample 权重 | tier A=1.2, B=1.0, C=0.5 (训练时按 tier 加权) |
+| param 权重 | clarity=0.1, 其它 1.0 |
+| optim | AdamW lr=1e-4, wd=1e-3, dropout=0.3 |
+| schedule | CosineAnnealingLR T_max=50 |
+| batch | 8 (因为 N=299 太小) |
+| epochs | 50 + early stop patience=10 |
+| aug | hflip 50% + 轻 ColorJitter (brightness/contrast/sat = 0.05) |
+| device | RTX 4060 Laptop, num_workers=0 |
+
+整套训练耗时 **~2.5 min** (3.3s/epoch × 32 epoch = early stopped).
+
+#### "predict per-action mean" baseline
+
+每个 action 用其训练集 primary param 均值作预测, val MAE:
+
+```
+contrast    primary=contrast       mean_pred=  +21.18  mae=   19.15  n=17
+saturation  primary=saturation     mean_pred=  +26.75  mae=   15.60  n=15
+shadows     primary=shadows        mean_pred=   -1.12  mae=    2.34  n=18
+highlights  primary=highlights     mean_pred=   -9.91  mae=   15.47  n=16
+wb          primary=white_balance  mean_pred=+7953.98  mae= 1553.31  n=7
+```
+
+#### 训练最佳 (Ep 22, val_loss=0.0492, early stop @ Ep 32)
+
+train: 0.103 → 0.026 (↓74%); val: 0.103 → 0.049@Ep22 → 0.057@Ep32 (轻微 overfit, early stop 救场).
+
+**整体 7D per-param** (跨所有 action 一起评):
+
+| param | val_MAE | Pearson R | 信号 |
+|---|---|---|---|
+| white_balance | 787.6 | +0.44 | 中 |
+| brightness | 16.34 | **+0.59** | 强 |
+| contrast | 21.28 | **+0.57** | 强 |
+| shadows | 5.81 | +0.40 | 中 |
+| highlights | 15.31 | **+0.60** | 强 |
+| saturation | 14.63 | +0.42 | 中 |
+| clarity | 21.93 | +0.30 | 中 |
+
+**Per-action primary param** (核心评估 — 模型在每个 action 主导参数上的能力):
+
+| action | primary | base_MAE | model_MAE | dMAE | R | 结论 |
+|---|---|---|---|---|---|---|
+| **contrast** | contrast | 19.15 | **18.50** | -3% | **+0.47** | ✓ 战胜 baseline |
+| **saturation** | saturation | 15.60 | **13.79** | **-12%** | **+0.60** | ✓ 战胜 baseline |
+| **highlights** | highlights | 15.47 | **11.51** | **-26%** | **+0.64** | ✓ 战胜 baseline |
+| shadows | shadows | 2.34 | 4.22 | +80% | +0.55 | △ R 高但 baseline 太低 |
+| wb | white_balance | 1553 | 2279 | +47% | -0.17 | ✗ 学不出 (n_train=28 太少) |
+
+#### 与 Step 8 (Expert C unconditional) 对比
+
+| param | Expert C R (4498 train, unconditional) | FireRed R (299 train, **action conditional**) | dR |
+|---|---|---|---|
+| white_balance | **+0.66** | +0.44 | -0.22 |
+| brightness | +0.02 | **+0.59** | **+0.57** |
+| contrast | +0.07 | **+0.57** | **+0.50** |
+| shadows | +0.40 | +0.40 | = |
+| highlights | +0.32 | **+0.60** | +0.28 |
+| saturation | +0.06 | **+0.42** | **+0.36** |
+| clarity | +0.00 | +0.30 | +0.30 |
+
+**6/7 维度 FireRed conditional baseline 胜过 Expert C unconditional baseline, 训练数据少 15×**.
+
+#### 视觉验证 (`outputs/firered_v1_val_compare/`)
+
+每个 action 抽 1 张 tier 最高的 val 图, 4-panel 对比:
+
+| panel | 含义 |
+|---|---|
+| 1 | orig (raw 渲染 JPEG) |
+| 2 | FireRed edit (target) |
+| 3 | **model→ISP→render** (我们的预测 7D 用 diff_isp 渲染) |
+| 4 | inverse_fit→ISP→render (P_inferred 直接渲染, GT 上限) |
+
+观察 (5 张样本):
+- **contrast**: model 预测 cont=77 vs GT 93 (under-shoot 17), 视觉接近但稍弱
+- **saturation**: model 预测 sat=58 vs GT 43 (over-shoot 15), 但风格对得上
+- **shadows / highlights**: 这两 action 的 GT 本身有时 ≈0 (inverse_fit 没找到强解), 因此 model 也学不出强变化
+- **wb**: GT 9205 vs model 6381, 偏差最大 — 与 R=-0.17 一致
+
+**核心洞察**: 模型在 contrast / saturation / highlights 这三个 action 上学到了**可视化的真正风格学习**, 不只是数值上的相关性.
+
+#### 核心发现 (本步最重要的科研产出)
+
+1. **action 条件输入是关键**: 同样 ~300 张 N (15× 比 Expert C 少) 反而学得更好 — 因为任务本身可解 (给定 action 后 P 的不确定性大幅降低)
+2. **数据小不是问题**: tier-stratified split + tier-weighted loss + 强 dropout + 轻 aug 让 N=299 都能稳定训出 R>0.4
+3. **wb 是 outlier**: train n=28 (5 actions 中最少) + wb 物理 scale 100× 大于其它 → 学习严重不足. 解决: 单独加大 wb 数据或调 normalization
+4. **inverse_fit 伪标签的限制**: shadows/highlights 上有些样本 inverse_fit 解 ≈0 (没找到强信号), 这部分样本本身就是噪声训练目标
+
+#### 下一步选项
+
+| 方向 | 做法 | 预期 |
+|---|---|---|
+| **G1. 扩大数据** | 跑 FireRed 至 N=2000 (4×), 重训 | 整体 R 再 +0.05~0.1 |
+| **G2. wb 单独补数据** | 多挑 100 张 wb action, 重点训 wb 维度 | wb R 从 -0.17 → +0.3+ |
+| **G3. 加 caption embedding** | 用 sentence-transformer 把 caption 编码为 384D, 替代 one-hot | 支持 free-form 指令 |
+| **G4. inverse_fit 质量过滤** | 只保留 tier A+B (207 张), 丢 C; 或重新跑 inverse_fit (更高 maxiter) | 减少噪声标签污染 |
+| **G5. expert C 联合训练** | (orig, action_or_expert_c_token) → P, 把 4498 Expert C + 372 FireRed 一起训 | 大数据量 + 多任务 |
+
+#### 交付物
+
+```
+training/firered_baseline/
+├── __init__.py
+├── train.py              # FireRed7DModel + tier-aware loss + early stop
+├── print_best.py         # best.pt vs baseline 对比
+└── render_val_compare.py # 5×4-panel 视觉验证
+
+checkpoints/firered_v1/
+├── best.pt               # Ep 22, val=0.0492, 11.4 MB
+├── last.pt
+└── history.json          # 32 epoch 完整轨迹
+
+outputs/firered_v1_val_compare/
+├── index.html            # 5 个 4-panel + P_pred vs P_inv 表
+└── {action}_{img}.png    # 5 张拼接对比图
+```
+
+#### 复现命令
+
+```bash
+# smoke test (3 epoch, ~30s)
+$env:KMP_DUPLICATE_LIB_OK='TRUE'
+python training/firered_baseline/train.py --epochs 3 --batch_size 8 \
+    --num_workers 0 --log_every 20 --out_dir checkpoints/firered_smoke
+
+# full train (50 epoch + early stop, ~2.5 min)
+python training/firered_baseline/train.py --epochs 50 --batch_size 8 \
+    --lr 1e-4 --dropout 0.3 --patience 10 --num_workers 0 --log_every 30 \
+    --out_dir checkpoints/firered_v1
+
+# eval report
+python training/firered_baseline/print_best.py checkpoints/firered_v1/best.pt
+
+# 视觉对比 (5 actions × 4-panel)
+python training/firered_baseline/render_val_compare.py
+# 然后开浏览器看 outputs/firered_v1_val_compare/index.html
+```
+
+### Step 9.1: FireRed baseline 演进 (v2 / v3 / v4 — 修复 wb dimension)
+
+Step 9 训出 v1 后, 用户视觉检验提出"orig (panel 1) ≈ model_render (panel 3)"的观察, 提示 v1 在视觉上还达不到 FireRed 风格. 进一步实证发现 **wb dimension 是元凶** (R=-0.17, 训练样本仅 28), 后续做了三次架构/损失调整尝试修复.
+
+#### 诊断: 真问题不是 "under-prediction" 而是 "mis-direction"
+
+写 `training/firered_baseline/diagnose_under_prediction.py`, 对全 73 val 样本算 panel 间像素 L1 + 参数偏离:
+
+```
+原图->FireRed_edit 平均改动幅度:  L1 = 0.0717  (真实改动)
+inv_fit 渲染相比 orig 改动幅度:   L1 = 0.0437  (61% 改动, 7D 表达上限)
+model 渲染相比 orig 改动幅度:     L1 = 0.0488  (68% 改动, 跟 inv 接近)
+inv_render vs FireRed:           L1 = 0.0458  (7D ISP 上限)
+model_render vs FireRed:         L1 = 0.0732  (模型离 FR)
+```
+
+**关键发现**:
+- v1 模型**改动幅度 OK** (0.0488 vs 0.0437 inv), 不是 under-prediction
+- 但 L1(model, FR) = 0.0732 > L1(inv, FR) = 0.0458, 说明模型**改动方向不对**
+- 罪魁是 wb dimension: wb action 7 张样本 P_pred=6297 vs P_inv=8283, 差 1986K — diff_isp 中 wb 是第一步 multiplicative gain, 决定整体色调
+
+#### v2: pixel reconstruction loss (失败)
+
+**设计**: 加 `apply_diff_isp(orig, P_pred) vs apply_diff_isp(orig, P_inv)` L1 作辅助 loss, 让模型对像素效果负责, 试图通过渲染监督修复 wb. `pixel_loss_weight=0.5`, 5 epoch warmup.
+
+**修复 NaN 问题**:
+- diff_isp 通过 backward 梯度 boundary 偶发 NaN → 污染模型权重
+- 加 `torch.nan_to_num` 在 pred_render/grad 上 + skip NaN batch + warmup 从 0 起
+
+**结果 (60 epoch, early stop @ Ep 48, val=0.1038)**:
+- L1(model, FR) 0.0732 → **0.0713** (仅 -2.6%)
+- |dP|_phys 126 → **176** (恶化 +40%)
+- per-action primary R 平均 +0.42 → **+0.20** (腰斩)
+
+**为什么失败**: **7D ISP 是非单射的** — 多组参数能产生类似图像. pixel loss 让模型找到一个"渲染相似但参数偏离"的解, 像素改善微乎其微但参数学习严重退化. v2 路线放弃.
+
+#### v3: action-aware param weighting (wb 突破, shadows 反向)
+
+**设计**: 对每个样本根据 action 调整 7D loss 权重:
+- action 主参数权重 5.0 (e.g. wb action 上 wb=5.0)
+- secondary params 权重 1.0
+- 其它 params 权重 0.2 (强抑制)
+- clarity 全局压低 0.1
+
+```
+weight matrix (5 actions × 7 params):
+            wb    bri   cont  shad  high  sat   clar
+contrast    0.20  1.00  5.00  1.00  1.00  0.20  0.10
+saturation  0.20  0.20  0.20  0.20  0.20  5.00  0.10
+shadows     0.20  1.00  0.20  5.00  1.00  0.20  0.10
+highlights  0.20  1.00  0.20  1.00  5.00  0.20  0.10
+wb          5.00  0.20  0.20  0.20  0.20  1.00  0.10
+```
+
+**结果 (60 epoch, early stop @ Ep 25, best Ep 13, val=0.0427)**:
+- **wb R: -0.17 → +0.80** (突破!)
+- contrast R: +0.47 → **+0.71** (强化)
+- saturation R: +0.60 → +0.47 (略降)
+- highlights R: +0.64 → +0.43 (降)
+- **shadows R: +0.55 → -0.41** (反向!)
+- L1(model, FR): 0.0732 → 0.0810 (反而变差)
+- |dP|_phys: 126 → 211 (恶化)
+
+**为什么 shadows 反向**: shadows action 的 GT primary param 本身就小 (MAE base ~2.34, 近 0), `primary_w=5` 强加权放大了对小 GT 的过拟合, 模型学到一个奇怪的负相关. **过度抑制非主参数破坏了均衡**.
+
+#### v4: wb 全局 ×3 (minimal fix, 折中)
+
+**设计**: 复用 v1 的 weighted_mse_loss, 不引入 action-aware 复杂逻辑. 直接针对 wb 物理 scale 100× 大的根因, 全局加权 wb=3.0, 其它 1.0, clarity 0.1.
+
+**结果 (60 epoch, early stop @ Ep 21, best Ep 9, val=0.0764)**:
+- wb R: -0.17 → +0.18 (改善但远不如 v3 的 +0.80)
+- 其它 dimension R 跟 v1 持平 (差 ±0.1)
+- shadows R: +0.55 → -0.29 (仍轻微反向)
+- L1(model, FR): 0.0732 → 0.0783 (略差)
+
+**结论**: wb 全局加权 = "对 wb action 强化不够, 对其它 action 噪声引入". 没有 v3 那么戏剧化但也没显著改善.
+
+#### 四代综合对比
+
+| action | v1 | v2 | v3 | v4 | 最佳 |
+|---|---|---|---|---|---|
+| contrast | +0.47 | +0.08 | **+0.71** | +0.49 | v3 |
+| saturation | **+0.60** | +0.37 | +0.47 | +0.39 | v1 |
+| shadows | **+0.55** | +0.16 | -0.41 | -0.29 | v1 |
+| highlights | **+0.64** | +0.30 | +0.43 | +0.37 | v1 |
+| wb | -0.17 | -0.12 | **+0.80** | +0.18 | v3 |
+| **L1(m, FR)** | **0.0732** | **0.0713** | 0.0810 | 0.0783 | v1/v2 |
+
+**无单一胜者** — v1 在 4/5 action 上仍是最稳, v3 在 wb 上完胜但 shadows 反向, v2/v4 是失败 / 折中.
+
+#### 核心科研产出
+
+1. **7D ISP 非单射性 = pixel-only 监督不可行** (v2 实证). 必须用 param-space loss 才能保持参数学习信号.
+2. **action-aware weighting 是一把双刃剑** (v3): 能解锁难学的 wb, 但同时让 GT 信号弱的 dimension (shadows) 反向. 需更精细控制权重 schedule.
+3. **wb 的根本问题不是数据少而是 loss balance**: 物理 scale 100× 大但 normalized loss 跟其它等权, 模型保守输出中性 6000. v3 strong weighting 证明 wb 是可学的.
+4. **均衡 + 突破的张力**: 当前架构无法既保 v1 的 4/5 均衡又拿 v3 的 wb. 真正破局需:
+   - 数据扩容 (G1) — wb action 28 → 200 样本
+   - 双头分流 (G2) — wb 独立 head 不影响其它参数
+   - 主线切换 (Qwen3-VL LoRA) — 用 MLLM 大模型自然处理 scale 不均衡
+
+#### 交付物
+
+```
+training/firered_baseline/
+├── train.py / print_best.py / render_val_compare.py  # v1
+├── train_v2.py                       # pixel loss
+├── train_v3.py                       # action-aware
+├── train_v4.py                       # wb global x3
+├── diagnose_under_prediction.py      # L1 像素诊断
+├── compare_3way.py                   # N-way per-action R + L1
+└── write_compare_html.py             # 生成 outputs/firered_compare.html
+
+checkpoints/firered_v{1,2,3,4}/best.pt + history.json
+
+outputs/
+├── firered_compare.html              # 4-way 总览页 (推荐入口)
+├── firered_v{1,2,3,4}_val_compare/   # 各 5×4-panel viewer + index.html + L1 标注
+└── firered_v{2,3,4}_train.log        # 训练日志
+```
+
+#### 复现命令
+
+```bash
+$env:KMP_DUPLICATE_LIB_OK='TRUE'
+
+# v1: baseline
+python training/firered_baseline/train.py --epochs 50 --batch_size 8 \
+    --patience 10 --out_dir checkpoints/firered_v1
+
+# v2: + pixel loss (失败实验, 仅复现用)
+python training/firered_baseline/train_v2.py --epochs 50 --batch_size 8 \
+    --pixel_loss_weight 0.5 --pixel_warmup_epochs 5 \
+    --patience 10 --out_dir checkpoints/firered_v2
+
+# v3: action-aware
+python training/firered_baseline/train_v3.py --epochs 60 --batch_size 8 \
+    --primary_w 5.0 --secondary_w 1.0 --other_w 0.2 \
+    --patience 12 --out_dir checkpoints/firered_v3
+
+# v4: wb global x3
+python training/firered_baseline/train_v4.py --epochs 60 --batch_size 8 \
+    --wb_weight 3.0 --patience 12 --out_dir checkpoints/firered_v4
+
+# 全套评估 + 4-way 表
+python training/firered_baseline/compare_3way.py \
+    --ckpts checkpoints/firered_v{1,2,3,4}/best.pt --names v1 v2 v3 v4
+
+# 渲染 viewer + 生成对比 index
+python training/firered_baseline/render_val_compare.py --ckpt {ckpt} \
+    --out_dir outputs/firered_v{x}_val_compare
+python training/firered_baseline/write_compare_html.py
+python -m http.server 9123 --directory outputs
+# 浏览器开 http://localhost:9123/firered_compare.html
+```

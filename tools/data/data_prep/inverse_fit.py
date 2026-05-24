@@ -41,6 +41,11 @@ PARAM_SPEC = {
     'highlights':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
     'saturation':      {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
     'clarity':         {'init': 0.0,    'lo': -100.0,  'hi': 100.0},
+    # v10a: 2D chromaticity offset (off-Planckian). init=0 → 等效原 7D 行为.
+    # 范围 [-0.5, 0.5] → R/B gain ∈ [0.6, 1.65], 足够覆盖品红/绿调.
+    # Inspired by [R1] Off the Planckian Locus (arxiv 2511.17133).
+    'wb_u':            {'init': 0.0,    'lo': -0.5,    'hi': 0.5},
+    'wb_v':            {'init': 0.0,    'lo': -0.5,    'hi': 0.5},
 }
 
 

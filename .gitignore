@@ -1,9 +1,89 @@
-# 模型权重（体积大，用 Git LFS 或单独分享）
-checkpoints/
 
-# 数据集（本地路径，不上传）
+
+# ----- Python 运行时 -----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+htmlcov/
+
+# ----- Jupyter -----
+.ipynb_checkpoints/
+
+# ----- 虚拟环境 -----
+venv/
+.venv/
+env/
+.env/
+
+# ----- 环境变量 / secrets -----
+.env
+*.key
+secrets.json
+.secrets/
+
+# ----- IDE / 编辑器 -----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ----- OS -----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# 项目专属
+# ============================================================
+
+# ----- 模型权重 (大, 用 LFS 或单独分享) -----
+# 只忽略权重文件本身, 保留训练日志/历史/配置, 方便协作 review
+checkpoints/**/*.pt
+checkpoints/**/*.pth
+checkpoints/**/*.ckpt
+checkpoints/**/*.bin
+checkpoints/**/*.safetensors
+checkpoints/**/*.pkl
+
+# ----- 训练 / 评估输出 (大, 可重新生成) -----
+outputs/
+# 但保留 README/说明文档, 方便他人了解每个 output 的含义
+!outputs/**/README.md
+!outputs/**/*.md
+eval_results/
+
+# ----- 训练曲线图 / 推理对比图 (本地生成) -----
+images/training_curves/
+images/inference/
+
+# ----- 日志 -----
+logs/
+*.log
+*.log.err
+*.log.out
+# 注: checkpoints/ 内的训练日志 (*_log.txt, training.log) 体积大, 不放回
+# 仅 history.json / args.json / *.md 等元数据保留 (不被任何 ignore 规则命中)
+
+# ----- 大数据文件 -----
+# embeddings (npz, 几十 MB)
 data/*.npz
-# 训练用大 JSON（>1MB，单独管理）
+# 生成的 pseudo-label 流水线产物
+data/pseudo_labels/
+data/sharegpt/
+# 大的训练 manifest jsonl (>1MB, 可重新生成)
 data/instruction_data.json
 data/aug_final.json
 data/aug_ip2p_full.json
@@ -16,62 +96,91 @@ data/fivek_aesthetic_scores.json
 data/fivek_venus_labels.json
 data/venus_pseudo_labels.json
 data/venus_edit_prompts.json
-data/pseudo_labels/
+# FireRed 教师标签缓存 (~22 MB, 可由 tools/data/editor_models/run_firered_*.py 重新生成)
+data/teacher_edits_*.json
+data/teacher_edits_*.txt
 
-# 打包文件
-*.zip
+# ----- 论文内容 + 论文图片 (不公开分享, 仅本地编辑) -----
+# 论文草稿 / 大纲 / 其他 paper_*.md
+docs/paper_draft.md
+docs/paper_outline.md
+docs/paper_*.md
+# 论文配图 (架构图 + 结果图)
+images/architecture/
+images/results/
+# LaTeX 编译产物 (如果未来加入 LaTeX 源)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.out
+*.lof
+*.lot
+*.run.xml
 
-# Python 缓存
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-.Python
+# ----- 周边材料 (与训练方法无关, 不参与 git 协作) -----
+# IDE / AI 助手 工作区状态
+.windsurf/
+.cursor/
+.claude/
 
-# 推理生成的对比图（体积大）
-images/inference/
+# 个人笔记 / 进度 / 临时草稿 (协作者不需要)
+progress.txt
+TRAINING_LOG.md
+_tmp_readme.md
+_tmp_*.md
+_tmp_*.txt
 
-# 训练输出
-outputs/
+# 历史备份目录 (autodl_backup_*.tar 等)
+archive/
 
-# Django 媒体文件（推理图片存 DB，media/ 仅本地）
-APP/backend/media/
+# docs/ 内的非方法材料: 样本图集 / 老实验报告 / 配图源文件
+docs/archive/
+docs/artedit_samples/
+docs/diff_isp_validation/
+docs/lora_v1/
+docs/OVERVIEW_FIGURE_PROMPT.md
+docs/*.png
+docs/*.jpg
+docs/*.jpeg
+# 但保留 docs/ 下的 .md 项目文档 和 .py 绘图脚本
 
-# Django 数据库
-APP/backend/db.sqlite3
-*.sqlite3
+# 老 baseline 评估结果 / latex 表 (可重新生成)
+evaluate/results/
 
-# 前端构建产物与依赖
-APP/frontend/dist/
-APP/frontend/node_modules/
-node_modules/
-
-# IDE / 系统文件
-.idea/
-.vscode/
-*.swp
-*~
-.DS_Store
-Thumbs.db
-
-# Jupyter
-.ipynb_checkpoints/
-
-# 虚拟环境
-venv/
-env/
-.env/
-
-# 环境变量文件
-.env
-
-# 字体文件（体积大）
+# ----- 字体 (大, 单独分享) -----
 *.ttf
 *.otf
 
-# 日志
-*.log
-logs/
+# ----- APP/ (Web 应用子项目, Django + Vue3) — 整体忽略, 不参与本仓库 -----
+APP/
 
-# 训练曲线图（本地生成）
-images/training_curves/
+# ----- 数据库 / Node (其他位置可能也有, 留作全局规则) -----
+*.sqlite3
+*.sqlite3-journal
+node_modules/
+
+# ----- 备份 / 归档 / 打包 (体积大) -----
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.rar
+*.7z
+
+# ----- ONNX / 部署导出 -----
+*.onnx
+*.tflite
+*.mlmodel
+*.pb
+
+# ----- 临时 / scratch -----
+*.tmp
+*.bak
+.cache/
+# tools/_archive/_tmp_*.py 是历史归档, 默认保留跟踪让协作者看到结构
+# 若要彻底忽略, 取消下行注释:
+# tools/_archive/
