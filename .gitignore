@@ -74,7 +74,9 @@ logs/
 *.log
 *.log.err
 *.log.out
-# 注: checkpoints/ 内的训练日志 (*_log.txt, training.log) 体积大, 不放回
+# 训练 stdout 重定向产物 (大, 可由 history.json 反推)
+*_log.txt
+training.log
 # 仅 history.json / args.json / *.md 等元数据保留 (不被任何 ignore 规则命中)
 
 # ----- 大数据文件 -----
