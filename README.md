@@ -1,4 +1,4 @@
-﻿#  IntelligenceCamera: 端侧 ISP 参数化编辑模型
+﻿# Venus IntelligenceCamera: 端侧 ISP 参数化编辑模型
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-green.svg)](https://www.python.org/)
@@ -79,18 +79,15 @@ IntelligenceCamera/
 │   ├── distillation.py, dataset.py              # 通用蒸馏/数据集组件
 │   └── aesthetic_loss.py                        # MUSIQ 美学损失封装
 │
-├── tools/                                       # ★ 按场景分类的 ~210 个脚本
-│   ├── inference/                               # ★ 端到端推理 CLI (v13_edit_image.py 等)
-│   ├── eval_runs/                               # ★ 每版本 eval 入口 (eval_v13_firered_refine_viewer.py 等)
-│   ├── viz/                                     # 视觉对比 / 网格 / viewer 生成
-│   ├── data_prep/                               # 训练数据组装 (build_*_jsonl 等)
-│   ├── audit/                                   # 检查 / 诊断 / 分析
-│   ├── autodl/                                  # AutoDL 远程基础设施 (sync/launch/monitor)
-│   ├── _lib/                                    # hub 模块 (被其他脚本 import: eval_track2 等)
-│   ├── _archive/                                # 一次性 scratch (_tmp_*)
-│   ├── eval/                                    # 通用 eval 辅助 (PSNR/SSIM/IQA/Multi-expert)
-│   ├── demo/                                    # 离线 demo 脚本
-│   └── data/                                    # 数据流水线 (analysis/data_prep/scoring/...)
+├── tools/
+│   ├── v13_edit_image.py                        # ★ v13 单图编辑 CLI (image + action → 输出图)
+│   ├── eval_v13_firered_refine_viewer.py        # ★ v13 评估 + 视觉对比 viewer 生成
+│   ├── eval_v11_named_curves.py                 # v11-d 基线评估
+│   ├── eval_v11a_v12a_fair.py                   # v11a vs v12a 公平对比
+│   ├── eval_pathZ_resunet.py                    # Path Z 图像域基线评估
+│   ├── eval/                                    # 评估工具集 (PSNR/SSIM/IQA/Multi-expert)
+│   ├── demo/                                    # Demo 脚本
+│   └── data/                                    # 数据处理脚本
 │
 ├── scripts/
 │   ├── local/run_firered_all_actions.py         # ★ FireRed pseudo-label 生成 (ModelScope API)
@@ -243,7 +240,7 @@ pip install -r requirements.txt
 ```powershell
 $env:PYTHONIOENCODING='utf-8'
 $env:PYTHONPATH='.'
-python tools/inference/v13_edit_image.py `
+python tools/v13_edit_image.py `
     --image "E:/Data/dataset/fivek_jpeg/a0001-jmac_DSC1459.jpg" `
     --action contrast `
     --out "outputs/edit_demo/a0001_contrast.jpg" `
@@ -256,7 +253,7 @@ python tools/inference/v13_edit_image.py `
 ### 一次跑全部 7 个 action (推荐, 看完整效果)
 
 ```powershell
-python tools/inference/v13_edit_image.py `
+python tools/v13_edit_image.py `
     --image "your_photo.jpg" `
     --all_actions `
     --out_dir "outputs/edit_demo/your_photo_all"
@@ -306,7 +303,7 @@ with torch.no_grad():
 ### 评估 + 视觉对比 viewer
 
 ```powershell
-python tools/eval_runs/eval_v13_firered_refine_viewer.py `
+python tools/eval_v13_firered_refine_viewer.py `
     --ckpt checkpoints/v13a_firered_refine_7actions/best.pt `
     --jsonl outputs/firered_v11_existing_7actions/pseudo_labels.jsonl `
     --out_dir outputs/v13a_firered_refine_viewer `
@@ -389,8 +386,7 @@ python tools/eval_runs/eval_v13_firered_refine_viewer.py `
 - [x] v13a 残差精修器训练 (25.22 dB, +1.23 dB)
 - [x] Per-action 失败模式分析 (clarity 回归, wb 偏置)
 - [x] Viewer.html 视觉对比工具 (5 列对照 + 误差热图)
-- [x] 单图编辑 CLI (`tools/inference/v13_edit_image.py`)
-- [x] `tools/` 重构 (83 个根层脚本 → 8 个功能子目录)
+- [x] 单图编辑 CLI (`tools/v13_edit_image.py`)
 - [x] 文档清理 (本次, 删 3 + 归档 8)
 
 ### 进行中 / 计划 📋
